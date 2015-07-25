@@ -25,7 +25,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="@dimen/home_page_title_bottom_margin"
-	        android:src="@drawable/title_1" />
+	        android:src="@drawable/splash1" />
 
         <Button
             android:id="@+id/btnLearning"

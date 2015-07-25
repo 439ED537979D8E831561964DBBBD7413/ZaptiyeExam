@@ -1,21 +1,5 @@
 package com.zaptiye.quiz;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -37,17 +21,30 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.zaptiye.quiz.bean.GameData;
 import com.zaptiye.quiz.playquizbeans.PlayQuizLevel;
 import com.zaptiye.quiz.playquizbeans.PlayQuizQuestion;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Quiz activity, on This screen user play quiz with four option. 
@@ -131,40 +128,6 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	        settings = getActivity().getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
 	        
 	       resetAllValue();
-	       
-	       
-			// Create an ad
-			adView = new AdView(getActivity());
-		    adView.setAdSize(AdSize.SMART_BANNER);
-		    adView.setAdUnitId(getString(R.string.admob_banner));
-		    
-		    // Add the AdView to the view hierarchy. The view will have no size  until the ad is loaded.
-		    LinearLayout layout = (LinearLayout) v.findViewById(R.id.ads_layout);
-		    layout.addView(adView);
-		    // Create an ad request. Check logcat output for the hashed device ID to get test ads on a physical device.
-		    // Create ad request.
-		    Resources ress = getResources();
-		    boolean isTestMode = ress.getBoolean(R.bool.istestmode);
-		    AdRequest adRequest =null;
-		    if(isTestMode){
-		    	 // Request for Ads
-		    	 System.out.println("Testing.... app");
-		          adRequest = new AdRequest.Builder()
-		         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-		         .addTestDevice("0C2DF43E6E70766851B6A3E5EE46A9B8")
-		                .build();
-		    }else{
-		    	System.out.println("Live Apps");
-		    	 adRequest = new AdRequest.Builder().build();
-		    }
-
-		    // Start loading the ad in the background.
-		    adView.loadAd(adRequest);
-		    // Create the interstitial.
-		    interstitial = new InterstitialAd(getActivity());
-		    interstitial.setAdUnitId(getString(R.string.admob_intersitital));
-		    // Begin loading your interstitial.
-		    interstitial.loadAd(adRequest);
 	        
 	        return v;
 	  }
@@ -223,9 +186,6 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			mListener.getGameData().setCountHowManyQuestionCompleted(count_question_completed);
 			
 			saveScore();
-			
-			
-			displayInterstitial();
 			
 			getActivity().getSupportFragmentManager().popBackStack();
 			getActivity().getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mListener.getQuizCompletedFragment() ).addToBackStack( "tag" ).commit();
@@ -296,14 +256,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		
 		
 	}
-	// Invoke displayInterstitial() when you are ready to display an interstitial.
-	  public void displayInterstitial() {
-	    if (interstitial.isLoaded()) {
-	      interstitial.show();
-	    }
-	  }
 
-	  
 	@Override
 	public void onClick(View v) {
 		

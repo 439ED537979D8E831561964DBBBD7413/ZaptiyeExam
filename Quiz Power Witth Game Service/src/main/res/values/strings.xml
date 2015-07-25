@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Quiz Power</string>
+    <string name="app_name">Zaptiye Pro</string>
     <string name="action_settings">Settings</string>
-
-    <!-- Replace you Admob Unit - id here -->
-    <string name="admob_banner">ca-app-pub-1891613648627380/6725793755</string>
-    <string name="admob_intersitital">ca-app-pub-1891613648627380/5249060556</string>
 
 
     <!-- This will true if you testing app when you publish on play store make if fasle -->
@@ -17,12 +13,12 @@
     <bool name="isQuestionFormWeb">true</bool>
 
     <!-- set you service URL plz don't foget otherwise it will be get our question database. For Four Option Question-->
-    <string name="question_bank_url">http://arkayapps.com/quizpower/getquestionwithoptionbylevelid.php?levelid=</string>
+    <string name="question_bank_url">http://cunediogluyazilim.com//ahmet/getquestionwithoptionbylevelid.php?levelid=</string>
 
     <!-- set you service URL plz don't foget otherwise it will be get our question database. FOR ONE option Questions-->
-    <string name="get_question_right_answare">http://arkayapps.com/quizpower/getquestionrightanswerbylevelid.php?levelid=</string>
+    <string name="get_question_right_answare">http://cunediogluyazilim.com/ahmet/getquestionrightanswerbylevelid.php?levelid=</string>
     <!-- <string name="get_number_of_level">http://arkayapps.com/quizpower/getnumberoflevel.php</string> -->
-    <string name="get_level_info">http://arkayapps.com/quizpower/getleveliinfo.php</string>
+    <string name="get_level_info">http://cunediogluyazilim.com/ahmet/getleveliinfo.php</string>
 
     <string name="icon_url"> https://lh3.googleusercontent.com/-GifeEujNvJQ/VHQIh5OvzsI/AAAAAAAAAmk/jTw7I86i4x4/s128/icon_80.png</string>
 
