@@ -24,8 +24,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.zaptiye.quiz.bean.GameData;
 import com.zaptiye.quiz.playquizbeans.PlayQuizLevel;
 import com.zaptiye.quiz.playquizbeans.PlayQuizQuestion;
@@ -59,7 +57,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	private boolean isSoundEffect;
 	private boolean isVibration;
 
-	private int NO_OF_QUESTION = 10;
+	private int NO_OF_QUESTION = 20;
 	private int totalScore=0;
 	private int score=0;
 	private int correctQuestion=0;
@@ -77,8 +75,6 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	private final Handler mHandler = new Handler();
 	private SharedPreferences.Editor editor;
 	private View v;
-	AdView adView;
-	private InterstitialAd interstitial;
 	private List<PlayQuizQuestion> playQuizquestions =null;
 	private RelativeLayout playQuizmainLayout,top_panel;
 	
@@ -447,7 +443,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			//editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
 			editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 			
-		if(correctQuestion>=7){
+		if(correctQuestion>=3){
 			unlockLevelCompletedAchivement(levelNo);
 			levelNo++;
 			editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
