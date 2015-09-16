@@ -443,7 +443,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			//editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
 			editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 			
-		if(correctQuestion>=3){
+		if(correctQuestion>=17){
 			unlockLevelCompletedAchivement(levelNo);
 			levelNo++;
 			editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);

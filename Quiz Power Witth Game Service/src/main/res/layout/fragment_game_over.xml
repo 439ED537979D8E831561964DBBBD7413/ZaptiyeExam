@@ -46,7 +46,7 @@
         android:layout_above="@+id/lblLevelTotalScore"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"
-        android:text="This Level Score"
+        android:text="Level Puanınız"
         android:textColor="@color/White"
         android:textSize="@dimen/dialog_heading_text_size"
         android:textStyle="bold" />
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/txtLevelScore"
         android:layout_centerHorizontal="true"
-        android:text="Total Score:"
+        android:text="Toplam Puan"
         android:textColor="@color/White"
         android:textSize="@dimen/dialog_heading_text_size"
         android:textStyle="bold" />
@@ -92,7 +92,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="0.5"
             android:background="@drawable/button_blue"
-            android:text="Home" />
+            android:text="Anasayfa" />
 
         <Button
             android:id="@+id/btnPlayAgain"
@@ -103,7 +103,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="0.5"
             android:background="@drawable/button_blue"
-            android:text="Play Again" />
+            android:text="Tekrar Dene" />
     </LinearLayout>
 
      <TextView
@@ -113,7 +113,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="22dp"
-        android:text="Share Score"
+        android:text="Puanını Paylas"
         android:textColor="@color/White"
         android:textSize="@dimen/dialog_heading_text_size"
         android:textStyle="bold" />
