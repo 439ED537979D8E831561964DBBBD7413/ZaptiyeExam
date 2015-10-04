@@ -131,24 +131,7 @@
                             android:layout_below="@+id/layout_facebook"
                             android:orientation="vertical" >
 
-                            <TextView
-                                android:id="@+id/textView6"
-                                style="@style/style_about_share_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="Twitter" />
 
-                            <TextView
-                                android:id="@+id/txtTwitter"
-                                style="@style/style_about_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/textView6"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="15dp"
-                                android:clickable="true"
-                                android:text="@string/twitter_lbl" />
                         </RelativeLayout>
             
         </RelativeLayout>

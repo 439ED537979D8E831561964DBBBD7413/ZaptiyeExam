@@ -27,13 +27,7 @@
 	        android:layout_marginBottom="@dimen/home_page_title_bottom_margin"
 	        android:src="@drawable/splash1" />
 
-        <Button
-            android:id="@+id/btnLearning"
-            style="@style/style_btn_menu_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_blue"
-            android:text="Soru-Cevap" />
+
 
         <Button
             android:id="@+id/btnPlay"
@@ -44,7 +38,14 @@
             android:background="@drawable/button_blue"
             android:text="Soru Bankası" />
 
-
+        <Button
+            android:id="@+id/btnLearning"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            android:layout_marginTop="10dp"
+            android:text="Soru-Cevap" />
 
         <Button
             android:id="@+id/btnAchievement"

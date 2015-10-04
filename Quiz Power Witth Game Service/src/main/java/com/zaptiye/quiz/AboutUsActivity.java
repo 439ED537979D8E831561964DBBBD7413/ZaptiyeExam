@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class AboutUsActivity extends Activity  implements OnClickListener{
 	
-	private TextView txtEmail, txtFacebook, txtTwitter;
+	private TextView txtEmail, txtFacebook;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,8 +21,6 @@ public class AboutUsActivity extends Activity  implements OnClickListener{
 		txtEmail.setOnClickListener(this);
 		txtFacebook = (TextView)findViewById(R.id.txtFacebook);
 		txtFacebook.setOnClickListener(this);
-		txtTwitter = (TextView)findViewById(R.id.txtTwitter);
-		txtTwitter.setOnClickListener(this);
 		
 	}
 	@Override
@@ -39,10 +37,7 @@ public class AboutUsActivity extends Activity  implements OnClickListener{
 			Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse(getResources().getString(R.string.facebook_url)));
 			startActivity(browserIntent);
 			break;
-		case R.id.txtTwitter:
-			Intent browserIntents = new Intent("android.intent.action.VIEW", Uri.parse(getResources().getString(R.string.twitter_url)));
-			startActivity(browserIntents);
-			break;
+
 		}
 	}
 }

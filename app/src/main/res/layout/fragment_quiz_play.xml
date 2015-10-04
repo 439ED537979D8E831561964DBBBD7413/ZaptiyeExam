@@ -71,7 +71,7 @@
             style="@style/style_question" />
     </RelativeLayout>
 
-    <ScrollView 
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
@@ -87,9 +87,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 
-        
+
         android:orientation="vertical" >
-        
+
        <Button
                 android:id="@+id/btnOpt1"
                 style="@style/style_btn_answare_option"
@@ -102,7 +102,7 @@
                 android:padding="@dimen/option_button_padding"
                 android:layout_marginTop="@dimen/top_margin_option"
                 android:text="" />
-       
+
               <Button
                 android:id="@+id/btnOpt2"
                 style="@style/style_btn_answare_option"
@@ -115,7 +115,7 @@
                 android:padding="@dimen/option_button_padding"
                  android:layout_marginTop="@dimen/top_margin_option"
                 android:text="" />
-              
+
                             <Button
                 android:id="@+id/btnOpt3"
                 style="@style/style_btn_answare_option"
@@ -128,7 +128,7 @@
                  android:layout_marginTop="@dimen/top_margin_option"
                 android:padding="@dimen/option_button_padding"
                 android:text="" />
-       
+
                                           <Button
                 android:id="@+id/btnOpt4"
                 style="@style/style_btn_answare_option"
@@ -141,7 +141,7 @@
                  android:layout_marginTop="@dimen/top_margin_option"
                 android:padding="@dimen/option_button_padding"
                 android:text="" />
-       
+
     </LinearLayout>
     </ScrollView>
     
@@ -292,7 +292,7 @@
              android:layout_width="wrap_content"
              android:layout_height="20dp"
              android:src="@drawable/right_mark_1" />
-        
+
          <TextView
             android:id="@+id/txt_question"
             style="@style/style_btn_level"
@@ -300,7 +300,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="1/20" />
-        
+
      </LinearLayout> -->
 
 <!--      <ImageView

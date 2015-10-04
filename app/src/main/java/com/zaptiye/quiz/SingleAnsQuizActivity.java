@@ -1,19 +1,6 @@
 package com.zaptiye.quiz;
 
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -36,12 +23,24 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.zaptiye.quiz.bean.Question;
-import com.zaptiye.quiz.bean.QuestionHandler;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.zaptiye.quiz.bean.Question;
+import com.zaptiye.quiz.bean.QuestionHandler;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Single Answare activtiy that display question and next, prev button and show next button. 
@@ -112,11 +111,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		mainlayout=(ScrollView)findViewById(R.id.scroll_layout);
 		mainlayout.setOnTouchListener(this);
 		
-		
-		// Create an ad
-		adView = new AdView(this);
-	    adView.setAdSize(AdSize.SMART_BANNER);
-	    adView.setAdUnitId(getString(R.string.admob_banner));
+
 	    
 	    // Add the AdView to the view hierarchy. The view will have no size until the ad is loaded.
 	    LinearLayout layout = (LinearLayout) findViewById(R.id.ads_layout);
@@ -136,15 +131,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 	    	System.out.println("Live Apps");
 	    	 adRequest = new AdRequest.Builder().build();
 	    }
-	    
-	    // Start loading the ad in the background.
-	    adView.loadAd(adRequest);
 
-	    // Create the interstitial.
-	    interstitial = new InterstitialAd(this);
-	    interstitial.setAdUnitId(getString(R.string.admob_intersitital));
-	    // Begin loading your interstitial.
-	    interstitial.loadAd(adRequest);
 
 	}
 	@Override
@@ -216,9 +203,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		if(currentQuestion<totalQuestion){
 			txtQuestion.setText(questionHandler.lstQuestions.get(currentQuestion).getQuestion());
 			txtAnsware.setText("");
-			if(currentQuestion%20==0){
-				displayInterstitial();
-			}
+
 		}else{
 			currentQuestion--;
 			
@@ -237,31 +222,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		}
 		txtQuestionNO.setText(""+(currentQuestion + 1)+"/"+totalQuestion);
 	}
-	 // Invoke displayInterstitial() when you are ready to display an interstitial.
-	  public void displayInterstitial() {
-	    if (interstitial.isLoaded()) {
-	      interstitial.show();
-	      
-	      // Create the interstitial.
-		    interstitial = new InterstitialAd(this);
-		    interstitial.setAdUnitId(getString(R.string.admob_intersitital));
 
-		    AdRequest adRequest =null;
-		    if(isTestMode){
-		    	 // Request for Ads
-		    	 System.out.println("Testing.... app");
-		          adRequest = new AdRequest.Builder()
-		         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-		         .addTestDevice("B15149A4EC1ED23173A27B04134DD483")
-		                .build();
-		    }else{
-		    	System.out.println("Live Apps");
-		    	 adRequest = new AdRequest.Builder().build();
-		    }
-		    // Begin loading your interstitial.
-		    interstitial.loadAd(adRequest);
-	    }
-	  }
 
 	public boolean touchChangeQuote(View v,MotionEvent event) {
 		switch (event.getAction()){

@@ -25,15 +25,9 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginBottom="@dimen/home_page_title_bottom_margin"
-	        android:src="@drawable/title_1" />
+	        android:src="@drawable/splash1" />
 
-        <Button
-            android:id="@+id/btnLearning"
-            style="@style/style_btn_menu_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_blue"
-            android:text="Let&apos;s Learn" />
+
 
         <Button
             android:id="@+id/btnPlay"
@@ -42,7 +36,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/menu_button_top_margin"
             android:background="@drawable/button_blue"
-            android:text="Play Quiz" />
+            android:text="Soru Bankası" />
+
+        <Button
+            android:id="@+id/btnLearning"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            android:layout_marginTop="10dp"
+            android:text="Soru Cevap" />
+
 
 
         

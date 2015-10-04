@@ -164,10 +164,10 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		System.out.println("Count Question Completed: "+ mListener.getGameData().getCountHowManyQuestionCompleted());
 		if(quextionIndex>=NO_OF_QUESTION){
 			if(score==100){
-				mListener.unlockAchievement(R.string.achievement_perfectionist,"Perfectionist");
+				mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_4,"Komser Yard 4");
 			}
 			if(score>=1 && score<50){
-				mListener.unlockAchievement(R.string.achievement_sadness,"Sadness");
+				mListener.unlockAchievement(R.string.achievement_bapolis_4,"üzgünüm");
 			}
 			mListener.updateLeaderboards(totalScore);
 			
@@ -573,68 +573,68 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	}
 	private void unlockLevelCompletedAchivement(int levelNo){
 		if(levelNo>=1 && levelNo<=2){
-			mListener.unlockAchievement(R.string.achievement_started, "Started");
+			mListener.unlockAchievement(R.string.achievement_polis_memuru, "Polis Memuru");
 		}
 		if(levelNo>=10 && levelNo<=11){
-			mListener.unlockAchievement(R.string.achievement_right_track, "Right Track");
+			mListener.unlockAchievement(R.string.achievement_polis_memuru2, "Right Track");
 		}
 		if(levelNo>=20 && levelNo<=21){
-			mListener.unlockAchievement(R.string.achievement_good_in_gk, "Good in GK");
+			mListener.unlockAchievement(R.string.achievement_polis_memuru3, "Good in GK");
 		}
 		if(levelNo>=50 && levelNo<=51){
-			mListener.unlockAchievement(R.string.achievement_master_in_gk, "Master in GK");
+			mListener.unlockAchievement(R.string.achievement_polis_memuru4, "Master in GK");
 		}
 		if(levelNo>=100 && levelNo<=101){
-			mListener.unlockAchievement(R.string.achievement_expert_in_gk, "Expert in GK");
+			mListener.unlockAchievement(R.string.achievement_polis_memuru44, "Expert in GK");
 		}
 
 	}
 	private void unlockPlayTime(int playTime){
 		if(playTime>=2 && playTime<=3){
-			mListener.unlockAchievement(R.string.achievement_good_luck, "Good Luck");
+			mListener.unlockAchievement(R.string.achievement_bapolis, "Baþpolis");
 		}
 		if(playTime>=50 && playTime<=51){
-			mListener.unlockAchievement(R.string.achievement_fifty, "Fifty");
+			mListener.unlockAchievement(R.string.achievement_bapolis1, "baþpolis");
 		}
 		if(playTime>=100 && playTime<=101){
-			mListener.unlockAchievement(R.string.achievement_hundred, "Hundred");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_9, "en üst seviye");
 		}
 		if(playTime>=500 && playTime<=501){
-			mListener.unlockAchievement(R.string.achievement_no_higher, "No Higher");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_8, "No Higher");
 		}
 	}
 	private void unlockhowManyQuestionCompleted(int count_question_completed){
 		if(count_question_completed>50 && count_question_completed<55){
-			mListener.unlockAchievement(R.string.achievement_fifty_qustions, "fifty qustions");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_1, "fifty qustions");
 		}
 		if(count_question_completed>100 && count_question_completed<105){
-			mListener.unlockAchievement(R.string.achievement_century_qustions, "century qustions");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_2, "century qustions");
 		}
 		if(count_question_completed>1000 && count_question_completed<1005){
-			mListener.unlockAchievement(R.string.achievement_sustained_questions, "sustained questions");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_3, "sustained questions");
 		}
 	}
 	private void unlockGoodAnswareAchivement(int totalGoodAnsware){
 		if(totalGoodAnsware>=50 && totalGoodAnsware<=52){
-			mListener.unlockAchievement(R.string.achievement_fifly_good_answer, "Fifty Good Asware");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_4, "Fifty Good Asware");
 		}
 		if(totalGoodAnsware>=300 && totalGoodAnsware<=301){
-			mListener.unlockAchievement(R.string.achievement_batter_and_batter, "Batter and Batter");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_5, "Batter and Batter");
 		}
 		if(totalGoodAnsware>=500 && totalGoodAnsware<=501){
-			mListener.unlockAchievement(R.string.achievement_cool, "Cool");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_6, "Cool");
 		}
 		if(totalGoodAnsware>=700 && totalGoodAnsware<=701){
-			mListener.unlockAchievement(R.string.achievement_very_good, "Very Good");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_7, "Very Good");
 		}
 		if(totalGoodAnsware>=1000 && totalGoodAnsware<=1001){
-			mListener.unlockAchievement(R.string.achievement_fentastic, "Fentastic");
+			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis, "Fentastic");
 		}
 		if(totalGoodAnsware>=1200 && totalGoodAnsware<=1201){
-			mListener.unlockAchievement(R.string.achievement_phenomenal, "Phenomenal");
+			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis_2, "Phenomenal");
 		}
 		if(totalGoodAnsware>=1500 && totalGoodAnsware<=1501){
-			mListener.unlockAchievement(R.string.achievement_perfect, "Perfect");
+			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis_3, "Perfect");
 		}
 		
 	}

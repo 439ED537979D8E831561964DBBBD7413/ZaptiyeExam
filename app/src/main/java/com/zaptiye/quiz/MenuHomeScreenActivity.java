@@ -1,20 +1,9 @@
 package com.zaptiye.quiz;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Random;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -27,14 +16,23 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.zaptiye.quiz.bean.GameData;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.Snapshots;
+import com.zaptiye.quiz.bean.GameData;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Random;
+
+
 
 
 /**
@@ -172,42 +170,8 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 		delayhandler.postDelayed(stopLoadDataDialogSomeTime, 5000);
 		
        
-        
-        // Create the interstitial.
-	    interstitial = new InterstitialAd(this);
-	    interstitial.setAdUnitId(getString(R.string.admob_intersitital));
 
-        // Create ad request.
-	    Resources ress = getResources();
-	    boolean isTestMode = ress.getBoolean(R.bool.istestmode);
-	    AdRequest adRequest =null;
-	    if(isTestMode){
-	    	 // Request for Ads
-	    	 System.out.println("Testing.... app");
-	          adRequest = new AdRequest.Builder()
-	         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-	         .addTestDevice("0C2DF43E6E70766851B6A3E5EE46A9B8")
-	                .build();
-	    }else{
-	    	System.out.println("Live Apps");
-	    	 adRequest = new AdRequest.Builder().build();
-	    }
 
-	    // Begin loading your interstitial.
-	    interstitial.loadAd(adRequest);
-	    
-	    mHandler.postDelayed(mUpdateUITimerTask, 10 * 1000);
-	    
-	    
-		    
-	    
-	    
-	    // Get tracker.
-        Tracker t = getTracker(TrackerName.APP_TRACKER);
-        // Set screen name. Where path is a String representing the screen name.
-	    t.setScreenName("com.arkay.gkingujarati.MenuHomeScreenActivity");
-        // Send a screen view.
-        t.send(new HitBuilders.AppViewBuilder().build());
 	}
 	
 	@Override
@@ -417,33 +381,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 			getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mQuizPlayFragment ).addToBackStack( "tag" ).commit();
 		}
 		
-		
-		
-	
-		/** Prints a log message (convenience method). */
-		void log(String message) {
-			Log.d(TAG, message);
-		}
-		  public void displayInterstitial() {
-			    if (interstitial.isLoaded()) {
-			      interstitial.show();
-			    }
-			  }
-		 private final Runnable mUpdateUITimerTask = new Runnable() {
-			    public void run() {
-			    	displayInterstitial();
-			    	
-			    }
-			};
-			
-			synchronized  Tracker getTracker(TrackerName trackerId) {
-			    if (!mTrackers.containsKey(trackerId)) {
-			      GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-			      Tracker t =      analytics.newTracker(R.xml.global_tracker);
-			      mTrackers.put(trackerId, t);
-			    }
-			    return mTrackers.get(trackerId);
-			  }
+
 }
 		
 		

@@ -44,7 +44,7 @@
     <string name="next_level_not_open">Sonra ki Level Açılamadı</string>
     <string name="play_again_this_level">Anasayfaya git</string>
     <string name="title_activity_quiz_play">QuizPlayActivity</string>
-    <string name="general_knowledge_in_gujarati">Quiz Power</string>
+    <string name="general_knowledge_in_gujarati">Zaptiye Pro</string>
 
     <string name="sign_in_why">Sign in with Google to share your scores and achievements with your friends.</string>
     <string name="achievement">Başarılar</string>
@@ -66,15 +66,15 @@
 
     <string name="level11">from value </string>
 
-    <string name="how_to_play">Oyun hakkında bilgi buraya yazılacak</string>
-    <string name="about_quiz_ranking">Oyun hakkında bilgi buraya yazılacak</string>
+    <string name="how_to_play">Soru Bankası toplam 100 levelden oluşmaktadır...Her levelde 20 soru sorulmakta soruların 17 tanesine doğru cevap verenler diğer levele geçebilmektedir.Birbirinden güzel 3000 soru yer almaktadır</string>
+
 
     <string name="email_lbl">canahmettt@gmail.com</string>
-    <string name="facebook_lbl">Arkay Apps</string>
+    <string name="facebook_lbl">Zaptiye</string>
     <string name="twitter_lbl">\@Arkayapps</string>
 
     <string name="email_url">canahmettt@gmail.com</string>
-    <string name="facebook_url">http://www.facebook.com/arkayapp</string>
+    <string name="facebook_url">https://www.facebook.com/zaptiyekomiser?ref=hl</string>
     <string name="twitter_url">https://twitter.com/@Arkayapps</string>
 
 </resources>

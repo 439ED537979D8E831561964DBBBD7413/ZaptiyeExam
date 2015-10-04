@@ -234,7 +234,7 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 		case R.id.btnPlay:
 			if(gameData.getLevelCompleted()==0 || gameData.getLevelCompleted()==1){
 				if(isSignedIn()){
-					unlockAchievement(R.string.achievement_beginner, "Beginner");
+					unlockAchievement(R.string.achievement_polis_memuru, "Polis Memuru");
 				}
 			}
 			getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mQuizPlayFragment ).addToBackStack( "tag" ).commit();
@@ -245,13 +245,13 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 				SharedPreferences.Editor edit = settings.edit();
 				edit.putInt(VERY_CURIOUS_UNLOCK, 1);
 				edit.commit();
-				unlockAchievement(R.string.achievement_very_curious,"Very Curious");
+				unlockAchievement(R.string.achievement_polis_memuru2,"Polis Memuru 2");
 				startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),RC_UNUSED);
 			}
 			break;
 		case R.id.btnAchievement:
 			if (isSignedIn()) {
-				unlockAchievement(R.string.achievement_curious, "Curious");
+				unlockAchievement(R.string.achievement_polis_memuru3, "Polis Memuru 3");
 				startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),RC_UNUSED);
 			}
 			break;
@@ -473,7 +473,7 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
     public void updateLeaderboards(int finalScore) {
 		if (isSignedIn()) {
 	    	if (finalScore >= 0) {
-	            Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_quiz_power),
+	            Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_lider_tahtas),
 	                   finalScore);
 	        }
 		}
