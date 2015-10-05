@@ -4,8 +4,11 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
+    compileOptions{
+        encoding "windows-1254"
+    }
     defaultConfig {
-        applicationId "com.arkay.quizpower"
+        applicationId "com.zaptiye.quiz"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1

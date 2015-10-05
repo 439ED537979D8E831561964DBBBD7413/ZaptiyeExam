@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Quiz Power</string>
+    <string name="app_name">Zaptiye Pro</string>
     <string name="action_settings">Settings</string>
 
 
@@ -67,8 +67,8 @@
 
     <string name="level11">from value </string>
 
-    <string name="how_to_play">Two type of game 1. Let\'s learn and 2. Play Quiz. First is use full for improve general knowledge and second is check your general knowledge power. In this score will score on cloud also integerated google game services that will save you score on leaderboard so you can compare you score will your friends and Achevement you can show how many achevement unlock.</string>
-    <string name="about_quiz_ranking">Let\'s improve out General knowledge just playing game no need book. Also compare your knowledge with you friends thoudh leaderboard.</string>
+    <string name="how_to_play">Herkese merhabalar.Zaptiye Pro Uygulamamızda şimdilik iki seçenek mevcuttur\n\n1-Soru Bankası:soru bankamızda toplam 100 level vardır.Her levelde 30 soru içerisinden random olarak 20 soru karşınıza gelmektedir.100 levelde toplam 3000 soru vardır.Soruları tam olarak kavrayabilmeniz için 20 sorudan 17 soruya cevap verme olanağı tanıdık.17 soruyu doğru bilenler bir sonra ki levele geçiş yapabilecektir.\n\n2- Soru Cevap:Bu kısımda ise soru sorulmakta sizlerden cevap istenmektedir.Yakın bir zamanda güncel kanunları ve Zaptiye Kartlarını sisteme dahil edeceğiz.Hepinize sınavda başarılar diliyorum.</string>
+    <string name="about_quiz_ranking">Sistem ile ilgili yaşayabileceğiniz sıkıntılarda bizlere ulaşınız.Facebookta yeralan Zaptiye Sayfamızı takip etmeyi unutmayınız</string>
 
     <string name="email_lbl">canahmettt@gmail.com</string>
     <string name="facebook_lbl">Zaptiye</string>

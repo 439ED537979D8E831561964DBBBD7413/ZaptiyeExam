@@ -57,7 +57,6 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 	private int currentQuestion=0;
 	private QuestionHandler questionHandler;
 	private int totalQuestion=0;
-	AdView adView;
 	private ProgressDialog progress;
 	private InterstitialAd interstitial;
 	String questionJson = "";
@@ -110,27 +109,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		
 		mainlayout=(ScrollView)findViewById(R.id.scroll_layout);
 		mainlayout.setOnTouchListener(this);
-		
 
-	    
-	    // Add the AdView to the view hierarchy. The view will have no size until the ad is loaded.
-	    LinearLayout layout = (LinearLayout) findViewById(R.id.ads_layout);
-	    layout.addView(adView);
-
-	    // Create ad request.
-	    isTestMode = ress.getBoolean(R.bool.istestmode);
-	    AdRequest adRequest =null;
-	    if(isTestMode){
-	    	 // Request for Ads
-	    	 System.out.println("Testing.... app");
-	          adRequest = new AdRequest.Builder()
-	         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-	         .addTestDevice("0C2DF43E6E70766851B6A3E5EE46A9B8")
-	                .build();
-	    }else{
-	    	System.out.println("Live Apps");
-	    	 adRequest = new AdRequest.Builder().build();
-	    }
 
 
 	}
