@@ -43,7 +43,7 @@ import java.util.Random;
 public class MenuHomeScreenActivity extends FragmentActivity implements
 		View.OnClickListener,   QuizPlayActivity.Listener, QuizCompletedActivity.Listener{
 
-	private Button btnPlay,  btnLearning,btnSetting,  btnAbout, btnHelp;
+	private Button btnPlay,btnGuncelKanunlar, btnLearning,btnSetting,  btnAbout, btnHelp;
 
 	/** The interstitial ad. */
 	public static final String PREFS_NAME = "preferences";
@@ -139,6 +139,9 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 		
 		btnLearning = (Button)findViewById(R.id.btnLearning);
 		btnLearning.setOnClickListener(this);
+
+		btnGuncelKanunlar= (Button) findViewById(R.id.btnGuncelKanunlar);
+		btnGuncelKanunlar.setOnClickListener(this);
 		
 		btnSetting = (Button)findViewById(R.id.btnSetting);
 		btnSetting.setOnClickListener(this);
@@ -197,6 +200,13 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 			Intent intPlay = new Intent(this, LevelActivity.class);
 			startActivity(intPlay);
 			break;
+
+		case R.id.btnGuncelKanunlar:
+			Intent kanunlar=new Intent(this,GuncelKanunlar.class);
+			startActivity(kanunlar);
+			break;
+
+
 		case R.id.btnSetting:
 			Intent playQuiz = new Intent(this, SettingActivity.class);
 			startActivity(playQuiz);

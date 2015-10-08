@@ -75,6 +75,9 @@
 
     <string name="email_url">canahmettt@gmail.com</string>
     <string name="facebook_url">https://www.facebook.com/zaptiyekomiser?ref=hl</string>
+    <string name="title_activity_guncel_kanunlar">GuncelKanunlar</string>
+
+    <string name="hello_world">Hello world!</string>
 
 
 </resources>
