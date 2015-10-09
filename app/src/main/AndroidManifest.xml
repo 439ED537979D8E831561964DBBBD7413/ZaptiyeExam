@@ -60,6 +60,10 @@
             android:name=".GuncelKanunlar"
             android:label="@string/title_activity_guncel_kanunlar" >
         </activity>
+        <activity
+            android:name=".Kanunlar.Anayasa"
+            android:label="@string/title_activity_anayasa" >
+        </activity>
     </application>
 
 </manifest>

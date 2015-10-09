@@ -1,39 +1,43 @@
 package com.zaptiye.quiz;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.zaptiye.quiz.Kanunlar.Anayasa;
 
 
-public class GuncelKanunlar extends Activity {
+public class GuncelKanunlar extends Activity implements View.OnClickListener {
+
+
+    Button anayasa;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guncel_kanunlar);
+
+        anayasa= (Button) findViewById(R.id.btnAnayasa);
+        anayasa.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_guncel_kanunlar, menu);
-        return true;
-    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onClick(View v) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (v.getId()){
+
+            case R.id.btnAnayasa:
+                    Intent anayasa=new Intent(this,Anayasa.class);
+                    startActivity(anayasa);
+            break;
+
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
