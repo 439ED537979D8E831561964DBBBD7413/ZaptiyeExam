@@ -64,6 +64,114 @@
             android:name=".Kanunlar.Anayasa"
             android:label="@string/title_activity_anayasa" >
         </activity>
+        <activity
+            android:name=".Kanunlar.Tck"
+            android:label="@string/title_activity_tck" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Cmk"
+            android:label="@string/title_activity_cmk" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Pvsk"
+            android:label="@string/title_activity_pvsk" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Etk"
+            android:label="@string/title_activity_etk" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Dilekce"
+            android:label="@string/title_activity_dilekce" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.BilgiEdinme"
+            android:label="@string/title_activity_bilgi_edinme" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Kabahatler"
+            android:label="@string/title_activity_kabahatler" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Cocuk"
+            android:label="@string/title_activity_cocuk" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Kimlik"
+            android:label="@string/title_activity_kimlik" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Toplanti"
+            android:label="@string/title_activity_toplanti" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Dernek"
+            android:label="@string/title_activity_dernek" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Vatan"
+            android:label="@string/title_activity_vatan" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Pasaport"
+            android:label="@string/title_activity_pasaport" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Tmk"
+            android:label="@string/title_activity_tmk" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Kacak"
+            android:label="@string/title_activity_kacak" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Tanik"
+            android:label="@string/title_activity_tanik" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Spor"
+            android:label="@string/title_activity_spor" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Silah"
+            android:label="@string/title_activity_silah" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Teblig"
+            android:label="@string/title_activity_teblig" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Siyasi"
+            android:label="@string/title_activity_siyasi" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Ohal"
+            android:label="@string/title_activity_ohal" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.SikiYonetim"
+            android:label="@string/title_activity_siki_yonetim" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Bayrak"
+            android:label="@string/title_activity_bayrak" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.YardimToplama"
+            android:label="@string/title_activity_yardim_toplama" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Trafik"
+            android:label="@string/title_activity_trafik" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Aile"
+            android:label="@string/title_activity_aile" >
+        </activity>
+        <activity
+            android:name=".Kanunlar.Eodt"
+            android:label="@string/title_activity_eodt" >
+        </activity>
     </application>
 
 </manifest>

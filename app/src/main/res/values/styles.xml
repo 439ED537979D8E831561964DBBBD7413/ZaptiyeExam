@@ -1,6 +1,8 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Light" />
     <!-- new -->
+
+
     <style name="style_txt_title">
         <item name="android:textColor">@color/White</item>
         <item name="android:textSize">@dimen/setting_header_text_size</item>

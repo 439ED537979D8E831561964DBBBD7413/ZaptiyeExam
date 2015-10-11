@@ -1,61 +1,50 @@
 package com.zaptiye.quiz.Kanunlar;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.zaptiye.quiz.R;
 
 public class Anayasa extends Activity {
 
-    EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.anayasakanun);
-    }
+        setContentView(R.layout.kanunlar_anayasa);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_anayasa, menu);
-        return true;
-        editText=(EditText)findViewById(R.id.editText);
 
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.loadUrl("https://docs.google.com/document/d/1Z1Q-IoQcRQgPifbzuvfxa2dLALo4GRMFXJEOqWQM0QE/edit");
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+
+
+        final ProgressDialog progress = ProgressDialog.show(this, "Kanun", "Yükleniyor....", true);
+        progress.show();
+        webView.setWebViewClient(new WebViewClient() {
+
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                Toast.makeText(getApplicationContext(), "Sayfa yüklendi", Toast.LENGTH_SHORT).show();
+                progress.dismiss();
+            }
 
-                if (actionId== EditorInfo.IME_ACTION_SEARCH){
-                    performSearch();
-                    return true;
-                }
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                Toast.makeText(getApplicationContext(), "Lütfen Ýnternete baðlanýnýz", Toast.LENGTH_SHORT).show();
+                progress.dismiss();
             }
         });
 
-
     }
 
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

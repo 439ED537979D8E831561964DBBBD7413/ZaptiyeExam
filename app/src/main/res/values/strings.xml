@@ -79,6 +79,33 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_anayasa">Anayasa</string>
+    <string name="title_activity_tck">Tck</string>
+    <string name="title_activity_cmk">Cmk</string>
+    <string name="title_activity_pvsk">Pvsk</string>
+    <string name="title_activity_etk">Etk</string>
+    <string name="title_activity_dilekce">Dilekce Kanunu</string>
+    <string name="title_activity_bilgi_edinme">Bilgi Edinme Kanunu</string>
+    <string name="title_activity_kabahatler">Kabahatler</string>
+    <string name="title_activity_cocuk">Çocuk Koruma Kanunu</string>
+    <string name="title_activity_kimlik">Kimlik Bildirme Kanunu</string>
+    <string name="title_activity_toplanti">Toplantı ve Gösteri Yürüyüşleri</string>
+    <string name="title_activity_dernek">Dernekler Kanunu</string>
+    <string name="title_activity_vatan">Vatandaşlık Kanunu</string>
+    <string name="title_activity_pasaport">Pasaport Kanunu</string>
+    <string name="title_activity_tmk">Terörle Mücadele Kanunu</string>
+    <string name="title_activity_kacak">Kaçakçılıkla Mücadele</string>
+    <string name="title_activity_tanik">Tanık Koruma Kanunu</string>
+    <string name="title_activity_spor">Sporda Şiddet</string>
+    <string name="title_activity_silah">Ateşli Silahlar</string>
+    <string name="title_activity_teblig">Tebligat Kanunu</string>
+    <string name="title_activity_siyasi">Siyasi Partiler Kanunu</string>
+    <string name="title_activity_ohal">Ohal Kanunu</string>
+    <string name="title_activity_siki_yonetim">Sıkı Yönetim Kanunu</string>
+    <string name="title_activity_bayrak">Bayrak Kanunu</string>
+    <string name="title_activity_yardim_toplama">Yardım Toplama Kanunu</string>
+    <string name="title_activity_trafik">Trafik Kanunu</string>
+    <string name="title_activity_aile">Ailenin Korunması ve Kadına Karşı...</string>
+    <string name="title_activity_eodt">Emniyet Örgütü Disiplin Tüzüğü</string>
 
 
 </resources>
