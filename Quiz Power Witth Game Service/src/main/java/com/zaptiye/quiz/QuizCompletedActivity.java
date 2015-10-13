@@ -122,7 +122,7 @@ View.OnClickListener {
 			btnPlayAgain.setText("Sonraki Seviye");
 		}else{
 			txtLevelHeading.setText(getActivity().getString(R.string.level)+" "+ levelNo +" "+  getActivity().getResources().getString(R.string.not_completed));
-			btnPlayAgain.setText(" Tekrar Çöz");
+			btnPlayAgain.setText(" Tekrar Dene");
 		}
 		
 	       

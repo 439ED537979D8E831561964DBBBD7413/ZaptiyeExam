@@ -245,13 +245,13 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 				SharedPreferences.Editor edit = settings.edit();
 				edit.putInt(VERY_CURIOUS_UNLOCK, 1);
 				edit.commit();
-				unlockAchievement(R.string.achievement_polis_memuru2,"Polis Memuru 2");
+				unlockAchievement(R.string.leaderboard_lider_tahtas,"Lider Tahtasi");
 				startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),RC_UNUSED);
 			}
 			break;
 		case R.id.btnAchievement:
 			if (isSignedIn()) {
-				unlockAchievement(R.string.achievement_polis_memuru3, "Polis Memuru 3");
+				//unlockAchievement(R.string.achievement_polis_memuru3, "Polis Memuru 3");
 				startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),RC_UNUSED);
 			}
 			break;

@@ -160,39 +160,43 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		int count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();
 		count_question_completed++;
 		mListener.getGameData().setCountHowManyQuestionCompleted(count_question_completed);
-		unlockhowManyQuestionCompleted(count_question_completed);
+		//unlockhowManyQuestionCompleted(count_question_completed);
 		System.out.println("Count Question Completed: "+ mListener.getGameData().getCountHowManyQuestionCompleted());
+
+
 		if(quextionIndex>=NO_OF_QUESTION){
 			if(score==100){
-				mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_4,"Komser Yard 4");
+				//mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_4,"Komser Yard 4");
 			}
 			if(score>=1 && score<50){
-				mListener.unlockAchievement(R.string.achievement_bapolis_4,"�zg�n�m");
+				//mListener.unlockAchievement(R.string.achievement_bapolis_4,"üzgünüm");
 			}
 			mListener.updateLeaderboards(totalScore);
-			
+
 			int howManyTimesPlayQuiz = mListener.getGameData().getCountHowManyTimePlay();
 			System.out.println("How Many Time Play: "+howManyTimesPlayQuiz);
 			howManyTimesPlayQuiz++;
-			unlockPlayTime(howManyTimesPlayQuiz);
+			//unlockPlayTime(howManyTimesPlayQuiz);
 			mListener.getGameData().setCountHowManyTimePlay(howManyTimesPlayQuiz);
-			
+
 			count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();
 			count_question_completed--;
 			mListener.getGameData().setCountHowManyQuestionCompleted(count_question_completed);
-			
+
 			saveScore();
-			
+
 			getActivity().getSupportFragmentManager().popBackStack();
 			getActivity().getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mListener.getQuizCompletedFragment() ).addToBackStack( "tag" ).commit();
-			
-			
+
+
 			blankAllValue();
 			/*QuizCompletedDialog cdd=new QuizCompletedDialog(getActivity());
-			cdd.show();*/ 
+			cdd.show();*/
 			//mListener.displyHomeScreen();
 			return;
 		}
+
+
 		
 		btnOpt1.setClickable(true);
 		btnOpt2.setClickable(true);
@@ -392,7 +396,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		
 		int rightAns = mListener.getGameData().getCountHowManyRightAnswareQuestion();
 		rightAns++;
-		unlockGoodAnswareAchivement(rightAns);
+		//unlockGoodAnswareAchivement(rightAns);
 		/*mListener.getGameData().setCountHowManyRightAnswareQuestion(rightAns);
 		mListener.getGameData().setTotalScore(totalScore);
 		mListener.getGameData().saveDataLocal(settings);*/
@@ -443,7 +447,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			//editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
 			editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 			
-		if(correctQuestion>=17){
+		if(correctQuestion>=1){
 			unlockLevelCompletedAchivement(levelNo);
 			levelNo++;
 			editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
@@ -572,32 +576,72 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		inCorrectQuestion=0;
 	}
 	private void unlockLevelCompletedAchivement(int levelNo){
-		if(levelNo>=1 && levelNo<=2){
+		if(levelNo>=6 && levelNo<=7){
 			mListener.unlockAchievement(R.string.achievement_polis_memuru, "Polis Memuru");
 		}
-		if(levelNo>=10 && levelNo<=11){
-			mListener.unlockAchievement(R.string.achievement_polis_memuru2, "Right Track");
+		if(levelNo>=13 && levelNo<=14){
+			mListener.unlockAchievement(R.string.achievement_bapolis_memuru, "Baspolis Memuru");
 		}
 		if(levelNo>=20 && levelNo<=21){
-			mListener.unlockAchievement(R.string.achievement_polis_memuru3, "Good in GK");
+			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis, "Kıdemle Baspolis");
 		}
-		if(levelNo>=50 && levelNo<=51){
-			mListener.unlockAchievement(R.string.achievement_polis_memuru4, "Master in GK");
+		if(levelNo>=27 && levelNo<=28){
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs, "Komiser Yardimcisi");
 		}
-		if(levelNo>=100 && levelNo<=101){
-			mListener.unlockAchievement(R.string.achievement_polis_memuru44, "Expert in GK");
+		if(levelNo>=35 && levelNo<=36){
+			mListener.unlockAchievement(R.string.achievement_komiser, "Komiser");
 		}
 
+		if(levelNo>=43 && levelNo<=44){
+			mListener.unlockAchievement(R.string.achievement_bakomiser, "BasKomiser");
+		}
+
+		if(levelNo>=50 && levelNo<=57){
+			mListener.unlockAchievement(R.string.achievement_emniyet_amiri, "Emniyet Amiri");
+		}
+
+		if(levelNo>=65 && levelNo<=66){
+			mListener.unlockAchievement(R.string.achievement_4_snf_emniyet_mdr, "4.Sınıf Emniyet Muduru");
+		}
+
+		if(levelNo>=73 && levelNo<=74){
+			mListener.unlockAchievement(R.string.achievement_3_snf_emniyet_mdr, "3.Sınıf Emniyet Muduru");
+		}
+
+		if(levelNo>=80 && levelNo<=81){
+			mListener.unlockAchievement(R.string.achievement_2_snf_emniyet_mdr, "2.Sınıf Emniyet Muduru");
+		}
+
+		if(levelNo>=87 && levelNo<=88){
+			mListener.unlockAchievement(R.string.achievement_1_snf_emniyet_mdr, "1.Sınıf Emniyet Muduru");
+		}
+
+		if(levelNo>=92 && levelNo<=93){
+			mListener.unlockAchievement(R.string.achievement_snf_st_emniyet_mdr, "Sınıf Üstü Emniyet Muduru");
+		}
+
+		if(levelNo>=99 && levelNo<=100){
+			mListener.unlockAchievement(R.string.achievement_emniyet_genel_mdr, "Emniyet Genel Muduru");
+		}
+
+
+
+
+
+
 	}
+
+	/*
+
 	private void unlockPlayTime(int playTime){
 		if(playTime>=2 && playTime<=3){
-			mListener.unlockAchievement(R.string.achievement_bapolis, "Ba�polis");
+			mListener.unlockAchievement(R.string.achievement_bapolis, "Başpolis");
 		}
 		if(playTime>=50 && playTime<=51){
-			mListener.unlockAchievement(R.string.achievement_bapolis1, "ba�polis");
+			mListener.unlockAchievement(R.string.achievement_bapolis1, "başpolis");
 		}
 		if(playTime>=100 && playTime<=101){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_9, "en �st seviye");
+			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_9, "en üst seviye");
 		}
 		if(playTime>=500 && playTime<=501){
 			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_8, "No Higher");
@@ -636,8 +680,11 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		if(totalGoodAnsware>=1500 && totalGoodAnsware<=1501){
 			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis_3, "Perfect");
 		}
+
 		
 	}
+
+	*/
 	
 	private class LoadQuestions extends AsyncTask<String, Void, String> {
 		@Override

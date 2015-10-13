@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="question loading.."
+            android:text="Soru Yükleniyor.."
             android:layout_marginLeft="@dimen/question_left_right_margin"
         android:layout_marginRight="@dimen/question_left_right_margin"
             style="@style/style_question" />
