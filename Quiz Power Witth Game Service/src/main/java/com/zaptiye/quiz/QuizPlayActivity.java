@@ -631,60 +631,57 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 
 	}
 
-	/*
+
 
 	private void unlockPlayTime(int playTime){
 		if(playTime>=2 && playTime<=3){
-			mListener.unlockAchievement(R.string.achievement_bapolis, "Başpolis");
+			mListener.unlockAchievement(R.string.achievement_gm_madalya, "Gümüş");
 		}
 		if(playTime>=50 && playTime<=51){
-			mListener.unlockAchievement(R.string.achievement_bapolis1, "başpolis");
+			mListener.unlockAchievement(R.string.achievement_bronz_madalya, "Bronz");
 		}
 		if(playTime>=100 && playTime<=101){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_9, "en üst seviye");
+			mListener.unlockAchievement(R.string.achievement_altn_madalya, "Altın");
 		}
-		if(playTime>=500 && playTime<=501){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_8, "No Higher");
+		if(playTime>=140 && playTime<=141){
+			mListener.unlockAchievement(R.string.achievement_altn_kp, "Altın Kupar");
 		}
 	}
 	private void unlockhowManyQuestionCompleted(int count_question_completed){
 		if(count_question_completed>50 && count_question_completed<55){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_1, "fifty qustions");
+			mListener.unlockAchievement(R.string.achievement_altn_yuma, "fifty qustions");
 		}
-		if(count_question_completed>100 && count_question_completed<105){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_2, "century qustions");
+		if(count_question_completed>1000 && count_question_completed<1001){
+			mListener.unlockAchievement(R.string.achievement_zmrt, "century qustions");
 		}
-		if(count_question_completed>1000 && count_question_completed<1005){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_3, "sustained questions");
-		}
+
 	}
 	private void unlockGoodAnswareAchivement(int totalGoodAnsware){
 		if(totalGoodAnsware>=50 && totalGoodAnsware<=52){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_4, "Fifty Good Asware");
+			mListener.unlockAchievement(R.string.achievement_gm_madalyamavi, "Mavi Madalya");
 		}
 		if(totalGoodAnsware>=300 && totalGoodAnsware<=301){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_5, "Batter and Batter");
+			mListener.unlockAchievement(R.string.achievement_gm_madalya_yeil, "Yeşil Madalya");
 		}
 		if(totalGoodAnsware>=500 && totalGoodAnsware<=501){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_6, "Cool");
+			mListener.unlockAchievement(R.string.achievement_gm_madalya_krmz_balk, "Kırmızı Madalya");
 		}
 		if(totalGoodAnsware>=700 && totalGoodAnsware<=701){
-			mListener.unlockAchievement(R.string.achievement_komiser_yardmcs_7, "Very Good");
+			mListener.unlockAchievement(R.string.achievement_altn_sand, "Very Good");
 		}
 		if(totalGoodAnsware>=1000 && totalGoodAnsware<=1001){
-			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis, "Fentastic");
+			mListener.unlockAchievement(R.string.achievement_altn_sand_40_haramiler, "Fantastic");
 		}
 		if(totalGoodAnsware>=1200 && totalGoodAnsware<=1201){
-			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis_2, "Phenomenal");
+			mListener.unlockAchievement(R.string.achievement_mcevher, "Mücevher");
 		}
 		if(totalGoodAnsware>=1500 && totalGoodAnsware<=1501){
-			mListener.unlockAchievement(R.string.achievement_kdemli_bapolis_3, "Perfect");
+			mListener.unlockAchievement(R.string.achievement_kupa, "Doğru Cevap Sayınız Mükemmel");
 		}
 
 		
 	}
 
-	*/
 	
 	private class LoadQuestions extends AsyncTask<String, Void, String> {
 		@Override
