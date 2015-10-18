@@ -54,7 +54,7 @@ import java.util.Random;
 public class MenuHomeScreenActivity extends BaseGameActivity implements
 		View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,  QuizPlayActivity.Listener, QuizCompletedActivity.Listener{
 
-	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp;
+	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp,btnGuncelKanunlar;
 
 	/** The interstitial ad. */
 	public static final String PREFS_NAME = "preferences";
@@ -169,6 +169,9 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 		
 		btnHelp = (Button)findViewById(R.id.btnHelp);
 		btnHelp.setOnClickListener(this);
+
+		btnGuncelKanunlar= (Button) findViewById(R.id.btnGuncelKanunlar);
+		btnGuncelKanunlar.setOnClickListener(this);
 		
 		
 		mQuizPlayFragment = new QuizPlayActivity();
@@ -271,6 +274,11 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 			Intent howtoplay = new Intent(this, HowToPlayActivity.class);
 			startActivity(howtoplay);
 			break;
+
+			case R.id.btnGuncelKanunlar:
+				Intent kanunlar=new Intent(this,GuncelKanunlar.class);
+				startActivity(kanunlar);
+				break;
 		}
 		if (v.getId() == R.id.sign_in_button) {
 			findViewById(R.id.sign_in_button).setVisibility(View.GONE);

@@ -101,7 +101,9 @@
     <orderEntry type="library" exported="" name="play-services-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-safetynet-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="bolts-android-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appinvite-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="parse-android-1.10.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-gcm-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-7.3.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.1.1" level="project" />

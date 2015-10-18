@@ -66,7 +66,7 @@
 
     <string name="level11">from value </string>
 
-    <string name="how_to_play">Soru Bankası toplam 100 levelden oluşmaktadır...Her levelde 20 soru sorulmakta soruların 17 tanesine doğru cevap verenler diğer levele geçebilmektedir.Birbirinden güzel 3000 soru yer almaktadır</string>
+    <string name="how_to_play">Herkese merhabalar.Zaptiye Pro Uygulamamızda şimdilik iki seçenek mevcuttur\n\n1-Soru Bankası:soru bankamızda toplam 100 level vardır.Her levelde 30 soru içerisinden random olarak 20 soru karşınıza gelmektedir.100 levelde toplam 3000 soru vardır.Soruları tam olarak kavrayabilmeniz için 20 sorudan 17 soruya cevap verme olanağı tanıdık.17 soruyu doğru bilenler bir sonra ki levele geçiş yapabilecektir.\n\n2- Soru Cevap:Bu kısımda ise soru sorulmakta sizlerden cevap istenmektedir.Yakın bir zamanda güncel kanunları ve Zaptiye Kartlarını sisteme dahil edeceğiz.Hepinize sınavda başarılar diliyorum.</string>
 
 
     <string name="email_lbl">canahmettt@gmail.com</string>
@@ -76,5 +76,37 @@
     <string name="email_url">canahmettt@gmail.com</string>
     <string name="facebook_url">https://www.facebook.com/zaptiyekomiser?ref=hl</string>
     <string name="twitter_url">https://twitter.com/@Arkayapps</string>
+
+    <string name="title_activity_guncel_kanunlar">GuncelKanunlar</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_anayasa">Anayasa</string>
+    <string name="title_activity_tck">Tck</string>
+    <string name="title_activity_cmk">Cmk</string>
+    <string name="title_activity_pvsk">Pvsk</string>
+    <string name="title_activity_etk">Etk</string>
+    <string name="title_activity_dilekce">Dilekce Kanunu</string>
+    <string name="title_activity_bilgi_edinme">Bilgi Edinme Kanunu</string>
+    <string name="title_activity_kabahatler">Kabahatler</string>
+    <string name="title_activity_cocuk">Çocuk Koruma Kanunu</string>
+    <string name="title_activity_kimlik">Kimlik Bildirme Kanunu</string>
+    <string name="title_activity_toplanti">Toplantı ve Gösteri Yürüyüşleri</string>
+    <string name="title_activity_dernek">Dernekler Kanunu</string>
+    <string name="title_activity_vatan">Vatandaşlık Kanunu</string>
+    <string name="title_activity_pasaport">Pasaport Kanunu</string>
+    <string name="title_activity_tmk">Terörle Mücadele Kanunu</string>
+    <string name="title_activity_kacak">Kaçakçılıkla Mücadele</string>
+    <string name="title_activity_tanik">Tanık Koruma Kanunu</string>
+    <string name="title_activity_spor">Sporda Şiddet</string>
+    <string name="title_activity_silah">Ateşli Silahlar</string>
+    <string name="title_activity_teblig">Tebligat Kanunu</string>
+    <string name="title_activity_siyasi">Siyasi Partiler Kanunu</string>
+    <string name="title_activity_ohal">Ohal Kanunu</string>
+    <string name="title_activity_siki_yonetim">Sıkı Yönetim Kanunu</string>
+    <string name="title_activity_bayrak">Bayrak Kanunu</string>
+    <string name="title_activity_yardim_toplama">Yardım Toplama Kanunu</string>
+    <string name="title_activity_trafik">Trafik Kanunu</string>
+    <string name="title_activity_aile">Ailenin Korunması ve Kadına Karşı...</string>
+    <string name="title_activity_eodt">Emniyet Örgütü Disiplin Tüzüğü</string>
 
 </resources>

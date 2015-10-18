@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="windows-1254">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="ISO-8859-9">
+    <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/java/com/zaptiye/quiz/Kanunlar/Aile.java" charset="ISO-8859-9" />
+    <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/java/com/zaptiye/quiz/Parse/PushOpen.java" charset="windows-1254" />
     <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/java/com/zaptiye/quiz/QuizPlayActivity.java" charset="UTF-8" />
-    <file url="PROJECT" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/res/drawable/rounded_corners.xml" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/res/layout/pushopen.xml" charset="windows-1254" />
+    <file url="PROJECT" charset="ISO-8859-9" />
   </component>
 </project>

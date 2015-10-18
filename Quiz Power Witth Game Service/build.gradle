@@ -2,29 +2,26 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        debug {
-        }
-        release {
+        config {
         }
     }
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
+
+    compileOptions{
+        encoding "windows-1254"
+    }
     defaultConfig {
         applicationId "com.zaptiye.quiz"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "1.5"
         multiDexEnabled true
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-        debug {
-            signingConfig signingConfigs.debug
+        config {
+            signingConfig signingConfigs.config
         }
     }
 }
@@ -34,4 +31,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.google.android.gms:play-services:7.3.0'
     compile project(':BaseGameUtil')
+    compile 'com.parse.bolts:bolts-android:1.2.1'
+    compile 'com.parse:parse-android:1.10.3'
 }
