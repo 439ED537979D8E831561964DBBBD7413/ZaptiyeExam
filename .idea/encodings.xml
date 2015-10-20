@@ -6,6 +6,10 @@
     <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/java/com/zaptiye/quiz/QuizPlayActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/res/drawable/rounded_corners.xml" charset="windows-1254" />
     <file url="file://$PROJECT_DIR$/Quiz Power Witth Game Service/src/main/res/layout/pushopen.xml" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/zaptiye/quiz/Parse/PushOpen.java" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/zaptiye/quiz/Parse/Receiver.java" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_corners.xml" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/pushopen.xml" charset="windows-1254" />
     <file url="PROJECT" charset="ISO-8859-9" />
   </component>
 </project>

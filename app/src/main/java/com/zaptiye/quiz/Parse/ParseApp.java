@@ -13,7 +13,7 @@ public class ParseApp extends Application {
     @Override
     public void onCreate() {
 
-        Parse.initialize(this, "sNte7AF2eViB5oo4t3B3rHArFJS780C8J4BfFv3J", "FGKZ2urmeLJRMgJ8DKxR3bQgNkCSx06sn3Vxrqdv");
+        Parse.initialize(this, "pPLeYrsw65LM6hQvbT3AjcWEhCcKtifVZNZN9Krb", "AX5uRpOgOMfpgH0BQjpZp9rCWIMxAPrQCtBG2TC6");
         ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 }
