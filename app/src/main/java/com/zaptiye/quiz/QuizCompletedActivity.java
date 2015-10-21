@@ -112,10 +112,10 @@ View.OnClickListener {
 		if(islevelcomplted){
 			levelNo--;
 			txtLevelHeading.setText(getActivity().getString(R.string.level)+" "+ levelNo +" "+  getActivity().getResources().getString(R.string.finished));
-			btnPlayAgain.setText("Continuing to play");
+			btnPlayAgain.setText("Sonra ki Level");
 		}else{
 			txtLevelHeading.setText(getActivity().getString(R.string.level)+" "+ levelNo +" "+  getActivity().getResources().getString(R.string.not_completed));
-			btnPlayAgain.setText(" Play again");
+			btnPlayAgain.setText("Tekrar Dene");
 		}
 		
 	       

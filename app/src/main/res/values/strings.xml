@@ -43,7 +43,7 @@
     <string name="not_completed">Başarısız.Tekrar Dene</string>
     <string name="sec">Sec.</string>
     <string name="next_level_not_open">Sonra ki Level Açılamadı</string>
-    <string name="play_again_this_level">Anasayfaya Git</string>
+    <string name="play_again_this_level">Tekrar Dene</string>
     <string name="title_activity_quiz_play">QuizPlayActivity</string>
     <string name="general_knowledge_in_gujarati">Zaptiye Pro</string>
 
