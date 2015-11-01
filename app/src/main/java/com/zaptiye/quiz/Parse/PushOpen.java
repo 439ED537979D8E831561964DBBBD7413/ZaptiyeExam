@@ -70,7 +70,7 @@ public class PushOpen extends Activity {
             notification_message.setText(message);
         }
         catch(JSONException e){
-            Toast.makeText(getApplicationContext(), "Birþeyler Ters Gitti", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Bir?eyler Ters Gitti", Toast.LENGTH_SHORT).show();
         }
     }
 }

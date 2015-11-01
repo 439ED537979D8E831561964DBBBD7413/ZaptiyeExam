@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.Snapshots;
@@ -40,9 +39,9 @@ import java.util.Random;
  * @author Arkay Apps
  */
 public class MenuHomeScreenActivity extends FragmentActivity implements
-        View.OnClickListener, QuizPlayActivity.Listener, QuizCompletedActivity.Listener {
+        View.OnClickListener, QuizPlayActivity.Listener, QuizCompletedActivity.Listener, QuizPlayActivityAof.Listener,QuizCompletedActivityAof.Listener {
 
-    private Button btnPlay, btnGuncelKanunlar, btnLearning, btnSetting, btnAbout, btnHelp;
+    private Button btnPlay, btnGuncelKanunlar, btnLearning, btnSetting, btnAbout, btnHelp,btnAof;
 
     /**
      * The interstitial ad.
@@ -72,8 +71,9 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
     QuizPlayActivity quizPlayActivity;
     SharedPreferences settings;
     QuizPlayActivity mQuizPlayFragment;
+    QuizPlayActivityAof aofSorulari;
     QuizCompletedActivity quizCompletedFragment;
-    private InterstitialAd interstitial;
+    QuizCompletedActivityAof quizCompletedFragmentAof;
     private static final int OUR_STATE_KEY = 2;
 
     Context context;
@@ -139,11 +139,16 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         btnPlay = (Button) findViewById(R.id.btnPlay);
         btnPlay.setOnClickListener(this);
 
+        /*
         btnLearning = (Button) findViewById(R.id.btnLearning);
         btnLearning.setOnClickListener(this);
+        */
 
         btnGuncelKanunlar = (Button) findViewById(R.id.btnGuncelKanunlar);
         btnGuncelKanunlar.setOnClickListener(this);
+
+        btnAof= (Button) findViewById(R.id.btnAof);
+        btnAof.setOnClickListener(this);
 
         btnSetting = (Button) findViewById(R.id.btnSetting);
         btnSetting.setOnClickListener(this);
@@ -158,8 +163,14 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         mQuizPlayFragment = new QuizPlayActivity();
         mQuizPlayFragment.setListener(this);
 
+        aofSorulari=new QuizPlayActivityAof();
+        aofSorulari.setListener(this);
+
         quizCompletedFragment = new QuizCompletedActivity();
         quizCompletedFragment.setListener(this);
+
+        quizCompletedFragmentAof=new QuizCompletedActivityAof();
+        quizCompletedFragmentAof.setListener(this);
 
         checkDB();
 
@@ -222,14 +233,21 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
                     Toast.makeText(getApplicationContext(), "Lütfen internete baðlanýnýz", Toast.LENGTH_LONG).show();
                 }
                 break;
+            /*
             case R.id.btnLearning:
                 Intent intPlay = new Intent(this, LevelActivity.class);
                 startActivity(intPlay);
                 break;
 
+                */
+
             case R.id.btnGuncelKanunlar:
                 Intent kanunlar = new Intent(this, GuncelKanunlar.class);
                 startActivity(kanunlar);
+                break;
+
+            case R.id.btnAof:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
                 break;
 
 
@@ -386,6 +404,10 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         return quizCompletedFragment;
     }
 
+    public QuizCompletedActivityAof getQuizCompletedFragmentAof(){
+        return quizCompletedFragmentAof;
+    }
+
 
     public boolean isConnectingToInternet() {
         ConnectivityManager connectivity = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -406,6 +428,14 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         // TODO Auto-generated method stub
         getSupportFragmentManager().popBackStack();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mQuizPlayFragment).addToBackStack("tag").commit();
+    }
+
+
+
+    public void playAgainAof(){
+
+        getSupportFragmentManager().popBackStack();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
     }
 
 

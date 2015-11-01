@@ -13,13 +13,17 @@
     web that is given PHP admin panel then set here true -->
     <bool name="isQuestionFormWeb">true</bool>
 
+
     <!-- set you service URL plz don't foget otherwise it will be get our question database. For Four Option Question-->
     <string name="question_bank_url">http://cunediogluyazilim.com/ahmet/getquestionwithoptionbylevelid.php?levelid=</string>
+    <string name="question_bank_url_aof">http://cunediogluyazilim.com/ahmet_aof/getquestionwithoptionbylevelid.php?levelid=</string>
 
     <!-- set you service URL plz don't foget otherwise it will be get our question database. FOR ONE option Questions-->
     <string name="get_question_right_answare">http://cunediogluyazilim.com/ahmet/getquestionrightanswerbylevelid.php?levelid=</string>
+    <string name="get_question_right_answare_aof">http://cunediogluyazilim.com/ahmet_aof/getquestionrightanswerbylevelid.php?levelid=</string>
     <!-- <string name="get_number_of_level">http://arkayapps.com/quizpower/getnumberoflevel.php</string> -->
     <string name="get_level_info">http://cunediogluyazilim.com/ahmet/getleveliinfo.php</string>
+    <string name="get_level_info_aof">http://cunediogluyazilim.com/ahmet_aof/getleveliinfo.php</string>
 
     <string name="icon_url"> https://lh3.googleusercontent.com/-GifeEujNvJQ/VHQIh5OvzsI/AAAAAAAAAmk/jTw7I86i4x4/s128/icon_80.png</string>
 

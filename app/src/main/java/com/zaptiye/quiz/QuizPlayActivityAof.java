@@ -10,11 +10,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -45,12 +43,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Quiz activity, on This screen user play quiz with four option.
- *
- * @author Arkay App
+ * Created by ahmet on 30.10.2015.
  */
+public class QuizPlayActivityAof extends android.support.v4.app.Fragment implements View.OnClickListener {
 
-public class QuizPlayActivity extends Fragment implements OnClickListener {
+
     private static int levelNo = 1;
     private PlayQuizLevel level;
     private int quextionIndex = 0;
@@ -100,7 +97,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_quiz_play, container, false);
+        v = inflater.inflate(R.layout.fragment_quiz_play_aof, container, false);
         final int[] CLICKABLES = new int[]{
                 R.id.btnOpt1, R.id.btnOpt2,
                 R.id.btnOpt3, R.id.btnOpt4
@@ -192,6 +189,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
         btnOpt2.setClickable(true);
         btnOpt3.setClickable(true);
         btnOpt4.setClickable(true);
+
 
 		/*btnOpt1.setTextColor(getResources().getColor(R.color.text_color));
 		btnOpt2.setTextColor(getResources().getColor(R.color.text_color));
@@ -286,7 +284,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
 
                         changeBtnTexColor();
                         btnOpt2.setTextColor(getResources().getColor(R.color.White));
-					
+
 					/*btnOpt1.setTextColor(getResources().getColor(R.color.text_color));
 					btnOpt3.setTextColor(getResources().getColor(R.color.text_color));
 					btnOpt4.setTextColor(getResources().getColor(R.color.text_color));*/
@@ -434,7 +432,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
         //editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
         editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 
-        if (correctQuestion >= 17) {
+        if (correctQuestion >= 1) {
             levelNo++;
             editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
             mListener.getGameData().setLevelCompleted(levelNo);
@@ -538,7 +536,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress.show();
             LoadQuestions task = new LoadQuestions();
-            task.execute(new String[]{ress.getString(R.string.question_bank_url) + levelNo});
+            task.execute(new String[]{ress.getString(R.string.question_bank_url_aof) + levelNo});
         } else {
             level = new PlayQuizLevel(levelNo, NO_OF_QUESTION, getActivity());
             level.setQuestionRendomFromDatabase();
