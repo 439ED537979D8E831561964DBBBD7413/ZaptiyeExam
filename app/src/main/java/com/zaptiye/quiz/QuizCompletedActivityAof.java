@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.plus.PlusShare;
-import com.zaptiye.quiz.bean.GameData;
+import com.zaptiye.quiz.bean.GameDataAof;
 import com.zaptiye.quiz.facebook.AsyncFacebookRunner;
 import com.zaptiye.quiz.facebook.DialogError;
 import com.zaptiye.quiz.facebook.Facebook;
@@ -29,7 +29,8 @@ public class QuizCompletedActivityAof extends Fragment implements View.OnClickLi
     private Button btnPlayAgain, btnHome,  btnFacebook, btnGooglePlus, btnShare;
     private TextView txtLevelHeading, txtLevelScore,txtLevelTotalScore;
     boolean isLevelCompleted=false;
-    private SharedPreferences settings;
+    //private SharedPreferences settings;
+    private SharedPreferences settingsAof;
 
     int levelNo=1;
     int lastLevelScore = 0;
@@ -48,7 +49,7 @@ public class QuizCompletedActivityAof extends Fragment implements View.OnClickLi
     public interface Listener {
         public void onStartGameRequested(boolean hardMode);
         public void displyHomeScreen();
-        public GameData getGameData();
+        public GameDataAof getGameDataAof();
         public void playAgainAof();
 
     }
@@ -65,7 +66,7 @@ public class QuizCompletedActivityAof extends Fragment implements View.OnClickLi
         for (int i : CLICKABLES) {
             v.findViewById(i).setOnClickListener(this);
         }
-        settings = getActivity().getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
+        settingsAof = getActivity().getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME_AOF, 0);
 
         appName = getActivity().getResources().getString(R.string.app_name);
 
@@ -77,10 +78,10 @@ public class QuizCompletedActivityAof extends Fragment implements View.OnClickLi
         txtLevelScore = (TextView)v.findViewById(R.id.txtLevelScore);
 
         //totalScore = settings.getInt(MenuHomeScreenActivity.TOTAL_SCORE, 0);
-        totalScore = mListener.getGameData().getTotalScore();
+        totalScore = mListener.getGameDataAof().getTotalScore();
         txtLevelScore.setText(""+totalScore);
 
-        lastLevelScore = settings.getInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, 0);
+        lastLevelScore = settingsAof.getInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, 0);
         txtLevelTotalScore = (TextView)v.findViewById(R.id.lblLevelTotalScore);
         txtLevelTotalScore.setText(""+lastLevelScore);
 
@@ -104,9 +105,9 @@ public class QuizCompletedActivityAof extends Fragment implements View.OnClickLi
             btnPlayAgain.setText("Cancel");
         }
 
-        boolean islevelcomplted = settings.getBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, false);
+        boolean islevelcomplted = settingsAof.getBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, false);
 
-        levelNo = settings.getInt(MenuHomeScreenActivity.LEVEL_COMPLETED, 1);
+        levelNo = settingsAof.getInt(MenuHomeScreenActivity.LEVEL_COMPLETED, 1);
 
         if(islevelcomplted){
             levelNo--;

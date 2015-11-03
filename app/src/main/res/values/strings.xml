@@ -71,7 +71,7 @@
 
     <string name="level11">from value </string>
 
-    <string name="how_to_play">Herkese merhabalar.Zaptiye Pro Uygulamamızda şimdilik iki seçenek mevcuttur\n\n1-Soru Bankası:soru bankamızda toplam 100 level vardır.Her levelde 30 soru içerisinden random olarak 20 soru karşınıza gelmektedir.100 levelde toplam 3000 soru vardır.Soruları tam olarak kavrayabilmeniz için 20 sorudan 17 soruya cevap verme olanağı tanıdık.17 soruyu doğru bilenler bir sonra ki levele geçiş yapabilecektir.\n\n2- Soru Cevap:Bu kısımda ise soru sorulmakta sizlerden cevap istenmektedir.Yakın bir zamanda güncel kanunları ve Zaptiye Kartlarını sisteme dahil edeceğiz.Hepinize sınavda başarılar diliyorum.</string>
+    <string name="how_to_play">Herkese merhabalar.Zaptiye Pro Uygulamamızda şimdilik 3 seçenek mevcuttur\n\n1-Soru Bankası:soru bankamızda toplam 100 level vardır.Her levelde 30 soru içerisinden random olarak 20 soru karşınıza gelmektedir.100 levelde toplam 3000 soru vardır.Soruları tam olarak kavrayabilmeniz için 20 sorudan 17 soruya cevap verme olanağı tanıdık.17 soruyu doğru bilenler bir sonra ki levele geçiş yapabilecektir.\n\n 2- Güncel Kanunlar: Bu kısımda ise polisi ilgilendiren bütün mevzuatı bulabileceksiniz.Kanunlar sürekli güncellenmektedir.\n\n 3-AÖF çıkmış sorular:Bildiğiniz üzere sınavı artık anadolu üniversitesi yapmakatdır.Bu sebepten dolayı AÖF çıkmış soruları sisteme dahil ettik.Hepinize başarılar</string>
     <string name="about_quiz_ranking">Sistem ile ilgili yaşayabileceğiniz sıkıntılarda bizlere ulaşınız.Facebookta yeralan Zaptiye Sayfamızı takip etmeyi unutmayınız</string>
 
     <string name="email_lbl">canahmettt@gmail.com</string>

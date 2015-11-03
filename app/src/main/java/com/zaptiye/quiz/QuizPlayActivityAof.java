@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zaptiye.quiz.bean.GameData;
+import com.zaptiye.quiz.bean.GameDataAof;
 import com.zaptiye.quiz.playquizbeans.PlayQuizLevel;
 import com.zaptiye.quiz.playquizbeans.PlayQuizQuestion;
 
@@ -64,7 +65,8 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
     private TextView quizImage;
     private Button btnOpt1, btnOpt2, btnOpt3, btnOpt4;
     private TextView txtQuestion, txtScore, txtLevel;
-    private SharedPreferences settings;
+    //private SharedPreferences settings;
+    private SharedPreferences settingsAof;
     boolean isSoundOn = false;
     private Animation animation;
     private MediaPlayer rightAnsware, wrongeAnsware;
@@ -88,7 +90,9 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
 
         public GameData getGameData();
 
-        public QuizCompletedActivity getQuizCompletedFragment();
+        public GameDataAof getGameDataAof();
+
+        public QuizCompletedActivityAof getQuizCompletedFragmentAof();
 
     }
 
@@ -117,7 +121,7 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
         animationFromLeft.setDuration(600);
 
 
-        settings = getActivity().getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
+        settingsAof = getActivity().getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME_AOF, 0);
 
         resetAllValue();
 
@@ -155,27 +159,27 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
     }
 
     private void nextQuizQuestion() {
-        int count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();
+        int count_question_completed = mListener.getGameDataAof().getCountHowManyQuestionCompleted();
         count_question_completed++;
-        mListener.getGameData().setCountHowManyQuestionCompleted(count_question_completed);
-        System.out.println("Count Question Completed: " + mListener.getGameData().getCountHowManyQuestionCompleted());
+        mListener.getGameDataAof().setCountHowManyQuestionCompleted(count_question_completed);
+        System.out.println("Count Question Completed: " + mListener.getGameDataAof().getCountHowManyQuestionCompleted());
         if (quextionIndex >= NO_OF_QUESTION) {
 
 
-            int howManyTimesPlayQuiz = mListener.getGameData().getCountHowManyTimePlay();
+            int howManyTimesPlayQuiz = mListener.getGameDataAof().getCountHowManyTimePlay();
             System.out.println("How Many Time Play: " + howManyTimesPlayQuiz);
             howManyTimesPlayQuiz++;
-            mListener.getGameData().setCountHowManyTimePlay(howManyTimesPlayQuiz);
+            mListener.getGameDataAof().setCountHowManyTimePlay(howManyTimesPlayQuiz);
 
-            count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();
+            count_question_completed = mListener.getGameDataAof().getCountHowManyQuestionCompleted();
             count_question_completed--;
-            mListener.getGameData().setCountHowManyQuestionCompleted(count_question_completed);
+            mListener.getGameDataAof().setCountHowManyQuestionCompleted(count_question_completed);
 
             saveScore();
 
 
             getActivity().getSupportFragmentManager().popBackStack();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mListener.getQuizCompletedFragment()).addToBackStack("tag").commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mListener.getQuizCompletedFragmentAof()).addToBackStack("tag").commit();
 
 
             blankAllValue();
@@ -382,13 +386,13 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
         score = score + 10;
         txtScore.setText(" " + totalScore + " ");
 
-        int rightAns = mListener.getGameData().getCountHowManyRightAnswareQuestion();
+        int rightAns = mListener.getGameDataAof().getCountHowManyRightAnswareQuestion();
         rightAns++;
 
-        mListener.getGameData().setCountHowManyRightAnswareQuestion(rightAns);
-        mListener.getGameData().setTotalScore(totalScore);
-        mListener.getGameData().save(settings, MenuHomeScreenActivity.myshareprefkey);
-        System.out.println("Right Answare: " + mListener.getGameData().getCountHowManyRightAnswareQuestion());
+        mListener.getGameDataAof().setCountHowManyRightAnswareQuestion(rightAns);
+        mListener.getGameDataAof().setTotalScore(totalScore);
+        mListener.getGameDataAof().save(settingsAof, MenuHomeScreenActivity.myshareprefkeyAof);
+        System.out.println("Right Answare: " + mListener.getGameDataAof().getCountHowManyRightAnswareQuestion());
     }
 
 
@@ -427,23 +431,26 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
     }
 
     private void saveScore() {
-        editor = settings.edit();
-        mListener.getGameData().setTotalScore(totalScore);
+        editor = settingsAof.edit();
+        mListener.getGameDataAof().setTotalScore(totalScore);
         //editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
         editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 
-        if (correctQuestion >= 1) {
+        if (correctQuestion >= 17) {
             levelNo++;
             editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
-            mListener.getGameData().setLevelCompleted(levelNo);
+            mListener.getGameDataAof().setLevelCompleted(levelNo);
         } else {
             editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, false);
         }
-        mListener.getGameData().save(settings, MenuHomeScreenActivity.myshareprefkey);
+        mListener.getGameDataAof().save(settingsAof, MenuHomeScreenActivity.myshareprefkeyAof);
         editor.commit();
 
 
     }
+
+
+
 
 
     public void rightSound() {
@@ -481,8 +488,8 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
 
     private void resetAllValue() {
 
-        isSoundOn = settings.getBoolean("silentMode", true);
-        levelNo = mListener.getGameData().getLevelCompleted();
+        isSoundOn = settingsAof.getBoolean("silentMode", true);
+        levelNo = mListener.getGameDataAof().getLevelCompleted();
         txtQuestion = (TextView) v.findViewById(R.id.txt_question);
 
         txtLevel = (TextView) v.findViewById(R.id.txtLevel);
@@ -514,10 +521,10 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
         animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
 
 
-        isSoundEffect = settings.getBoolean(MenuHomeScreenActivity.SOUND_EFFECT, true);
-        isVibration = settings.getBoolean(MenuHomeScreenActivity.VIBRATION, true);
+        isSoundEffect = settingsAof.getBoolean(MenuHomeScreenActivity.SOUND_EFFECT, true);
+        isVibration = settingsAof.getBoolean(MenuHomeScreenActivity.VIBRATION, true);
 
-        totalScore = mListener.getGameData().getTotalScore();
+        totalScore = mListener.getGameDataAof().getTotalScore();
         txtScore = (TextView) v.findViewById(R.id.txtScore);
 
         playQuizmainLayout = (RelativeLayout) v.findViewById(R.id.playQuizmainLayout);

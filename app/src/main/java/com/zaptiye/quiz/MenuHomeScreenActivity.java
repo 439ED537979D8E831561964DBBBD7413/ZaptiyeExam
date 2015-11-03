@@ -21,6 +21,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.games.snapshot.SnapshotMetadata;
 import com.google.android.gms.games.snapshot.Snapshots;
 import com.zaptiye.quiz.bean.GameData;
+import com.zaptiye.quiz.bean.GameDataAof;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,8 +48,10 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
      * The interstitial ad.
      */
     public static final String PREFS_NAME = "preferences";
+    public static final String PREFS_NAME_AOF = "preferencesAof";
     private static final String DATABASE_NAME = "database.db";
     public static final String myshareprefkey = "quizpower";
+    public static final String myshareprefkeyAof = "quizpowerAof";
 
     public static final String SOUND_EFFECT = "sound_effect";
     public static final String VIBRATION = "vibration";
@@ -70,6 +73,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 
     QuizPlayActivity quizPlayActivity;
     SharedPreferences settings;
+    SharedPreferences settingsAof;
     QuizPlayActivity mQuizPlayFragment;
     QuizPlayActivityAof aofSorulari;
     QuizCompletedActivity quizCompletedFragment;
@@ -83,6 +87,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 
     ProgressDialog progress;
     private GameData gameData;
+    private GameDataAof gameDataAof;
     private final Handler mHandler = new Handler();
 
     // Request code used to invoke sign in user interactions.
@@ -132,7 +137,9 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         context = getApplicationContext();
 
         settings = getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
+        settingsAof=getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME_AOF,0);
         gameData = new GameData(settings, myshareprefkey);
+        gameDataAof=new GameDataAof(settingsAof,myshareprefkeyAof);
         // Create the Google Api Client with access to Plus and Games
 
 
@@ -247,7 +254,11 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
                 break;
 
             case R.id.btnAof:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
+                if (internetErisimi()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Lütfen internete baðlanýnýz", Toast.LENGTH_LONG).show();
+                }
                 break;
 
 
@@ -397,6 +408,10 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
     @Override
     public GameData getGameData() {
         return this.gameData;
+    }
+
+    public GameDataAof getGameDataAof(){
+        return this.gameDataAof;
     }
 
     @Override
