@@ -110,6 +110,7 @@
     <string name="title_activity_trafik">Trafik Kanunu</string>
     <string name="title_activity_aile">Ailenin Korunması ve Kadına Karşı...</string>
     <string name="title_activity_eodt">Emniyet Örgütü Disiplin Tüzüğü</string>
+    <string name="title_activity_level_bitti">Level Bitti</string>
 
 
 </resources>

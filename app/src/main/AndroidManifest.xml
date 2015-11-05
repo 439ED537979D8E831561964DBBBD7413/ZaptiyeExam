@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zaptiye.quiz">
+    package="com.zaptiye.quiz" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,22 +12,23 @@
     <!--
   IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
   to match your app's package name + ".permission.C2D_MESSAGE".
--->
+    -->
     <permission
         android:name="com.zaptiye.quiz.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.zaptiye.quiz.permission.C2D_MESSAGE" />
 
     <application
         android:name=".Parse.ParseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name">
+        android:label="@string/app_name" >
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,11 +38,11 @@
         <activity
             android:name=".MenuHomeScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".SingleAnsQuizActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
@@ -49,132 +50,128 @@
             android:name=".LevelActivity"
             android:label="@string/title_activity_quiz_play"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".SettingActivity"
             android:label="@string/title_activity_quiz_play"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".AboutUsActivity"
             android:label="@string/title_activity_quiz_play"
-            android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".HowToPlayActivity"
             android:label="@string/title_activity_quiz_play"
-            android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".GuncelKanunlar"
-            android:label="@string/title_activity_guncel_kanunlar"></activity>
+            android:label="@string/title_activity_guncel_kanunlar" />
         <activity
             android:name=".Kanunlar.Anayasa"
-            android:label="@string/title_activity_anayasa"></activity>
+            android:label="@string/title_activity_anayasa" />
         <activity
             android:name=".Kanunlar.Tck"
-            android:label="@string/title_activity_tck"></activity>
+            android:label="@string/title_activity_tck" />
         <activity
             android:name=".Kanunlar.Cmk"
-            android:label="@string/title_activity_cmk"></activity>
+            android:label="@string/title_activity_cmk" />
         <activity
             android:name=".Kanunlar.Pvsk"
-            android:label="@string/title_activity_pvsk"></activity>
+            android:label="@string/title_activity_pvsk" />
         <activity
             android:name=".Kanunlar.Etk"
-            android:label="@string/title_activity_etk"></activity>
+            android:label="@string/title_activity_etk" />
         <activity
             android:name=".Kanunlar.Dilekce"
-            android:label="@string/title_activity_dilekce"></activity>
+            android:label="@string/title_activity_dilekce" />
         <activity
             android:name=".Kanunlar.BilgiEdinme"
-            android:label="@string/title_activity_bilgi_edinme"></activity>
+            android:label="@string/title_activity_bilgi_edinme" />
         <activity
             android:name=".Kanunlar.Kabahatler"
-            android:label="@string/title_activity_kabahatler"></activity>
+            android:label="@string/title_activity_kabahatler" />
         <activity
             android:name=".Kanunlar.Cocuk"
-            android:label="@string/title_activity_cocuk"></activity>
+            android:label="@string/title_activity_cocuk" />
         <activity
             android:name=".Kanunlar.Kimlik"
-            android:label="@string/title_activity_kimlik"></activity>
+            android:label="@string/title_activity_kimlik" />
         <activity
             android:name=".Kanunlar.Toplanti"
-            android:label="@string/title_activity_toplanti"></activity>
+            android:label="@string/title_activity_toplanti" />
         <activity
             android:name=".Kanunlar.Dernek"
-            android:label="@string/title_activity_dernek"></activity>
+            android:label="@string/title_activity_dernek" />
         <activity
             android:name=".Kanunlar.Vatan"
-            android:label="@string/title_activity_vatan"></activity>
+            android:label="@string/title_activity_vatan" />
         <activity
             android:name=".Kanunlar.Pasaport"
-            android:label="@string/title_activity_pasaport"></activity>
+            android:label="@string/title_activity_pasaport" />
         <activity
             android:name=".Kanunlar.Tmk"
-            android:label="@string/title_activity_tmk"></activity>
+            android:label="@string/title_activity_tmk" />
         <activity
             android:name=".Kanunlar.Kacak"
-            android:label="@string/title_activity_kacak"></activity>
+            android:label="@string/title_activity_kacak" />
         <activity
             android:name=".Kanunlar.Tanik"
-            android:label="@string/title_activity_tanik"></activity>
+            android:label="@string/title_activity_tanik" />
         <activity
             android:name=".Kanunlar.Spor"
-            android:label="@string/title_activity_spor"></activity>
+            android:label="@string/title_activity_spor" />
         <activity
             android:name=".Kanunlar.Silah"
-            android:label="@string/title_activity_silah"></activity>
+            android:label="@string/title_activity_silah" />
         <activity
             android:name=".Kanunlar.Teblig"
-            android:label="@string/title_activity_teblig"></activity>
+            android:label="@string/title_activity_teblig" />
         <activity
             android:name=".Kanunlar.Siyasi"
-            android:label="@string/title_activity_siyasi"></activity>
+            android:label="@string/title_activity_siyasi" />
         <activity
             android:name=".Kanunlar.Ohal"
-            android:label="@string/title_activity_ohal"></activity>
+            android:label="@string/title_activity_ohal" />
         <activity
             android:name=".Kanunlar.SikiYonetim"
-            android:label="@string/title_activity_siki_yonetim"></activity>
+            android:label="@string/title_activity_siki_yonetim" />
         <activity
             android:name=".Kanunlar.Bayrak"
-            android:label="@string/title_activity_bayrak"></activity>
+            android:label="@string/title_activity_bayrak" />
         <activity
             android:name=".Kanunlar.YardimToplama"
-            android:label="@string/title_activity_yardim_toplama"></activity>
+            android:label="@string/title_activity_yardim_toplama" />
         <activity
             android:name=".Kanunlar.Trafik"
-            android:label="@string/title_activity_trafik"></activity>
+            android:label="@string/title_activity_trafik" />
         <activity
             android:name=".Kanunlar.Aile"
-            android:label="@string/title_activity_aile"></activity>
+            android:label="@string/title_activity_aile" />
         <activity
             android:name=".Kanunlar.Eodt"
-            android:label="@string/title_activity_eodt"></activity>
+            android:label="@string/title_activity_eodt" />
 
         <service android:name="com.parse.PushService" />
 
-        <receiver android:name="com.parse.ParseBroadcastReceiver">
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-
-
-
         <receiver
             android:name=".Parse.Receiver"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -184,8 +181,11 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Parse.PushOpen"></activity>
-
+        <activity android:name=".Parse.PushOpen" />
+        <activity
+            android:name=".LevelBitti"
+            android:label="@string/title_activity_level_bitti" >
+        </activity>
     </application>
 
 </manifest>
