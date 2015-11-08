@@ -11,8 +11,8 @@ android {
         applicationId "com.zaptiye.quiz"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 13
-        versionName "2.3"
+        versionCode 17
+        versionName "2.7"
     }
     buildTypes {
         release {

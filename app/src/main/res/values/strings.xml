@@ -5,6 +5,12 @@
     <string name="action_settings">Settings</string>
 
 
+    <string name="title">Level Sonu</string>
+    <string name="message">Tebrikler şimdiye kadar yaklaşık 3250 soru çözdünüz...Leveliniz Sıfırlanacak ve en başa döneceksiniz...En başa dönecem diye üzülmeyin...Siz 112.Levele gelene kadar biz eski levellere yeni sorular ekledik</string>
+    <string name="OKbtn">Anasayfa</string>
+    <string name="closebtn">Kapat</string>
+
+
 
     <!-- This will true if you testing app when you publish on play store make if fasle -->
     <bool name="istestmode">true</bool>

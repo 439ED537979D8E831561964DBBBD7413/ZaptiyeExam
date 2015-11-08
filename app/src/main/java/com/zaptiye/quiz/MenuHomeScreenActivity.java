@@ -185,7 +185,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         progress = new ProgressDialog(this);
         progress.setTitle("Please Wait!!");
         progress.setMessage("Data Loading..");
-        progress.setCancelable(false);
+        progress.setCancelable(true);
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.show();
         Handler delayhandler = new Handler();
@@ -236,6 +236,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
 
                 if (internetErisimi()) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mQuizPlayFragment).addToBackStack("tag").commit();
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Lütfen internete baðlanýnýz", Toast.LENGTH_LONG).show();
                 }
@@ -452,6 +453,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         getSupportFragmentManager().popBackStack();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
     }
+
 
 
 }

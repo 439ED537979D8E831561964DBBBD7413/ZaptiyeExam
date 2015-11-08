@@ -2,7 +2,6 @@ package com.zaptiye.quiz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.AudioManager;
@@ -12,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +24,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zaptiye.quiz.bean.GameData;
 import com.zaptiye.quiz.playquizbeans.PlayQuizLevel;
@@ -59,7 +58,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
     private boolean isSoundEffect;
     private boolean isVibration;
 
-    private int NO_OF_QUESTION = 2;
+    private int NO_OF_QUESTION = 20;
     private int totalScore = 0;
     private int score = 0;
     private int correctQuestion = 0;
@@ -357,9 +356,9 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
             }
 
         } else {
-            mHandler.postDelayed(mUpdateUITimerTask, 2 * 10);
+            mHandler.postDelayed(mUpdateUITimerTask, 6 * 10);
         }
-        mHandler.postDelayed(mUpdateUITimerTask, 2 * 1000);
+        mHandler.postDelayed(mUpdateUITimerTask, 6 * 1000);
         txtScore.setText("" + totalScore);
 
     }
@@ -436,7 +435,7 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
         //editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
         editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 
-        if (correctQuestion >= 0) {
+        if (correctQuestion >= 17) {
             levelNo++;
             editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
             mListener.getGameData().setLevelCompleted(levelNo);
@@ -551,15 +550,21 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
             LoadQuestions task = new LoadQuestions();
             task.execute(new String[]{ress.getString(R.string.question_bank_url) + levelNo});
 
-            if (levelNo==4){
+            if (levelNo==112){
+
+
+                FragmentManager manager=getActivity().getSupportFragmentManager();
+
+
+                //CustomDialogFragment dialogFragment= (CustomDialogFragment) CustomDialogFragment.instantiate(getActivity(),"hello");
+                //dialogFragment.show(manager,"dialog");
+
+                CustomDialogFragment dialog = new CustomDialogFragment();
+                dialog.show(manager, "dialog");
 
                 clear();
 
 
-                Intent in=new Intent(getActivity(),MenuHomeScreenActivity.class);
-                startActivity(in);
-
-                Toast.makeText(getActivity(), "Levelller Bitti", Toast.LENGTH_LONG).show();
 
 
             }
