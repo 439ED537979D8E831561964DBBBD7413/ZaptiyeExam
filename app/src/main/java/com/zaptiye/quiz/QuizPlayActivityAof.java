@@ -357,9 +357,9 @@ public class QuizPlayActivityAof extends android.support.v4.app.Fragment impleme
             }
 
         } else {
-            mHandler.postDelayed(mUpdateUITimerTask, 6 * 10);
+            mHandler.postDelayed(mUpdateUITimerTask, 4 * 10);
         }
-        mHandler.postDelayed(mUpdateUITimerTask, 6 * 1000);
+        mHandler.postDelayed(mUpdateUITimerTask, 4 * 1000);
         txtScore.setText("" + totalScore);
 
     }

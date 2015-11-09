@@ -97,7 +97,6 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
     }
 
     Listener mListener = null;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -109,6 +108,8 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
         for (int i : CLICKABLES) {
             v.findViewById(i).setOnClickListener(this);
         }
+
+
 
         animationFromRight = new TranslateAnimation(500f, 0f, 0f, 0f);
         animationFromRight.setDuration(600);
@@ -157,6 +158,8 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
 
 
     }
+
+
 
     private void nextQuizQuestion() {
         int count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();
@@ -356,9 +359,12 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
             }
 
         } else {
-            mHandler.postDelayed(mUpdateUITimerTask, 6 * 10);
+            mHandler.postDelayed(mUpdateUITimerTask, 4 * 10);
         }
-        mHandler.postDelayed(mUpdateUITimerTask, 6 * 1000);
+
+
+
+       mHandler.postDelayed(mUpdateUITimerTask, 4 * 1000);
         txtScore.setText("" + totalScore);
 
     }
@@ -396,6 +402,8 @@ public class QuizPlayActivity extends Fragment implements OnClickListener {
 
 
     private void wrongeQuestion() {
+
+
         playWrongSound();
         //saveScore();
         inCorrectQuestion++;

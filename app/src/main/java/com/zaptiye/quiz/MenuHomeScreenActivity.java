@@ -136,6 +136,7 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         context = getApplicationContext();
 
+
         settings = getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
         settingsAof=getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME_AOF,0);
         gameData = new GameData(settings, myshareprefkey);
