@@ -100,7 +100,14 @@
             android:layout_marginTop="@dimen/menu_button_top_margin"
             android:layout_marginLeft="@dimen/menu_button_top_margin"
             android:background="@drawable/btn_help" />
-         
+
+            <Button
+                android:id="@+id/btnLeader"
+                android:layout_width="@dimen/next_prev_button_width_height"
+                android:layout_height="@dimen/next_prev_button_width_height"
+                android:layout_marginTop="@dimen/menu_button_top_margin"
+                android:layout_marginLeft="@dimen/menu_button_top_margin"
+                android:background="@drawable/btn_leader" />
          
 
         </LinearLayout>

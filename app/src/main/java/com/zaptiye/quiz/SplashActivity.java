@@ -1,12 +1,20 @@
 package com.zaptiye.quiz;
 
 import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * Splash Screen activity
@@ -24,8 +32,25 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		
-		
+
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(
+					"com.zaptiye.quiz",
+					PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+				Log.d("KeyHash", "KeyHash:" + Base64.encodeToString(md.digest(),
+						Base64.DEFAULT));
+				Toast.makeText(getApplicationContext(), Base64.encodeToString(md.digest(),
+						Base64.DEFAULT), Toast.LENGTH_LONG).show();
+			}
+		} catch (PackageManager.NameNotFoundException e) {
+
+		} catch (NoSuchAlgorithmException e) {
+
+		}
+
 		main_home_layout = (RelativeLayout)findViewById(R.id.main_home_layout);
 		main_home_layout.setBackgroundColor(getResources().getColor(R.color.app_background_color_1));
 			

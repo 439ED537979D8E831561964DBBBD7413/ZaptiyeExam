@@ -3,13 +3,13 @@
 
     <string name="app_name">Zaptiye Pro</string>
     <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">861887643897745</string>
 
 
     <string name="title">Level Sonu</string>
     <string name="message">Tebrikler şimdiye kadar yaklaşık 3250 soru çözdünüz...Leveliniz Sıfırlanacak ve en başa döneceksiniz...En başa dönecem diye üzülmeyin...Siz 112.Levele gelene kadar biz eski levellere yeni sorular ekledik</string>
     <string name="OKbtn">Anasayfa</string>
     <string name="closebtn">Kapat</string>
-
 
 
     <!-- This will true if you testing app when you publish on play store make if fasle -->
@@ -34,7 +34,7 @@
     <string name="icon_url"> https://lh3.googleusercontent.com/-GifeEujNvJQ/VHQIh5OvzsI/AAAAAAAAAmk/jTw7I86i4x4/s128/icon_80.png</string>
 
 
-    <item type="integer" name="app_theme_color_index">1</item>
+    <item name="app_theme_color_index" type="integer">1</item>
 
     <string name="title_activity_select_game">SelectGameActivity</string>
     <string name="title_activity_category_question">CategoryQuestionActivity</string>
@@ -117,6 +117,7 @@
     <string name="title_activity_aile">Ailenin Korunması ve Kadına Karşı...</string>
     <string name="title_activity_eodt">Emniyet Örgütü Disiplin Tüzüğü</string>
     <string name="title_activity_level_bitti">Level Bitti</string>
+    <string name="title_activity_facebook_login">FacebookLogin</string>
 
 
 </resources>
