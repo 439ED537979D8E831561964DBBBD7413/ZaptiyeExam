@@ -57,6 +57,16 @@
         android:text="Güncel Kanunlar" />
 
         <Button
+            android:id="@+id/btnAof"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            android:layout_marginTop="10dp"
+            android:text="AÖF Çıkmış Sorular" />
+
+        <!--
+        <Button
             android:id="@+id/btnAchievement"
             style="@style/style_btn_menu_button"
             android:layout_width="match_parent"
@@ -65,7 +75,7 @@
             android:background="@drawable/button_blue"
             android:text="Madalyalar" />
 
-
+            -->
 
         <LinearLayout
         android:id="@+id/linearLayout2"

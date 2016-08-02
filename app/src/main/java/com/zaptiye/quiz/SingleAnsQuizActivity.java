@@ -92,7 +92,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		Intent intent = this.getIntent();
 		levelNo = intent.getExtras().getInt("level_no");
 		Resources ress = getResources();
-		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb); 
+		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb);
 		if(isQuestionFromWeb){
 			progress = new ProgressDialog(this);
 	        progress.setTitle("Please Wait!!");

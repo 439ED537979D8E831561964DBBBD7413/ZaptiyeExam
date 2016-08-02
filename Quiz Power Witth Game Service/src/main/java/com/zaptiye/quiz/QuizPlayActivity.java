@@ -57,7 +57,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	private boolean isSoundEffect;
 	private boolean isVibration;
 
-	private int NO_OF_QUESTION = 20;
+	private int NO_OF_QUESTION = 2;
 	private int totalScore=0;
 	private int score=0;
 	private int correctQuestion=0;
@@ -160,7 +160,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		int count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();
 		count_question_completed++;
 		mListener.getGameData().setCountHowManyQuestionCompleted(count_question_completed);
-		//unlockhowManyQuestionCompleted(count_question_completed);
+		unlockhowManyQuestionCompleted(count_question_completed);
 		System.out.println("Count Question Completed: "+ mListener.getGameData().getCountHowManyQuestionCompleted());
 
 
@@ -176,7 +176,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			int howManyTimesPlayQuiz = mListener.getGameData().getCountHowManyTimePlay();
 			System.out.println("How Many Time Play: "+howManyTimesPlayQuiz);
 			howManyTimesPlayQuiz++;
-			//unlockPlayTime(howManyTimesPlayQuiz);
+			unlockPlayTime(howManyTimesPlayQuiz);
 			mListener.getGameData().setCountHowManyTimePlay(howManyTimesPlayQuiz);
 
 			count_question_completed = mListener.getGameData().getCountHowManyQuestionCompleted();

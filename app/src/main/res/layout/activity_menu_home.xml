@@ -38,7 +38,7 @@
             android:background="@drawable/button_blue"
             android:text="Soru Bankası" />
 
-        <!--sonra eklenecek
+
         <Button
             android:id="@+id/btnLearning"
             style="@style/style_btn_menu_button"
@@ -47,7 +47,7 @@
             android:background="@drawable/button_blue"
             android:layout_marginTop="10dp"
             android:text="Soru Cevap" />
-        sonra eklenecek-->
+
 
         <Button
             android:id="@+id/btnGuncelKanunlar"

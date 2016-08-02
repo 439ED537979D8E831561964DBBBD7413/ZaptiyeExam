@@ -33,6 +33,7 @@ import com.google.android.gms.games.snapshot.Snapshots;
 import com.google.android.gms.plus.Plus;
 import com.google.example.games.basegameutils.BaseGameActivity;
 import com.zaptiye.quiz.bean.GameData;
+import com.zaptiye.quiz.bean.GameDataAof;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,14 +53,16 @@ import java.util.Random;
  *
  */
 public class MenuHomeScreenActivity extends BaseGameActivity implements
-		View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,  QuizPlayActivity.Listener, QuizCompletedActivity.Listener{
+		View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,  QuizPlayActivity.Listener, QuizCompletedActivity.Listener,QuizCompletedActivityAof.Listener,QuizPlayActivityAof.Listener{
 
-	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp,btnGuncelKanunlar;
+	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp,btnGuncelKanunlar,btnAof;
 
 	/** The interstitial ad. */
 	public static final String PREFS_NAME = "preferences";
+	public static final String PREFS_NAME_AOF = "preferencesAof";
 	private static final String DATABASE_NAME = "database.db";
 	 public static final String myshareprefkey = "quizpower";
+	public static final String myshareprefkeyAof = "quizpowerAof";
 	 
 	 public static final String SOUND_EFFECT = "sound_effect";
 	 public static final String VIBRATION = "vibration";
@@ -81,8 +84,11 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 	 
 	 QuizPlayActivity quizPlayActivity;
 	 SharedPreferences settings;
+	SharedPreferences settingsAof;
 	 QuizPlayActivity mQuizPlayFragment;
+	QuizPlayActivityAof aofSorulari;
 	 QuizCompletedActivity quizCompletedFragment;
+	QuizCompletedActivityAof quizCompletedFragmentAof;
 	 private static final int OUR_STATE_KEY = 2;
 	 
 	 Context context;
@@ -92,6 +98,7 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 	 
 	 ProgressDialog progress;
 	 private GameData gameData;
+	private GameDataAof gameDataAof;
 	 private final Handler mHandler = new Handler();
 	 
 	// Request code used to invoke sign in user interactions.
@@ -138,9 +145,11 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 		setContentView(R.layout.activity_menu_home);
 		 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		context = getApplicationContext();
-				
+
 		settings = getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
-		gameData = new GameData(settings,myshareprefkey);
+		settingsAof=getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME_AOF, 0);
+		gameData = new GameData(settings, myshareprefkey);
+		gameDataAof=new GameDataAof(settingsAof,myshareprefkeyAof);
 		// Create the Google Api Client with access to Plus and Games
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -156,8 +165,8 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 		btnLeaderboard = (Button) findViewById(R.id.btnLeaderboard);
 		btnLeaderboard.setOnClickListener(this);
 		
-		btnAchievement = (Button) findViewById(R.id.btnAchievement);
-		btnAchievement.setOnClickListener(this);
+		//btnAchievement = (Button) findViewById(R.id.btnAchievement);
+		//btnAchievement.setOnClickListener(this);
 		btnLearning = (Button)findViewById(R.id.btnLearning);
 		btnLearning.setOnClickListener(this);
 		
@@ -172,20 +181,28 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 
 		btnGuncelKanunlar= (Button) findViewById(R.id.btnGuncelKanunlar);
 		btnGuncelKanunlar.setOnClickListener(this);
-		
-		
+
+		btnAof= (Button) findViewById(R.id.btnAof);
+		btnAof.setOnClickListener(this);
+
 		mQuizPlayFragment = new QuizPlayActivity();
 		mQuizPlayFragment.setListener(this);
+
+		aofSorulari=new QuizPlayActivityAof();
+		aofSorulari.setListener(this);
 		
 		quizCompletedFragment = new QuizCompletedActivity();
 		 quizCompletedFragment.setListener(this);
+
+		quizCompletedFragmentAof=new QuizCompletedActivityAof();
+		quizCompletedFragmentAof.setListener(this);
 
 		checkDB();
 
 		findViewById(R.id.sign_in_button).setOnClickListener(this);
 		findViewById(R.id.sign_out_button).setOnClickListener(this);
 		
-	  	    progress = new ProgressDialog(this);
+		progress = new ProgressDialog(this);
         progress.setTitle("Please Wait!!");
         progress.setMessage("Data Loading..");
         progress.setCancelable(false);
@@ -230,7 +247,30 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 			progress.dismiss();
 		    }
 		};
-		
+
+
+	//?NTERNET ER???M? VARMI YOKMU KONTROL ET
+	public boolean internetErisimi() {
+
+		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		if (conMgr.getActiveNetworkInfo() != null
+
+				&& conMgr.getActiveNetworkInfo().isAvailable()
+
+				&& conMgr.getActiveNetworkInfo().isConnected()) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -252,12 +292,16 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 				startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),RC_UNUSED);
 			}
 			break;
+
+		/*
 		case R.id.btnAchievement:
 			if (isSignedIn()) {
 				//unlockAchievement(R.string.achievement_polis_memuru3, "Polis Memuru 3");
 				startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),RC_UNUSED);
 			}
 			break;
+
+			*/
 		case R.id.btnLearning:
 			Intent intPlay = new Intent(this, LevelActivity.class);
 			startActivity(intPlay);
@@ -278,6 +322,14 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 			case R.id.btnGuncelKanunlar:
 				Intent kanunlar=new Intent(this,GuncelKanunlar.class);
 				startActivity(kanunlar);
+				break;
+
+			case R.id.btnAof:
+				if (internetErisimi()) {
+					getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
+				}else{
+					Toast.makeText(getApplicationContext(), "L?tfen internete ba?lan?n?z", Toast.LENGTH_LONG).show();
+				}
 				break;
 		}
 		if (v.getId() == R.id.sign_in_button) {
@@ -509,6 +561,10 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 			return this.gameData;
 		}
 
+	public GameDataAof getGameDataAof(){
+		return this.gameDataAof;
+	}
+
 		@Override
 		public void saveDataToCloud() {
 			saveToCloud();
@@ -518,6 +574,10 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 		public QuizCompletedActivity getQuizCompletedFragment() {
 			return quizCompletedFragment;
 		}
+
+	public QuizCompletedActivityAof getQuizCompletedFragmentAof(){
+		return quizCompletedFragmentAof;
+	}
 
 		
 		public boolean isConnectingToInternet(){
@@ -542,7 +602,13 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 			getSupportFragmentManager().popBackStack();
 			getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mQuizPlayFragment ).addToBackStack( "tag" ).commit();
 		}
-		
+
+	public void playAgainAof(){
+
+		getSupportFragmentManager().popBackStack();
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
+	}
+
 		
 		@Override
 		public void onConnected(Bundle connectionHint) {

@@ -88,21 +88,10 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		
 		Intent intent = this.getIntent();
 		levelNo = intent.getExtras().getInt("level_no");
-		Resources ress = getResources();
-		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb); 
-		if(isQuestionFromWeb){
-			progress = new ProgressDialog(this);
-	        progress.setTitle("Please Wait!!");
-	        progress.setMessage("Data Loading..");
-	        progress.setCancelable(false);
-	        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-	        progress.show();
-			LoadQuestions task = new LoadQuestions();
-			task.execute(new String[] { ress.getString(R.string.get_question_right_answare)+levelNo });
-		}else{
+
 			questionHandler = new QuestionHandler(getPackageName(),levelNo);
 			nextQuizQuestion();
-		}
+
 		
 		mainlayout=(ScrollView)findViewById(R.id.scroll_layout);
 		mainlayout.setOnTouchListener(this);

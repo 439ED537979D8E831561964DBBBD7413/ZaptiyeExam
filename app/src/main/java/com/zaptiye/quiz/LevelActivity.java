@@ -52,7 +52,7 @@ public class LevelActivity extends Activity {
 		questions = new ArrayList<SingleAnswareLevelInfo>();
 		QuestionsDAO questionDao = new QuestionsDAO(getPackageName());
 		Resources ress = getResources();
-		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb); 
+		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb);
 		if(isQuestionFromWeb){
 			progress = new ProgressDialog(this);
 	        progress.setTitle("Please Wait!!");

@@ -204,6 +204,12 @@
             android:label="@string/title_activity_eodt" >
         </activity>
 
+        <activity
+            android:name=".LevelBitti"
+            android:label="@string/title_activity_level_bitti">
+
+        </activity>
+
 
         <!-- Google Play Service -->
         <meta-data android:name="com.google.android.gms.version"

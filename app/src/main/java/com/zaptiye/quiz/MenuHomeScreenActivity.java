@@ -147,10 +147,10 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
         btnPlay = (Button) findViewById(R.id.btnPlay);
         btnPlay.setOnClickListener(this);
 
-        /*
+
         btnLearning = (Button) findViewById(R.id.btnLearning);
         btnLearning.setOnClickListener(this);
-        */
+
 
         btnGuncelKanunlar = (Button) findViewById(R.id.btnGuncelKanunlar);
         btnGuncelKanunlar.setOnClickListener(this);
@@ -242,13 +242,13 @@ public class MenuHomeScreenActivity extends FragmentActivity implements
                     Toast.makeText(getApplicationContext(), "Lütfen internete baðlanýnýz", Toast.LENGTH_LONG).show();
                 }
                 break;
-            /*
+
             case R.id.btnLearning:
                 Intent intPlay = new Intent(this, LevelActivity.class);
                 startActivity(intPlay);
                 break;
 
-                */
+
 
             case R.id.btnGuncelKanunlar:
                 Intent kanunlar = new Intent(this, GuncelKanunlar.class);

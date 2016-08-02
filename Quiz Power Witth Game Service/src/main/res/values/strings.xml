@@ -20,6 +20,7 @@
     <!-- <string name="get_number_of_level">http://arkayapps.com/quizpower/getnumberoflevel.php</string> -->
     <string name="get_level_info">http://cunediogluyazilim.com/ahmet/getleveliinfo.php</string>
 
+    <string name="question_bank_url_aof">http://cunediogluyazilim.com/ahmet_aof/getquestionwithoptionbylevelid.php?levelid=</string>
     <string name="icon_url"> https://lh3.googleusercontent.com/-GifeEujNvJQ/VHQIh5OvzsI/AAAAAAAAAmk/jTw7I86i4x4/s128/icon_80.png</string>
 
 
@@ -78,6 +79,8 @@
     <string name="twitter_url">https://twitter.com/@Arkayapps</string>
 
     <string name="title_activity_guncel_kanunlar">GuncelKanunlar</string>
+
+    <string name="title_activity_level_bitti">Level Bitti</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_anayasa">Anayasa</string>
