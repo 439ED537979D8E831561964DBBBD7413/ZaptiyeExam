@@ -57,7 +57,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	private boolean isSoundEffect;
 	private boolean isVibration;
 
-	private int NO_OF_QUESTION = 2;
+	private int NO_OF_QUESTION = 20;
 	private int totalScore=0;
 	private int score=0;
 	private int correctQuestion=0;
@@ -366,9 +366,9 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			}
 			
 		}else{
-			mHandler.postDelayed(mUpdateUITimerTask, 2 * 10);
+			mHandler.postDelayed(mUpdateUITimerTask, 5 * 10);
 		}
-		mHandler.postDelayed(mUpdateUITimerTask, 2 * 1000);
+		mHandler.postDelayed(mUpdateUITimerTask, 5 * 1000);
 		txtScore.setText(""+totalScore);
 		
 	}
@@ -447,7 +447,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			//editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
 			editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 			
-		if(correctQuestion>=1){
+		if(correctQuestion>=15){
 			unlockLevelCompletedAchivement(levelNo);
 			levelNo++;
 			editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
