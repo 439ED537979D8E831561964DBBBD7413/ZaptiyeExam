@@ -20,7 +20,7 @@ public class Anayasa extends Activity {
 
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1Z1Q-IoQcRQgPifbzuvfxa2dLALo4GRMFXJEOqWQM0QE/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1PLpu0pt3d4aUoZDu1YxzB5r230qZwrlLrGbumtcCn-4/edit#");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

@@ -18,7 +18,7 @@ public class Siyasi extends Activity {
         setContentView(R.layout.kanunlar_siyasi);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1UcaRJZFqIcdqskoEJX-8yiJA65561tT8Ui9S-7GUQMw/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1_w-p70xheSvBPMtYd9iuZL4YdX8KkTBCyhg72ESqLbg/edit#");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

@@ -122,8 +122,8 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 
 			alert.setView(input);
 
-			alert.setTitle("Jump Question: ").setMessage("Question No:").setPositiveButton(
-					"Go", new DialogInterface.OnClickListener() {
+			alert.setTitle("Soruya Git: ").setMessage("Soru numara:").setPositiveButton(
+					"Git", new DialogInterface.OnClickListener() {
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
@@ -139,7 +139,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 							}
 							
 						}
-					}).setNegativeButton("Cancel",
+					}).setNegativeButton("Kapat",
 					new DialogInterface.OnClickListener() {
 
 						@Override

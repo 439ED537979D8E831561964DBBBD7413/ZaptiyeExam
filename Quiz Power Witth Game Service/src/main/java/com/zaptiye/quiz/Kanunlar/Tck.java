@@ -19,7 +19,7 @@ public class Tck extends Activity {
 
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1wmXG2UeSsQZvsqTDrxAI-X4Uhr4Fra5pZAT3DUDUvMk/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1QilM29C2cmGpgWnN6XH9yFT-wuvx4rsKeS7dNEsSbZs/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

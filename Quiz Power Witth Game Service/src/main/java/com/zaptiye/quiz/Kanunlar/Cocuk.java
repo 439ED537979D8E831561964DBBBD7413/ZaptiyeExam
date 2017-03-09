@@ -18,7 +18,7 @@ public class Cocuk extends Activity {
         setContentView(R.layout.kanunlar_cocuk);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1PINKTmNdQ91eMG3JGRI3upnNOv5InZyXpS5Fjh7-stw/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1xMaQivRU1HFUcVqQomp9PA9PrGNAuhWdNncEk0cX_PM/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

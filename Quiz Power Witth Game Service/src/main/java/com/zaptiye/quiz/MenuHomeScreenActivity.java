@@ -55,7 +55,7 @@ import java.util.Random;
 public class MenuHomeScreenActivity extends BaseGameActivity implements
 		View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,  QuizPlayActivity.Listener, QuizCompletedActivity.Listener,QuizCompletedActivityAof.Listener,QuizPlayActivityAof.Listener{
 
-	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp,btnGuncelKanunlar,btnAof;
+	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp,btnGuncelKanunlar,btnAof,btnDenemeler;
 
 	/** The interstitial ad. */
 	public static final String PREFS_NAME = "preferences";
@@ -159,9 +159,12 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
                 .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
                 .build();
         
-		
+		btnDenemeler= (Button) findViewById(R.id.btnDenemeler);
+		btnDenemeler.setOnClickListener(this);
+
 		btnPlay = (Button) findViewById(R.id.btnPlay);
 		btnPlay.setOnClickListener(this);
+
 		btnLeaderboard = (Button) findViewById(R.id.btnLeaderboard);
 		btnLeaderboard.setOnClickListener(this);
 		
@@ -302,6 +305,12 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
 			break;
 
 			*/
+
+			case R.id.btnDenemeler:
+				Intent denemeler = new Intent(this, Denemeler.class);
+				startActivity(denemeler);
+				break;
+
 		case R.id.btnLearning:
 			Intent intPlay = new Intent(this, LevelActivity.class);
 			startActivity(intPlay);
@@ -531,6 +540,7 @@ public class MenuHomeScreenActivity extends BaseGameActivity implements
      */
 	@Override
     public void updateLeaderboards(int finalScore) {
+
 		if (isSignedIn()) {
 	    	if (finalScore >= 0) {
 	            Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_lider_tahtas),

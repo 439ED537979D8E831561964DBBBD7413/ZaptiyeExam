@@ -1,1 +1,1 @@
-include ':app', ':Quiz Power Witth Game Service', ':BaseGameUtil'
+include ':Quiz Power Witth Game Service', ':BaseGameUtil'

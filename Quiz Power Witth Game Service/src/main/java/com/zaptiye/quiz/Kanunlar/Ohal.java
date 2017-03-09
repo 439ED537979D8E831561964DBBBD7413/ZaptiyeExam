@@ -18,7 +18,7 @@ public class Ohal extends Activity {
         setContentView(R.layout.kanunlar_ohal);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1Qa-WDWDjNTCjoWV7CP33vDT2iIHP1SHBzIb1yV5Hyrw/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1P_I8pXj64PQnrHgYueqeache3cABjq_aa01Gh5-CeUw/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

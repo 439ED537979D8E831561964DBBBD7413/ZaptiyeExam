@@ -18,7 +18,7 @@ public class Pasaport extends Activity {
         setContentView(R.layout.kanunlar_pasaport);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1BJPRsrVbjSJZbm3Vs-4cr0AuNN529vimVXjqEekT-o8/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1D3uTN1YkI7lZzsWvSNmSgNYULX0Kzc76crsW_GV5V6Q/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

@@ -18,7 +18,7 @@ public class Dilekce extends Activity {
         setContentView(R.layout.kanunlar_dilekce);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1NJiYL3InCepYCSBjU76HL2__Sr0j4feGwNEanBb9c5o/edit");
+        webView.loadUrl("https://docs.google.com/document/d/15sCrNqGWpnT2zhnWUrxx40IkWkBV941ocmZRm2Q89Ko/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

@@ -27,6 +27,20 @@
             android:layout_marginBottom="@dimen/top_panel_margin"
             android:text="1/20" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/style_question_index"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="140dp"
+            android:id="@+id/bildir"
+            android:background="@drawable/background_score"
+            android:layout_marginTop="@dimen/top_panel_margin"
+            android:layout_marginBottom="@dimen/top_panel_margin"
+            android:text="Bildir"/>
+
+
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
@@ -71,7 +85,7 @@
             style="@style/style_question" />
     </RelativeLayout>
 
-    <ScrollView 
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
@@ -79,17 +93,15 @@
         android:layout_below="@+id/layout_answare"
         android:layout_marginLeft="@dimen/option_left_right_margin"
         android:layout_marginRight="@dimen/option_left_right_margin"
-        android:layout_marginTop="@dimen/top_margin_option"
-        android:layout_above="@+id/ads_layout"
-        >
+        android:layout_marginTop="@dimen/top_margin_option">
    <LinearLayout
         android:id="@+id/ads_layoutdd"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 
-        
+
         android:orientation="vertical" >
-        
+
        <Button
                 android:id="@+id/btnOpt1"
                 style="@style/style_btn_answare_option"
@@ -102,7 +114,7 @@
                 android:padding="@dimen/option_button_padding"
                 android:layout_marginTop="@dimen/top_margin_option"
                 android:text="" />
-       
+
               <Button
                 android:id="@+id/btnOpt2"
                 style="@style/style_btn_answare_option"
@@ -115,7 +127,7 @@
                 android:padding="@dimen/option_button_padding"
                  android:layout_marginTop="@dimen/top_margin_option"
                 android:text="" />
-              
+
                             <Button
                 android:id="@+id/btnOpt3"
                 style="@style/style_btn_answare_option"
@@ -128,7 +140,7 @@
                  android:layout_marginTop="@dimen/top_margin_option"
                 android:padding="@dimen/option_button_padding"
                 android:text="" />
-       
+
                                           <Button
                 android:id="@+id/btnOpt4"
                 style="@style/style_btn_answare_option"
@@ -141,10 +153,12 @@
                  android:layout_marginTop="@dimen/top_margin_option"
                 android:padding="@dimen/option_button_padding"
                 android:text="" />
-       
+
+
+
     </LinearLayout>
     </ScrollView>
-    
+
     <!-- <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
@@ -390,7 +404,8 @@
               android:src="@drawable/wronge_mark_1" />
 
      </RelativeLayout>
-    
 
-    
+
+
+
 </RelativeLayout>

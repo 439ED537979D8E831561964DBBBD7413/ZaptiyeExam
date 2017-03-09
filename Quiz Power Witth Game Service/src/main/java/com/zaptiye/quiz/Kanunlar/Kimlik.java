@@ -18,7 +18,7 @@ public class Kimlik extends Activity {
         setContentView(R.layout.kanunlar_kimlik);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1qfcagigtaHGAHVnb1wHAk6gxXZBRab04lK3bj_C7hAA/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1APrJci_yjrQOPwfmIXz6NcJYRTfQlqCEmnnvgVO9iQ8/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

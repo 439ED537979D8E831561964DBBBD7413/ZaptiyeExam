@@ -2,6 +2,7 @@ package com.zaptiye.quiz;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.AudioManager;
@@ -23,6 +24,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zaptiye.quiz.bean.GameData;
 import com.zaptiye.quiz.playquizbeans.PlayQuizLevel;
@@ -43,6 +45,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import io.doorbell.android.Doorbell;
 
 /**
  * Quiz activity, on This screen user play quiz with four option. 
@@ -57,7 +60,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	private boolean isSoundEffect;
 	private boolean isVibration;
 
-	private int NO_OF_QUESTION = 20;
+	private int NO_OF_QUESTION = 10;
 	private int totalScore=0;
 	private int score=0;
 	private int correctQuestion=0;
@@ -65,8 +68,8 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	
 	
 	private TextView quizImage;
-	private Button btnOpt1, btnOpt2, btnOpt3, btnOpt4;
-	private TextView txtQuestion, txtScore, txtLevel;
+	private Button btnOpt1, btnOpt2, btnOpt3, btnOpt4, bildir;
+	private TextView txtQuestion, txtScore, txtLevel,txtid;
 	private SharedPreferences settings;
 	boolean isSoundOn=false;
 	private Animation animation;
@@ -102,9 +105,11 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	            Bundle savedInstanceState) {
 	        v = inflater.inflate(R.layout.fragment_quiz_play, container, false);
-	        final int[] CLICKABLES = new int[] {
+
+
+	         final int[] CLICKABLES = new int[] {
 	                R.id.btnOpt1, R.id.btnOpt2,
-	                R.id.btnOpt3,R.id.btnOpt4
+	                R.id.btnOpt3,R.id.btnOpt4,R.id.bildir
 	        };
 	        for (int i : CLICKABLES) {
 	            v.findViewById(i).setOnClickListener(this);
@@ -202,6 +207,8 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 		btnOpt2.setClickable(true);
 		btnOpt3.setClickable(true);
 		btnOpt4.setClickable(true);
+		//bildir.setClickable(true);
+
 
 		/*btnOpt1.setTextColor(getResources().getColor(R.color.text_color));
 		btnOpt2.setTextColor(getResources().getColor(R.color.text_color));
@@ -225,6 +232,8 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 	        btnOpt2.setText(""+options.get(1).trim());
 	        btnOpt3.setText(""+options.get(2).trim());
 	        btnOpt4.setText(""+options.get(3).trim());
+
+
 		}
 		
 		btnOpt1.startAnimation(animationFromLeft);
@@ -259,6 +268,55 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
+
+
+        //doorbell kısmını buraya ekledim
+
+		switch (v.getId()){
+			case R.id.bildir:
+
+				// In your activity
+				int appId = 5783; // Replace with your application's ID
+				String apiKey = "d8LSxl0dS1SILDySmhyBD6iPsZzShAIY2opcbe5ZGYP1MTsnimNkpcHsvtWoeZl1"; // Replace with your application's API key
+				Doorbell doorbellDialog = new Doorbell(getActivity(), appId, apiKey); // Create the Doorbell object
+
+				doorbellDialog.setEmail(""); // Prepopulate the email address field
+				//doorbellDialog.setName("Philip Manavopoulos"); // Set the name of the user (if known)
+				doorbellDialog.addProperty("loggedIn", true); // Optionally add some properties
+				//doorbellDialog.addProperty("username", 'manavo');
+				doorbellDialog.addProperty("loginCount", 123);
+				doorbellDialog.setEmailHint("Email adresiniz");
+				doorbellDialog.setMessageHint("Lütfen soru ile ilgili açıklama yapınız. Level kaç ve içerik gibi.. ?");
+				doorbellDialog.setPositiveButtonText("Yolla");
+				doorbellDialog.setTitle("Bildirim");
+				doorbellDialog.setNegativeButtonText("Kapat");
+
+
+				doorbellDialog.setEmailFieldVisibility(View.VISIBLE); // Hide the email field, since we've filled it in already
+				doorbellDialog.setPoweredByVisibility(View.GONE); // Hide the "Powered by Doorbell.io" text
+
+				// Callback for when a message is successfully sent
+				doorbellDialog.setOnFeedbackSentCallback(new io.doorbell.android.callbacks.OnFeedbackSentCallback() {
+					@Override
+					public void handle(String message) {
+						// Show the message in a different way, or use your own message!
+						Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+					}
+				});
+
+				// Callback for when the dialog is shown
+				doorbellDialog.setOnShowCallback(new io.doorbell.android.callbacks.OnShowCallback() {
+					@Override
+					public void handle() {
+						Toast.makeText(getContext(), "Dialog acildi", Toast.LENGTH_LONG).show();
+					}
+				});
+
+				doorbellDialog.show();
+
+				break;
+
+		}
 		
 		if(quextionIndex<level.getNoOfQuestion()){
 			btnOpt1.setClickable(false);
@@ -266,6 +324,11 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			btnOpt3.setClickable(false);
 			btnOpt4.setClickable(false);
 			switch(v.getId()){
+
+
+
+
+
 			case R.id.btnOpt1:
 				if(btnOpt1.getText().toString().trim().equalsIgnoreCase(level.getQuestion().get(quextionIndex).getTrueAns().trim())){
 					quextionIndex++;
@@ -366,9 +429,9 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			}
 			
 		}else{
-			mHandler.postDelayed(mUpdateUITimerTask, 5 * 10);
+			mHandler.postDelayed(mUpdateUITimerTask, 4 * 10);
 		}
-		mHandler.postDelayed(mUpdateUITimerTask, 5 * 1000);
+		mHandler.postDelayed(mUpdateUITimerTask, 4 * 1000);
 		txtScore.setText(""+totalScore);
 		
 	}
@@ -447,7 +510,7 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			//editor.putInt(MenuHomeScreenActivity.TOTAL_SCORE, totalScore);
 			editor.putInt(MenuHomeScreenActivity.LAST_LEVEL_SCORE, score);
 			
-		if(correctQuestion>=15){
+		if(correctQuestion>=7){
 			unlockLevelCompletedAchivement(levelNo);
 			levelNo++;
 			editor.putBoolean(MenuHomeScreenActivity.IS_LAST_LEVEL_COMPLETED, true);
@@ -508,6 +571,8 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 			
 			txtLevel = (TextView)v.findViewById(R.id.txtLevel);
 			txtLevel.setText(getString(R.string.level)+": "+levelNo);
+
+
 			
 			btnOpt1 = (Button)v.findViewById(R.id.btnOpt1);
 			btnOpt2 = (Button)v.findViewById(R.id.btnOpt2);
@@ -705,7 +770,9 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 				}
 				try {
 					playQuizquestions = new ArrayList<PlayQuizQuestion>();
+
 					JSONArray users = new JSONArray(questionJson);
+                    String jsonResponse = "";
 					for (int i = 0; i < users.length(); i++) {
 						JSONObject c = users.getJSONObject(i);
 						PlayQuizQuestion tempQuestion = new PlayQuizQuestion(c.getString("question"));
@@ -713,8 +780,21 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 						tempQuestion.addOption(c.getString("optionb"));
 						tempQuestion.addOption(c.getString("optionc"));
 						tempQuestion.addOption(c.getString("optiond"));
+                        //tempQuestion.addOption(c.getString("qid"));
 						String rightAns = c.getString("rightans");
-		         		
+
+                        String quesid=c.getString("qid");
+
+                        jsonResponse += "Name: " + quesid + "\n\n";
+
+                      //  txtid.setText(jsonResponse);
+
+                       //int id=c.getInt("qid");
+
+
+
+
+
 		         		if(rightAns.equalsIgnoreCase("A")){
 		         			tempQuestion.setTrueAns(c.getString("optiona"));
 		         		}else if(rightAns.equalsIgnoreCase("B")){
@@ -731,8 +811,12 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 					level = new PlayQuizLevel(levelNo,NO_OF_QUESTION,getActivity());
 					Collections.shuffle(playQuizquestions);
 					level.setQuestion(playQuizquestions);
-					
-				} catch (JSONException e) {
+
+				}
+
+
+
+                catch (JSONException e) {
 					Log.e("JSON Parser", "Error parsing data" + e.toString());
 				}
 			}
@@ -741,6 +825,8 @@ public class QuizPlayActivity  extends Fragment  implements OnClickListener{
 
 		@Override
 		protected void onPostExecute(String result) {
+
+
 			if(playQuizquestions.size()<=0){
 				level = new PlayQuizLevel(levelNo,NO_OF_QUESTION,getActivity());
 				level.setQuestionRendomFromDatabase();

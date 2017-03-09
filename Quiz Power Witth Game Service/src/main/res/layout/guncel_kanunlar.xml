@@ -315,7 +315,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_blue"
             style="@style/style_btn_menu_button"
-            android:text="E.Ö.D.T"
+            android:text="682 Sayılı K.H.K"
             android:id="@+id/eodt"
             android:layout_below="@+id/aile"
             android:layout_centerHorizontal="true"

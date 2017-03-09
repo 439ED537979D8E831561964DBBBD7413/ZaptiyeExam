@@ -27,6 +27,7 @@ public class PlayQuizQuestion {
 	
 	public boolean addOption(String option){
 		return this.options.add(option);
+		
 	}
 	
 
@@ -51,8 +52,7 @@ public class PlayQuizQuestion {
 	public String toString() {
 		return "Question: "+ question +" OptionS: "+options;
 	}
-	
-	
-	
-		
+
+
+
 }

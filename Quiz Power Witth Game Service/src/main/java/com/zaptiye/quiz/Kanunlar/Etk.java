@@ -18,7 +18,7 @@ public class Etk extends Activity {
         setContentView(R.layout.kanunlar_etk);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/15Tya-dH-Dj9r3FhzP4mZ599K8j8BApjEPK_GE762fOA/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1MMeojukBRLm5OcYR-O2csPArzmI0PAaMeYJfX89ZlBI/edit#");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

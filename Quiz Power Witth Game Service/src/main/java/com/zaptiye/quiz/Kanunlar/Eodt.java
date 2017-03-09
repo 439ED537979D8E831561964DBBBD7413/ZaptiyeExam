@@ -18,7 +18,7 @@ public class Eodt extends Activity {
         setContentView(R.layout.kanunlar_eodt);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1tO8nD2HXQbxr8g0Pir5Ig8Yhc3ewo2LoTImBsDH6Icg/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1X-rZeUS2TdKIS9QOO6lre2mY7H7M5dp8hmDdoVtYqIA/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

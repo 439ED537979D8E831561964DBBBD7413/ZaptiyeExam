@@ -18,7 +18,7 @@ public class Kabahatler extends Activity {
         setContentView(R.layout.kanunlar_kabahatler);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1KZ_3RymvWmYkk776YT5Zig5ySRoFUJoMeLm10KoZVOQ/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1PuhtIF0CgGUzBfZt3KSjrY87-rCc2zhA5v0_qMVYOKE/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

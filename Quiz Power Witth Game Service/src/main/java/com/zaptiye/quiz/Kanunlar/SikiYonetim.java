@@ -18,7 +18,7 @@ public class SikiYonetim extends Activity {
         setContentView(R.layout.kanunlar_siki_yonetim);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1ZxUqtRoNy18yGBDE3KMzEqnw3OXkXxzoxprqNHfbQH0/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1Ld2b2G3paI-Jz0OgNPyrQc2LQBSQwrDftcl_L6dPMMc/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);
