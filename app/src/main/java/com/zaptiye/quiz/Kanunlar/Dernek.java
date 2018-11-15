@@ -18,7 +18,7 @@ public class Dernek extends Activity {
         setContentView(R.layout.kanunlar_dernek);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/19gaCLB3QsCGP15yU1H1xL2AKwb-HKygzYs6OnPY-vU8/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1Bjh17Rw9UCqMIPVXyVX_SegvEKl30JyPupnA-kqz9dc/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

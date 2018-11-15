@@ -18,7 +18,7 @@ public class Tanik extends Activity {
         setContentView(R.layout.kanunlar_tanik);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1vhGS_r0WtdFqLYgiqmZPlOi5SqN3Z1B7ciaAvYG41hU/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1ffLdbu58JjNY1B7LVqWMWDMY1yroRSKZO9thwtL5NsA/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

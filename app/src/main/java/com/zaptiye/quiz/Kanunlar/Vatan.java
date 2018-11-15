@@ -18,7 +18,7 @@ public class Vatan extends Activity {
         setContentView(R.layout.kanunlar_vatan);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1knmxj-nWtIIGB864GoBqIBEIe60Z22wP6xpflPwQnbU/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1TfqVSJkizyx-ZAKyuBWUvenW-sy3lS_r2ICqD1UYMYE/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

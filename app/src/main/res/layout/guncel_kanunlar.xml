@@ -2,326 +2,325 @@
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_theme_color"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.zaptiye.quiz.GuncelKanunlar">
 
-    android:background="@color/app_theme_color"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.zaptiye.quiz.GuncelKanunlar">
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            style="@style/style_btn_menu_button"
+            android:background="@drawable/button_blue"
+            android:text="ANAYASA"
+            android:id="@+id/btnAnayasa"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        style="@style/style_btn_menu_button"
-        android:background="@drawable/button_blue"
-        android:text="ANAYASA"
-        android:id="@+id/btnAnayasa"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="TCK"
+            android:id="@+id/btnTck"
+            android:layout_below="@+id/btnAnayasa"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_blue"
-    style="@style/style_btn_menu_button"
-    android:text="TCK"
-    android:id="@+id/btnTck"
-    android:layout_below="@+id/btnAnayasa"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="CMK"
+            android:id="@+id/btnCmk"
+            android:layout_below="@+id/btnTck"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="CMK"
-        android:id="@+id/btnCmk"
-        android:layout_below="@+id/btnTck"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="PVSK"
+            android:id="@+id/btnPvsk"
+            android:layout_below="@+id/btnCmk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="PVSK"
-        android:id="@+id/btnPvsk"
-        android:layout_below="@+id/btnCmk"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="ETK"
+            android:id="@+id/btnEtk"
+            android:layout_below="@+id/btnPvsk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="ETK"
-        android:id="@+id/btnEtk"
-        android:layout_below="@+id/btnPvsk"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Dilekçe Kanunu"
+            android:id="@+id/btnDilekce"
+            android:layout_below="@+id/btnEtk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Dilekçe Kanunu"
-        android:id="@+id/btnDilekce"
-        android:layout_below="@+id/btnEtk"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Bilgi Edinme Kanunu"
+            android:id="@+id/btnBilgiEdinme"
+            android:layout_below="@+id/btnDilekce"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Bilgi Edinme Kanunu"
-        android:id="@+id/btnBilgiEdinme"
-        android:layout_below="@+id/btnDilekce"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Kabahatler"
+            android:id="@+id/btnKabahat"
+            android:layout_below="@+id/btnBilgiEdinme"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Kabahatler"
-        android:id="@+id/btnKabahat"
-        android:layout_below="@+id/btnBilgiEdinme"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Çocuk Koruma Kanunu"
+            android:id="@+id/btnCocuk"
+            android:layout_below="@+id/btnKabahat"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Çocuk Koruma Kanunu"
-        android:id="@+id/btnCocuk"
-        android:layout_below="@+id/btnKabahat"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Kimlik Bildirme Kanunu"
+            android:id="@+id/kimlik"
+            android:layout_below="@+id/btnCocuk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_blue"
-    style="@style/style_btn_menu_button"
-    android:text="Kimlik Bildirme Kanunu"
-    android:id="@+id/kimlik"
-    android:layout_below="@+id/btnCocuk"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Toplantı ve Gösteri"
+            android:id="@+id/toplanti"
+            android:layout_below="@+id/kimlik"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Toplantı ve Gösteri"
-        android:id="@+id/toplanti"
-        android:layout_below="@+id/kimlik"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_blue"
-    style="@style/style_btn_menu_button"
-    android:text="Dernekler Kanunu"
-    android:id="@+id/dernekler"
-    android:layout_below="@+id/toplanti"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="39dp" />
-
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Vatandaşlık Kanunu"
-        android:id="@+id/vatan"
-        android:layout_below="@+id/dernekler"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Pasaport Kanunu"
-        android:id="@+id/pasaport"
-        android:layout_below="@+id/vatan"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_blue"
-    style="@style/style_btn_menu_button"
-    android:text="T.M.K"
-    android:id="@+id/tmk"
-    android:layout_below="@+id/pasaport"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Kaçakçılık Kanunu"
-        android:id="@+id/kacak"
-        android:layout_below="@+id/tmk"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Tanık Koruma Kanunu"
-        android:id="@+id/tanik"
-        android:layout_below="@+id/kacak"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Sporda Şiddet"
-        android:id="@+id/spor"
-        android:layout_below="@+id/tanik"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Ateşli Silahlar"
-        android:id="@+id/silah"
-        android:layout_below="@+id/spor"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Tebligat KANUNU"
-        android:id="@+id/teblig"
-        android:layout_below="@+id/silah"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Siyasi Partiler KANUNU"
-        android:id="@+id/siyasi"
-        android:layout_below="@+id/teblig"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="OHAL KANUNU"
-        android:id="@+id/ohal"
-        android:layout_below="@+id/siyasi"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="SIKIYÖNETİM KANUNU"
-        android:id="@+id/sikiyonetim"
-        android:layout_below="@+id/ohal"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="BAYRAK KANUNU"
-        android:id="@+id/bayrak"
-        android:layout_below="@+id/sikiyonetim"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Yardım Toplama Kanunu"
-        android:id="@+id/yardim"
-        android:layout_below="@+id/bayrak"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="Trafik Kanunu"
-        android:id="@+id/trafik"
-        android:layout_below="@+id/yardim"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
-
-    <Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_blue"
-    style="@style/style_btn_menu_button"
-    android:text="Kadına Karşı ŞİDDET"
-    android:id="@+id/aile"
-    android:layout_below="@+id/trafik"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="39dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_blue"
-        style="@style/style_btn_menu_button"
-        android:text="E.Ö.D.T"
-        android:id="@+id/eodt"
-        android:layout_below="@+id/aile"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Dernekler Kanunu"
+            android:id="@+id/dernekler"
+            android:layout_below="@+id/toplanti"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
 
 
-</RelativeLayout>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Vatandaşlık Kanunu"
+            android:id="@+id/vatan"
+            android:layout_below="@+id/dernekler"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Pasaport Kanunu"
+            android:id="@+id/pasaport"
+            android:layout_below="@+id/vatan"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="T.M.K"
+            android:id="@+id/tmk"
+            android:layout_below="@+id/pasaport"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Kaçakçılık Kanunu"
+            android:id="@+id/kacak"
+            android:layout_below="@+id/tmk"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Tanık Koruma Kanunu"
+            android:id="@+id/tanik"
+            android:layout_below="@+id/kacak"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Sporda Şiddet"
+            android:id="@+id/spor"
+            android:layout_below="@+id/tanik"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Ateşli Silahlar"
+            android:id="@+id/silah"
+            android:layout_below="@+id/spor"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Tebligat KANUNU"
+            android:id="@+id/teblig"
+            android:layout_below="@+id/silah"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Siyasi Partiler KANUNU"
+            android:id="@+id/siyasi"
+            android:layout_below="@+id/teblig"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="OHAL KANUNU"
+            android:id="@+id/ohal"
+            android:layout_below="@+id/siyasi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="SIKIYÖNETİM KANUNU"
+            android:id="@+id/sikiyonetim"
+            android:layout_below="@+id/ohal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="BAYRAK KANUNU"
+            android:id="@+id/bayrak"
+            android:layout_below="@+id/sikiyonetim"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Yardım Toplama Kanunu"
+            android:id="@+id/yardim"
+            android:layout_below="@+id/bayrak"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Trafik Kanunu"
+            android:id="@+id/trafik"
+            android:layout_below="@+id/yardim"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="Kadına Karşı ŞİDDET"
+            android:id="@+id/aile"
+            android:layout_below="@+id/trafik"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_blue"
+            style="@style/style_btn_menu_button"
+            android:text="682 Sayılı K.H.K"
+            android:id="@+id/eodt"
+            android:layout_below="@+id/aile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="39dp" />
+
+
+    </RelativeLayout>
 </ScrollView>

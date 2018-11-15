@@ -1,11 +1,11 @@
 package com.zaptiye.quiz.bean;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.SharedPreferences;
 
 import com.zaptiye.quiz.MenuHomeScreenActivity;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 /**
  * Game Data that will store on Google cloud.
  * You can add more data if we want that need to store on cloud. 
@@ -43,7 +43,7 @@ public class GameData {
     
 	private void loadFromString(String json) {
 		 if (json == null || json.trim().equals("")) return;
-
+		 
 		 try {
 	            JSONObject obj = new JSONObject(json);
 	            String format = obj.getString("version");
@@ -197,6 +197,6 @@ public class GameData {
 	}
 	
 	
-
+	
 	
 }

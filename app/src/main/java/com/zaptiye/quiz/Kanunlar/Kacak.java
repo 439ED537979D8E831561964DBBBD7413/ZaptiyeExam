@@ -18,7 +18,7 @@ public class Kacak extends Activity {
         setContentView(R.layout.kanunlar_kacak);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1ysPN8Hvl21xv1szFwpw5bdkcMLAkQkDxUKm5kk9wyLM/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1XBV1PvLB1pEN9IgYbzkuuJz2heH-grDcRszvPs-g3UM/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

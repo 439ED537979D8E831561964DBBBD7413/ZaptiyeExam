@@ -18,7 +18,7 @@ public class Toplanti extends Activity {
         setContentView(R.layout.kanunlar_toplanti);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1PqpM5iowOjoafJQIkeEHFNoaIcV6sV-xqBnKZZaQmBc/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1xWukCXQ2uIZB8FJa79m5S2O_zX8-EMwJxU5NDtU3F7Q/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

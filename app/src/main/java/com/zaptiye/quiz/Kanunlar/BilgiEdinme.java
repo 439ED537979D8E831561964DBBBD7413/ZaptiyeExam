@@ -18,7 +18,7 @@ public class BilgiEdinme extends Activity {
         setContentView(R.layout.kanunlar_bilgi_edinme);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1DwyvBw72KwiINS6_XpbgiZuF_ZBkmJRBMLa9QX8lNGE/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1Gu12WIh49y8YIWw87RRLjf4LWJVCuer9fBhO9a9M4nw/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

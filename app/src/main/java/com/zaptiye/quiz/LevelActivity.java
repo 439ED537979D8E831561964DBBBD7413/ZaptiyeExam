@@ -51,21 +51,10 @@ public class LevelActivity extends Activity {
 
 		questions = new ArrayList<SingleAnswareLevelInfo>();
 		QuestionsDAO questionDao = new QuestionsDAO(getPackageName());
-		Resources ress = getResources();
-		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb);
-		if(isQuestionFromWeb){
-			progress = new ProgressDialog(this);
-	        progress.setTitle("Please Wait!!");
-	        progress.setMessage("Data Loading..");
-	        progress.setCancelable(false);
-	        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-	        progress.show();
-			LoadQuestions task = new LoadQuestions();
-			task.execute(new String[] { ress.getString(R.string.get_level_info) });
-		}else{
+
 			questions = questionDao.getTotalSingleAnswareQuestionLevel();
 			setAllValue();
-		}
+
 		
 	}
 	

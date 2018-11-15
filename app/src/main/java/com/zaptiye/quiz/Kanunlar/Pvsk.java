@@ -18,7 +18,7 @@ public class Pvsk extends Activity {
         setContentView(R.layout.kanunlar_pvsk);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1ura5Gw_4DgQ9hTWrSfkkiJE1Lci2L_zTiBig-npLWO0/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1P21A27PnE9G88SQYj6Hvh3NzAhcjMHYmvFaLnCagcGk/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

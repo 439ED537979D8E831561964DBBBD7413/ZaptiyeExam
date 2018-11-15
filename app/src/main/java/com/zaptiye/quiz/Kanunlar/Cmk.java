@@ -18,7 +18,7 @@ public class Cmk extends Activity {
         setContentView(R.layout.kanunlar_cmk);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/1ZmyToD7Q_sQD0jSZEqMZFDs1PiSqCNZwjN6ppzp3D94/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1i34gTLnbEEj52mfYGJ48kD8zuwY6NH0jniuUg5kZWHA/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

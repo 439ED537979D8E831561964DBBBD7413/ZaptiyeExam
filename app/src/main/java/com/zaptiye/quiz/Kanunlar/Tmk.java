@@ -18,7 +18,7 @@ public class Tmk extends Activity {
         setContentView(R.layout.kanunlar_tmk);
 
         WebView webView = (WebView) findViewById(R.id.webview);
-        webView.loadUrl("https://docs.google.com/document/d/11KKq8VvWpgUyOtLWlRd3s4Z5efz8oUsWz5j9giKY2IQ/edit");
+        webView.loadUrl("https://docs.google.com/document/d/1R-b-_KsDdcjjs5xsD2X_ChHHQxRsS8DlXOAh6mIcfHw/edit");
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webView.getSettings().setLoadWithOverviewMode(true);

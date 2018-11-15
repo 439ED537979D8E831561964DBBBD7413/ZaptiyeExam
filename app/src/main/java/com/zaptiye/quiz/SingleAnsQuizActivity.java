@@ -18,14 +18,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.zaptiye.quiz.bean.Question;
 import com.zaptiye.quiz.bean.QuestionHandler;
 
@@ -57,8 +54,8 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 	private int currentQuestion=0;
 	private QuestionHandler questionHandler;
 	private int totalQuestion=0;
+	AdView adView;
 	private ProgressDialog progress;
-	private InterstitialAd interstitial;
 	String questionJson = "";
 	private List<Question> playQuizquestions =null;
 	 boolean isTestMode= false;
@@ -91,26 +88,13 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 		
 		Intent intent = this.getIntent();
 		levelNo = intent.getExtras().getInt("level_no");
-		Resources ress = getResources();
-		boolean isQuestionFromWeb = ress.getBoolean(R.bool.isQuestionFormWeb);
-		if(isQuestionFromWeb){
-			progress = new ProgressDialog(this);
-	        progress.setTitle("Please Wait!!");
-	        progress.setMessage("Data Loading..");
-	        progress.setCancelable(false);
-	        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-	        progress.show();
-			LoadQuestions task = new LoadQuestions();
-			task.execute(new String[] { ress.getString(R.string.get_question_right_answare)+levelNo });
-		}else{
+
 			questionHandler = new QuestionHandler(getPackageName(),levelNo);
 			nextQuizQuestion();
-		}
+
 		
 		mainlayout=(ScrollView)findViewById(R.id.scroll_layout);
 		mainlayout.setOnTouchListener(this);
-
-
 
 	}
 	@Override
@@ -138,8 +122,8 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 
 			alert.setView(input);
 
-			alert.setTitle("Jump Question: ").setMessage("Question No:").setPositiveButton(
-					"Go", new DialogInterface.OnClickListener() {
+			alert.setTitle("Soruya Git: ").setMessage("Soru numara:").setPositiveButton(
+					"Git", new DialogInterface.OnClickListener() {
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
@@ -155,7 +139,7 @@ public class SingleAnsQuizActivity extends Activity implements OnClickListener, 
 							}
 							
 						}
-					}).setNegativeButton("Cancel",
+					}).setNegativeButton("Kapat",
 					new DialogInterface.OnClickListener() {
 
 						@Override

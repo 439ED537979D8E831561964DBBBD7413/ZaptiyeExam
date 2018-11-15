@@ -48,8 +48,15 @@ View.OnClickListener {
 	private String appHashTag = "#quizranking";
 	public interface Listener {
 	    public void onStartGameRequested(boolean hardMode);
+	    public void onShowAchievementsRequested();
+	    public void onShowLeaderboardsRequested();
+	    public void onSignInButtonClicked();
+	    public void onSignOutButtonClicked();
+	    public void unlockAchievement(int achievementId, String fallbackString);
 	    public void displyHomeScreen();
+	    public void  updateLeaderboards(int finalScore);
 	    public GameData getGameData();
+	    public void saveDataToCloud();
 	    public void playAgain();
 	    
 	}
@@ -112,10 +119,10 @@ View.OnClickListener {
 		if(islevelcomplted){
 			levelNo--;
 			txtLevelHeading.setText(getActivity().getString(R.string.level)+" "+ levelNo +" "+  getActivity().getResources().getString(R.string.finished));
-			btnPlayAgain.setText("Sonra ki Level");
+			btnPlayAgain.setText("Sonraki Seviye");
 		}else{
 			txtLevelHeading.setText(getActivity().getString(R.string.level)+" "+ levelNo +" "+  getActivity().getResources().getString(R.string.not_completed));
-			btnPlayAgain.setText("Tekrar Dene");
+			btnPlayAgain.setText(" Tekrar Dene");
 		}
 		
 	       

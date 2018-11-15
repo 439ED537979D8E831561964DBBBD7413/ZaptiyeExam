@@ -36,47 +36,8 @@
 
 	</RelativeLayout>
 
-     <RelativeLayout
-        android:id="@+id/layout_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/ads_layout"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/bottom_panel"
-        android:layout_alignParentRight="true" >
 
-        <TextView
-            android:id="@+id/txtMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            style="@style/style_btn_menu"
-            android:text="Back" />
-
-        <Button
-            android:id="@+id/btnPrev"
-            android:layout_width="@dimen/next_prev_button_width_height"
-            android:layout_height="@dimen/next_prev_button_width_height"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/next_prev_left_right_margin"
-            android:background="@drawable/btn_prev_720" />
-
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="@dimen/next_prev_button_width_height"
-            android:layout_height="@dimen/next_prev_button_width_height"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/next_prev_left_right_margin"
-            android:background="@drawable/btn_next_720"/>
-        
-    </RelativeLayout> 
-
-    
-
-<ScrollView
+    <ScrollView
     android:id="@+id/scroll_layout"
      android:layout_width="fill_parent"
      android:layout_height="wrap_content"
@@ -134,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
-            android:text="Ans:" />
+            android:text="Cevap:" />
 
         <TextView
             android:id="@+id/txtAnsware"
@@ -183,5 +144,43 @@
 
          
     </LinearLayout>
-    
+
+    <RelativeLayout
+       android:id="@+id/layout_bottom"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+        android:background="@drawable/bottom_panel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+       <TextView
+           android:id="@+id/txtMenu"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           style="@style/style_btn_menu"
+           android:text="Geri" />
+
+       <Button
+           android:id="@+id/btnPrev"
+           android:layout_width="@dimen/next_prev_button_width_height"
+           android:layout_height="@dimen/next_prev_button_width_height"
+           android:layout_alignParentLeft="true"
+           android:layout_centerVertical="true"
+           android:layout_marginLeft="@dimen/next_prev_left_right_margin"
+           android:background="@drawable/btn_prev_720" />
+
+       <Button
+           android:id="@+id/btnNext"
+           android:layout_width="@dimen/next_prev_button_width_height"
+           android:layout_height="@dimen/next_prev_button_width_height"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:layout_marginRight="@dimen/next_prev_left_right_margin"
+           android:background="@drawable/btn_next_720"/>
+
+   </RelativeLayout>
+
 </RelativeLayout>
