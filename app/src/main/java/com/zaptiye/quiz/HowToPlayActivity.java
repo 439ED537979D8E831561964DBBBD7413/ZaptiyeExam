@@ -2,8 +2,9 @@ package com.zaptiye.quiz;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class HowToPlayActivity extends Activity  {
+public class HowToPlayActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

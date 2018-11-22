@@ -1,39 +1,48 @@
 package com.zaptiye.quiz;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
+import com.android.vending.billing.IInAppBillingService;
 import com.google.android.gms.analytics.Tracker;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
-import com.google.android.gms.games.Games;
-import com.google.android.gms.games.GamesStatusCodes;
-import com.google.android.gms.games.snapshot.Snapshot;
-import com.google.android.gms.games.snapshot.SnapshotMetadata;
-import com.google.android.gms.games.snapshot.SnapshotMetadataChange;
-import com.google.android.gms.games.snapshot.Snapshots;
-import com.google.android.gms.plus.Plus;
-import com.google.example.games.basegameutils.BaseGameActivity;
-import com.zaptiye.quiz.bean.GameData;
-import com.zaptiye.quiz.bean.GameDataAof;
+import com.zaptiye.quiz.bean.TrialExam;
+import com.zaptiye.quiz.bean.TrialQuestions;
+import com.zaptiye.quiz.http.HttpCallback;
+import com.zaptiye.quiz.http.HttpUtil;
+import com.zaptiye.quiz.trialexams.TrialExamActivity;
+import com.zaptiye.quiz.util.IabHelper;
+import com.zaptiye.quiz.util.IabResult;
+import com.zaptiye.quiz.util.Purchase;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,860 +50,791 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 /**
  * Home Screen of this apps. Display Button to play quiz, Leaderboard, achievement, setting etc.
- * @author Arkay Apps
  *
+ * @author Arkay Apps
  */
-public class MenuHomeScreenActivity extends BaseGameActivity implements
-		View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,  QuizPlayActivity.Listener, QuizCompletedActivity.Listener,QuizCompletedActivityAof.Listener,QuizPlayActivityAof.Listener{
+public class MenuHomeScreenActivity extends Activity implements
+        View.OnClickListener, IabHelper.OnIabSetupFinishedListener, IabHelper.OnIabPurchaseFinishedListener {
 
-	private Button btnPlay, btnLeaderboard, btnAchievement, btnLearning,btnSetting,  btnAbout, btnHelp,btnGuncelKanunlar,btnAof,btnDenemeler;
+    private Button btnSetting, btnAbout, btnHelp, btnGuncelKanunlar, btnMisyon;
+    private Button ibTrialExam;    //private ImageButton ibTrialExam;
 
-	/** The interstitial ad. */
-	public static final String PREFS_NAME = "preferences";
-	public static final String PREFS_NAME_AOF = "preferencesAof";
-	private static final String DATABASE_NAME = "database.db";
-	 public static final String myshareprefkey = "quizpower";
-	public static final String myshareprefkeyAof = "quizpowerAof";
-	 
-	 public static final String SOUND_EFFECT = "sound_effect";
-	 public static final String VIBRATION = "vibration";
-	 
-	 public static final String TOTAL_SCORE = "total_score";
-	 public static final String LEVEL ="level";
-	 
-	 //Achivement
-	 public static final String LEVEL_COMPLETED = "level_completed";
-	 public static final String IS_LAST_LEVEL_COMPLETED = "is_last_level_completed";
-	 public static final String LAST_LEVEL_SCORE = "last_level_score";
-	 public static final String HOW_MANY_TIMES_PLAY_QUIZ = "how_many_time_play_quiz";
-	 public static final String COUNT_QUESTION_COMPLETED = "count_question_completed";
-	 public static final String COUNT_RIGHT_ANSWARE_QUESTIONS = "count_right_answare_questions";
-	 
-	 public static final String VERY_CURIOUS_UNLOCK="is_very_curious_unlocked";
-	 
-	 final int RC_RESOLVE = 5000, RC_UNUSED = 5001;
-	 
-	 QuizPlayActivity quizPlayActivity;
-	 SharedPreferences settings;
-	SharedPreferences settingsAof;
-	 QuizPlayActivity mQuizPlayFragment;
-	QuizPlayActivityAof aofSorulari;
-	 QuizCompletedActivity quizCompletedFragment;
-	QuizCompletedActivityAof quizCompletedFragmentAof;
-	 private static final int OUR_STATE_KEY = 2;
-	 
-	 Context context;
-	 public static final String REG_ID = "regId";
-	 static final String TAG = "MenuHomeScreenActivity";
-	 AsyncTask<Void, Void, String> shareRegidTask;
-	 
-	 ProgressDialog progress;
-	 private GameData gameData;
-	private GameDataAof gameDataAof;
-	 private final Handler mHandler = new Handler();
-	 
-	// Request code used to invoke sign in user interactions.
-	private static final int RC_SIGN_IN = 9001;
+    /**
+     * The interstitial ad.
+     */
+    public static final String PREFS_NAME = "preferences";
+    public static final String PREFS_NAME_AOF = "preferencesAof";
+    private static final String DATABASE_NAME = "database.db";
+    public static final String myshareprefkey = "quizpower";
+    public static final String myshareprefkeyAof = "quizpowerAof";
 
-	// Request code for listing saved games
-	private static final int RC_LIST_SAVED_GAMES = 9002;
+    public static final String SOUND_EFFECT = "sound_effect";
+    public static final String VIBRATION = "vibration";
 
-	// Client used to interact with Google APIs.
-	private GoogleApiClient mGoogleApiClient;
-	private String currentSaveName = "snapshotTemp";
+    public static final String TOTAL_SCORE = "total_score";
+    public static final String LEVEL = "level";
 
-	// whether we already loaded the state the first time (so we don't reload
-	// every time the activity goes to the background and comes back to the
-	// foreground)
-	boolean mAlreadyLoadedState = false;
+    //Acheivement
+    public static final String LEVEL_COMPLETED = "level_completed";
+    public static final String IS_LAST_LEVEL_COMPLETED = "is_last_level_completed";
+    public static final String LAST_LEVEL_SCORE = "last_level_score";
+    public static final String HOW_MANY_TIMES_PLAY_QUIZ = "how_many_time_play_quiz";
+    public static final String COUNT_QUESTION_COMPLETED = "count_question_completed";
+    public static final String COUNT_RIGHT_ANSWARE_QUESTIONS = "count_right_answare_questions";
 
-	// Are we currently resolving a connection failure?
-	private boolean mResolvingConnectionFailure = false;
+    public static final String VERY_CURIOUS_UNLOCK = "is_very_curious_unlocked";
 
-	// Has the user clicked the sign-in button?
-	private boolean mSignInClicked = false;
+    final int RC_RESOLVE = 5000, RC_UNUSED = 5001;
 
-	// Members related to the conflict resolution chooser of Snapshots.
-	final static int MAX_SNAPSHOT_RESOLVE_RETRIES = 3;
+    SharedPreferences settings;
+    private static final int OUR_STATE_KEY = 2;
 
-	// Set to true to automatically start the sign in flow when the Activity
-	// starts.  Set to false to require the user to click the button in order to sign in.
-	private boolean mAutoStartSignInFlow = true;
-	
-	public RelativeLayout main_home_layout;
-	
-	public enum TrackerName {
-	    APP_TRACKER, // Tracker used only in this app.
-	    GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
-	    ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
-	  }
-	HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
-	
+    Context context;
+    public static final String REG_ID = "regId";
+    static final String TAG = "MenuHomeScreenActivity";
+    AsyncTask<Void, Void, String> shareRegidTask;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_menu_home);
-		 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		context = getApplicationContext();
+    ProgressDialog progress;
+    private final Handler mHandler = new Handler();
 
-		settings = getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
-		settingsAof=getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME_AOF, 0);
-		gameData = new GameData(settings, myshareprefkey);
-		gameDataAof=new GameDataAof(settingsAof,myshareprefkeyAof);
-		// Create the Google Api Client with access to Plus and Games
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .addApi(Drive.API).addScope(Drive.SCOPE_APPFOLDER)
-                .build();
-        
-		btnDenemeler= (Button) findViewById(R.id.btnDenemeler);
-		btnDenemeler.setOnClickListener(this);
 
-		btnPlay = (Button) findViewById(R.id.btnPlay);
-		btnPlay.setOnClickListener(this);
+    // whether we already loaded the state the first time (so we don't reload
+    // every time the activity goes to the background and comes back to the
+    // foreground)
+    boolean mAlreadyLoadedState = false;
 
-		btnLeaderboard = (Button) findViewById(R.id.btnLeaderboard);
-		btnLeaderboard.setOnClickListener(this);
-		
-		//btnAchievement = (Button) findViewById(R.id.btnAchievement);
-		//btnAchievement.setOnClickListener(this);
-		btnLearning = (Button)findViewById(R.id.btnLearning);
-		btnLearning.setOnClickListener(this);
-		
-		btnSetting = (Button)findViewById(R.id.btnSetting);
-		btnSetting.setOnClickListener(this);
-		
-		btnAbout = (Button)findViewById(R.id.btnAbout);
-		btnAbout.setOnClickListener(this);
-		
-		btnHelp = (Button)findViewById(R.id.btnHelp);
-		btnHelp.setOnClickListener(this);
 
-		btnGuncelKanunlar= (Button) findViewById(R.id.btnGuncelKanunlar);
-		btnGuncelKanunlar.setOnClickListener(this);
+    // Set to true to automatically start the sign in flow when the Activity
+    // starts.  Set to false to require the user to click the button in order to sign in.
 
-		btnAof= (Button) findViewById(R.id.btnAof);
-		btnAof.setOnClickListener(this);
+    public RelativeLayout main_home_layout;
+    private static final int IN_APP_RQ_CODE = 104;
 
-		mQuizPlayFragment = new QuizPlayActivity();
-		mQuizPlayFragment.setListener(this);
+    private String selectedExamName,selectedExamID;
+    private Dialog dialog;
 
-		aofSorulari=new QuizPlayActivityAof();
-		aofSorulari.setListener(this);
-		
-		quizCompletedFragment = new QuizCompletedActivity();
-		 quizCompletedFragment.setListener(this);
 
-		quizCompletedFragmentAof=new QuizCompletedActivityAof();
-		quizCompletedFragmentAof.setListener(this);
+    @Override
+    public void onIabSetupFinished(IabResult result) {
 
-		checkDB();
+        Log.d(TAG, result.toString());
 
-		findViewById(R.id.sign_in_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this);
-		
-		progress = new ProgressDialog(this);
-        progress.setTitle("Please Wait!!");
-        progress.setMessage("Data Loading..");
+        if (result.isSuccess())
+            Log.d(TAG, "InApp Billing Setup Successful");
+        else
+            Log.d(TAG, "InApp Billing Setup Failed");
+    }
+
+    @Override
+    public void onIabPurchaseFinished(IabResult result, Purchase info) {
+
+        if (result.isFailure())
+            return;
+
+
+        Set<String> exams = settings.getStringSet("exam_list", null);
+
+        if (exams != null)
+            exams.add(info.getSku());
+        else {
+
+            exams = new HashSet<>();
+            exams.add(info.getSku());
+
+        }
+        settings.edit().putStringSet("exam_list", exams).apply();
+        Log.d(TAG, info.toString());
+        Log.d(TAG, settings.getStringSet("exam_list", null).toString());
+
+
+        if (internetErisimi())
+            getQuestions(selectedExamID);
+        else
+            Toast.makeText(this, "No Internet Connection Found", Toast.LENGTH_LONG).show();
+
+//        Intent intent = new Intent(this, TrialExamActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.putExtra("exam_id", selectedExamID);
+//        startActivity(intent);
+
+    }
+
+    public enum TrackerName {
+        APP_TRACKER, // Tracker used only in this app.
+        GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
+        ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
+    }
+
+    HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+
+    private IInAppBillingService mService;
+    private IabHelper billingHelper;
+    private String base64PublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh2u+Q6TYr5rVTxHYOR4DeelGSBKgl8Bn8/1FqTVNOh6cRsJW4F22o0zYxg5fBAYrYDK1A3wVcwoh9B41mMm3QJ2x2x7++5+IMC+hEUZAahc+/vJC5eZRfqS4rTJbOKVNzkaxx0QLLb27TBd/JwPbiysatV0u3tLS8uJtp/nL0NbO7V4ByV57crA4+qCZCnDavtivSYCg3U19q1IKT7Lff45K5EcAF86qCy6tbC3I8J6hkbh5vW0ewxXncbehxcrOJ2H4IQdXp+XRfPpJOCmUlqGTvQdFZL+L6yix0xnoJ/U2JXHSaXkMCQDQJPacFDc9zdm775WiOo+QrZqQltvssQIDAQAB";
+
+
+    public void purchaseExam(String SKU_ITEM) {
+
+        try {
+
+            billingHelper.launchPurchaseFlow(this, SKU_ITEM, IN_APP_RQ_CODE,
+                    this, "");
+
+
+        } catch (IabHelper.IabAsyncInProgressException e) {
+
+            Log.d(TAG, e.getLocalizedMessage());
+            e.printStackTrace();
+
+        }
+    }
+
+    ServiceConnection mServiceConn = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mService = null;
+
+            Log.d(TAG, "Service Disconnected");
+
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name,
+                                       IBinder service) {
+            mService = IInAppBillingService.Stub.asInterface(service);
+
+            getExamPurchaseList();
+            Log.d(TAG, "Service Connected");
+        }
+    };
+
+
+    private void getExamPurchaseList() {
+
+        try {
+
+            Bundle purchaseBundle = mService.getPurchases(3, getPackageName(), "inapp", null);
+
+            if (purchaseBundle != null) {
+
+                int response = purchaseBundle.getInt("RESPONSE_CODE");
+
+                if (response == 0) {
+
+                    List<String> ownedSKU =
+                            purchaseBundle.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+
+                    Set<String> ownedSet = new HashSet<>();
+                    ownedSet.addAll(ownedSKU);
+                    settings.edit().putStringSet("exam_list", ownedSet).apply();
+
+
+                    Log.d(TAG, ownedSet.toString());
+                    Log.d(TAG, ownedSKU.toString());
+
+
+                    String continuationToken =
+                            purchaseBundle.getString("INAPP_CONTINUATION_TOKEN");
+
+                    Log.d(TAG, continuationToken + "");
+
+                }
+            }
+
+
+        } catch (RemoteException e) {
+
+            e.printStackTrace();
+            Log.d(TAG, e.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu_home);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        context = getApplicationContext();
+
+
+        Intent serviceIntent =
+                new Intent("com.android.vending.billing.InAppBillingService.BIND");
+        serviceIntent.setPackage("com.android.vending");
+        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
+
+
+        billingHelper = new IabHelper(this, base64PublicKey);
+
+        // enable debug logging (for a production application, you should set this to false).
+        billingHelper.enableDebugLogging(true);
+
+        // Starting setup
+        billingHelper.startSetup(this);
+
+
+        settings = getSharedPreferences(MenuHomeScreenActivity.PREFS_NAME, 0);
+
+
+        ibTrialExam= (Button) findViewById(R.id.ibTrialExams);
+        ibTrialExam.setOnClickListener(this);
+
+
+        btnMisyon= (Button) findViewById(R.id.btnMisyon);
+        btnMisyon.setOnClickListener(this);
+
+
+
+        btnSetting = (Button) findViewById(R.id.btnSetting);
+        btnSetting.setOnClickListener(this);
+
+        btnAbout = (Button) findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(this);
+
+        btnHelp = (Button) findViewById(R.id.btnHelp);
+        btnHelp.setOnClickListener(this);
+
+        btnGuncelKanunlar = (Button) findViewById(R.id.btnGuncelKanunlar);
+        btnGuncelKanunlar.setOnClickListener(this);
+
+        checkDB();
+
+        progress = new ProgressDialog(this);
+        progress.setTitle(getResources().getString(R.string.pleasewait));
+        progress.setMessage(getResources().getString(R.string.dataloading));
         progress.setCancelable(false);
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.show();
         Handler delayhandler = new Handler();
-        
-		delayhandler.postDelayed(stopLoadDataDialogSomeTime, 5000);
-		
-        SignInButton mSignInButton = (SignInButton)findViewById(R.id.sign_in_button);
-        
-        mSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // start the asynchronous sign in flow
-            	System.out.println("Click on Sign-in");
-            	mGoogleApiClient.connect();
-            }
-        });
-        mGoogleApiClient.connect();
-	    
-	    
-		    
-	    
-	    
-	    // Get tracker.
-        Tracker t = getTracker(TrackerName.APP_TRACKER);
-        // Set screen name. Where path is a String representing the screen name.
-	    t.setScreenName("com.arkay.gkingujarati.MenuHomeScreenActivity");
-        // Send a screen view.
-        t.send(new HitBuilders.AppViewBuilder().build());
-	}
-	
-	@Override
+
+        delayhandler.postDelayed(stopLoadDataDialogSomeTime, 5000);
+
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
     }
 
 
-	 Runnable stopLoadDataDialogSomeTime = new Runnable()
-		{   public void run(){   
-			progress.dismiss();
-		    }
-		};
-
-
-	//?NTERNET ER???M? VARMI YOKMU KONTROL ET
-	public boolean internetErisimi() {
-
-		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
-		if (conMgr.getActiveNetworkInfo() != null
-
-				&& conMgr.getActiveNetworkInfo().isAvailable()
-
-				&& conMgr.getActiveNetworkInfo().isConnected()) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
-
-	}
-
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnPlay:
-			if(gameData.getLevelCompleted()==0 || gameData.getLevelCompleted()==1){
-				if(isSignedIn()){
-					unlockAchievement(R.string.achievement_polis_memuru, "Polis Memuru");
-				}
-			}
-			getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mQuizPlayFragment ).addToBackStack( "tag" ).commit();
-			    
-			break;
-		case R.id.btnLeaderboard:
-			if (isSignedIn()) {
-				SharedPreferences.Editor edit = settings.edit();
-				edit.putInt(VERY_CURIOUS_UNLOCK, 1);
-				edit.commit();
-				unlockAchievement(R.string.leaderboard_lider_tahtas,"Lider Tahtasi");
-				startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),RC_UNUSED);
-			}
-			break;
-
-		/*
-		case R.id.btnAchievement:
-			if (isSignedIn()) {
-				//unlockAchievement(R.string.achievement_polis_memuru3, "Polis Memuru 3");
-				startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),RC_UNUSED);
-			}
-			break;
-
-			*/
-
-			case R.id.btnDenemeler:
-				Intent denemeler = new Intent(this, Denemeler.class);
-				startActivity(denemeler);
-				break;
-
-		case R.id.btnLearning:
-			Intent intPlay = new Intent(this, LevelActivity.class);
-			startActivity(intPlay);
-			break;
-		case R.id.btnSetting:
-			Intent playQuiz = new Intent(this, SettingActivity.class);
-			startActivity(playQuiz);
-			break;
-		case R.id.btnAbout:
-			Intent intAbout = new Intent(this, AboutUsActivity.class);
-			startActivity(intAbout);
-			break;
-		case R.id.btnHelp:
-			Intent howtoplay = new Intent(this, HowToPlayActivity.class);
-			startActivity(howtoplay);
-			break;
-
-			case R.id.btnGuncelKanunlar:
-				Intent kanunlar=new Intent(this,GuncelKanunlar.class);
-				startActivity(kanunlar);
-				break;
-
-			case R.id.btnAof:
-				if (internetErisimi()) {
-					getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
-				}else{
-					Toast.makeText(getApplicationContext(), "L?tfen internete ba?lan?n?z", Toast.LENGTH_LONG).show();
-				}
-				break;
-		}
-		if (v.getId() == R.id.sign_in_button) {
-			findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-			findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-			findViewById(R.id.sign_in_bar).setVisibility(View.GONE);
-			findViewById(R.id.sign_out_bar).setVisibility(View.VISIBLE);
-		} else if (v.getId() == R.id.sign_out_button) {
-			// sign out.
-			signOut();
-			// show sign-in button, hide the sign-out button
-			findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-			findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-			findViewById(R.id.sign_out_bar).setVisibility(View.GONE);
-			findViewById(R.id.sign_in_bar).setVisibility(View.VISIBLE);
-		}
-
-	}
-
-	public void checkDB() {
-		try {
-			String packageName = this.getPackageName();
-			String destPath = "/data/data/" + packageName + "/databases";
-			String fullPath = "/data/data/" + packageName + "/databases/"+ DATABASE_NAME;
-			// this database folder location
-			File f = new File(destPath);
-			// this database file location
-			File obj = new File(fullPath);
-			// check if databases folder exists or not. if not create it
-			if (!f.exists()) {
-				f.mkdirs();
-				f.createNewFile();
-			}else{
-				boolean isDelete = f.delete();
-				Log.i("Delete", "Delete"+isDelete);
-				
-			}
-			// check database file exists or not, if not copy database from
-			// assets
-			if (!obj.exists()) {
-				this.CopyDB(fullPath);
-			}else{
-				this.CopyDB(fullPath);
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public void CopyDB(String path) throws IOException {
-
-		InputStream databaseInput = null;
-		String outFileName = path;
-		OutputStream databaseOutput = new FileOutputStream(outFileName);
-		
-		byte[] buffer = new byte[1024];
-		int length;
-
-		// open database file from asset folder
-		databaseInput = this.getAssets().open(DATABASE_NAME);
-		while ((length = databaseInput.read(buffer)) > 0) {
-			databaseOutput.write(buffer, 0, length);
-			databaseOutput.flush();
-		}
-		databaseInput.close();
-
-		databaseOutput.flush();
-		databaseOutput.close();
-	}
-
-	@Override
-	public void onSignInFailed() {
-		System.out.println("Sing In Fail");
-		findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-		findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-		
-		findViewById(R.id.sign_out_bar).setVisibility(View.GONE);
-		findViewById(R.id.sign_in_bar).setVisibility(View.VISIBLE);
-		progress.cancel();
-	}
-
-	@Override
-	public void onSignInSucceeded() {
-		System.out.println("Sing In Succcess");
-		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
-		
-		findViewById(R.id.sign_in_bar).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_bar).setVisibility(View.VISIBLE);
-
-		
-	}
-
-
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		
-		if (requestCode == RC_SIGN_IN) {
-            Log.d(TAG, "onActivityResult with requestCode == RC_SIGN_IN, responseCode="
-                    + resultCode + ", intent=" + intent);
-            mSignInClicked = false;
-            mResolvingConnectionFailure = false;
-            if (resultCode == RESULT_OK) {
-                mGoogleApiClient.connect();
-            } 
+    Runnable stopLoadDataDialogSomeTime = new Runnable() {
+        public void run() {
+            progress.dismiss();
         }
-        // the standard snapshot selection intent
-        else if (requestCode == RC_LIST_SAVED_GAMES) {
-            if (intent != null) {
-                if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_METADATA)) {
-                    // Load a snapshot.
-                    SnapshotMetadata snapshotMetadata =
-                            intent.getParcelableExtra(Snapshots.EXTRA_SNAPSHOT_METADATA);
-                    currentSaveName = snapshotMetadata.getUniqueName();
-                } else if (intent.hasExtra(Snapshots.EXTRA_SNAPSHOT_NEW)) {
-                    // Create a new snapshot named with a unique string
-                    // TODO: check for existing snapshot, for now, add garbage text.
-                    String unique = new BigInteger(281, new Random()).toString(13);
-                    currentSaveName = "snapshotTemp-" + unique;
-                    saveSnapshot(null);
-                }
-            }
+    };
+
+
+    //?NTERNET ER???M? VARMI YOKMU KONTROL ET
+    public boolean internetErisimi() {
+
+        ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (conMgr.getActiveNetworkInfo() != null
+
+                && conMgr.getActiveNetworkInfo().isAvailable()
+
+                && conMgr.getActiveNetworkInfo().isConnected()) {
+
+            return true;
+
+        } else {
+
+            return false;
+
         }
 
-        super.onActivityResult(requestCode, resultCode, intent);
-        
-		
-	}
-
-	public void unlockAchievement(int achievementId, String fallbackString) {
-		if (isSignedIn()) {
-			Games.Achievements.unlock(getApiClient(), getString(achievementId));
-		} else {
-			Toast.makeText(this,
-					getString(R.string.achievement) + ": " + fallbackString,
-					Toast.LENGTH_LONG).show();
-		}
-	}
-
-	@Override
-	public void onStartGameRequested(boolean hardMode) {
-		 getSupportFragmentManager().popBackStack();
-		 this.findViewById(R.id.linearLayout1).setVisibility(View.VISIBLE);
-	}
-
-	@Override
-	public void onShowAchievementsRequested() {
-		if (isSignedIn()) {
-            startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), RC_UNUSED);
-        }
-	}
-
-	
-	
-	@Override
-	public void onShowLeaderboardsRequested() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onSignInButtonClicked() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onSignOutButtonClicked() {
-		// TODO Auto-generated method stub
-		
-	}
-	boolean addList = false;
-
-	@Override
-	public void onBackPressed() {
-		getSupportFragmentManager().popBackStack();
-		this.findViewById(R.id.linearLayout1).setVisibility(View.VISIBLE);
-		if(getSupportFragmentManager().getBackStackEntryCount()==0){
-			super.onBackPressed();
-		}
-		
-	}
-
-		
-	@Override
-	public void displyHomeScreen() {
-		getSupportFragmentManager().popBackStack();
-		this.findViewById(R.id.linearLayout1).setVisibility(View.VISIBLE);
-	}
-
-	 /**
-     * Update leaderboards with the user's score.
-     *
-     * @param finalScore The score the user got.
-     */
-	@Override
-    public void updateLeaderboards(int finalScore) {
-
-		if (isSignedIn()) {
-	    	if (finalScore >= 0) {
-	            Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_lider_tahtas),
-	                   finalScore);
-	        }
-		}
     }
-	public static byte[] intToByteArray(int a) {
-	    return BigInteger.valueOf(a).toByteArray();
-	}
 
-	public static int byteArrayToInt(byte[] b) {
-	    return new BigInteger(b).intValue();
-	}
-    
-	 public   void saveToCloud() {
-		 if(isSignedIn()){
-	        if(isConnected()){
-	        	// 	save new data to cloud
-	        		saveSnapshot(null);
-	        }
-		 }
-	    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+
+            if (billingHelper != null)
+                billingHelper.disposeWhenFinished();
+
+        } catch (IllegalArgumentException e) {
+            Log.d(TAG, e.getLocalizedMessage());
+
+        } finally {
+            billingHelper = null;
+        }
 
 
-		@Override
-		public GameData getGameData() {
-			return this.gameData;
-		}
+        if (mService != null)
+            unbindService(mServiceConn);
 
-	public GameDataAof getGameDataAof(){
-		return this.gameDataAof;
-	}
+    }
 
-		@Override
-		public void saveDataToCloud() {
-			saveToCloud();
-		}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
 
-		@Override
-		public QuizCompletedActivity getQuizCompletedFragment() {
-			return quizCompletedFragment;
-		}
 
-	public QuizCompletedActivityAof getQuizCompletedFragmentAof(){
-		return quizCompletedFragmentAof;
-	}
 
-		
-		public boolean isConnectingToInternet(){
-	        ConnectivityManager connectivity = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-	          if (connectivity != null)
-	          {
-	              NetworkInfo[] info = connectivity.getAllNetworkInfo();
-	              if (info != null)
-	                  for (int i = 0; i < info.length; i++)
-	                      if (info[i].getState() == NetworkInfo.State.CONNECTED)
-	                      {
-	                          return true;
-	                      }
-	 
-	          }
-	          return false;
-	    }
+            case R.id.btnMisyon:
 
-		@Override
-		public void playAgain() {
-			// TODO Auto-generated method stub
-			getSupportFragmentManager().popBackStack();
-			getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, mQuizPlayFragment ).addToBackStack( "tag" ).commit();
-		}
+                Intent misyon=new Intent(this,Misyon.class);
+                startActivity(misyon);
 
-	public void playAgainAof(){
+                break;
 
-		getSupportFragmentManager().popBackStack();
-		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aofSorulari).addToBackStack("tag").commit();
-	}
 
-		
-		@Override
-		public void onConnected(Bundle connectionHint) {
-	
-			// Sign-in worked!
-			log("Sign-in successful! Loading game state from cloud.");
-			showSignOutBar();
-			loadFromSnapshot(null);
-			
-		}
-		private boolean isConnected() {
-	        return mGoogleApiClient == null || !mGoogleApiClient.isConnected();
-	    }
 
-	    /**
-	     * Loads a Snapshot from the user's synchronized storage.
-	     */
-	    void loadFromSnapshot(final SnapshotMetadata snapshotMetadata) {
-	      
+            case R.id.btnSetting:
+                Intent playQuiz = new Intent(this, SettingActivity.class);
+                startActivity(playQuiz);
+                break;
+            case R.id.btnAbout:
+                Intent intAbout = new Intent(this, AboutUsActivity.class);
+                startActivity(intAbout);
+                break;
+            case R.id.btnHelp:
+                Intent howtoplay = new Intent(this, HowToPlayActivity.class);
+                startActivity(howtoplay);
+                break;
 
-	        AsyncTask<Void, Void, Integer> task = new AsyncTask<Void, Void, Integer>() {
-	            @Override
-	            protected Integer doInBackground(Void... params) {
-	                 Snapshots.OpenSnapshotResult result;
-	                if (snapshotMetadata != null && snapshotMetadata.getUniqueName() != null) {
-	                    Log.i(TAG, "Opening snapshot by metadata: " + snapshotMetadata);
-	                    result = Games.Snapshots.open(mGoogleApiClient,snapshotMetadata).await();
-	                } else {
-	                    Log.i(TAG, "Opening snapshot by name: " + currentSaveName);
-	                    result = Games.Snapshots.open(mGoogleApiClient, currentSaveName, true).await();
-	                }
+            case R.id.btnGuncelKanunlar:
+                Intent kanunlar = new Intent(this, GuncelKanunlar.class);
+                startActivity(kanunlar);
+                break;
 
-	                int status = result.getStatus().getStatusCode();
+        }
 
-	                Snapshot snapshot = null;
-	                if (status == GamesStatusCodes.STATUS_OK) {
-	                    snapshot = result.getSnapshot();
-	                } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT) {
 
-	                    // if there is a conflict  - then resolve it.
-	                    snapshot = processSnapshotOpenResult( result, 0);
+        if (v.getId() == R.id.ibTrialExams) {
 
-	                    // if it resolved OK, change the status to Ok
-	                    if (snapshot != null) {
-	                        status = GamesStatusCodes.STATUS_OK;
-	                    }
-	                    else {
-	                        Log.w(TAG,"Conflict was not resolved automatically");
-	                    }
-	                } else {
-	                    Log.e(TAG, "Error while loading: " + status);
-	                }
+            getExamList();
+        }
 
-	                if (snapshot != null) {
-	                    readSavedGame(snapshot);
-	                }
-	                return status;
-	            }
+    }
 
-	            @Override
-	            protected void onPostExecute(Integer status) {
-	                Log.i(TAG, "Snapshot loaded: " + status);
+    public void checkDB() {
+        try {
+            String packageName = this.getPackageName();
+            String destPath = "/data/data/" + packageName + "/databases";
+            String fullPath = "/data/data/" + packageName + "/databases/" + DATABASE_NAME;
+            // this database folder location
+            File f = new File(destPath);
+            // this database file location
+            File obj = new File(fullPath);
+            // check if databases folder exists or not. if not create it
+            if (!f.exists()) {
+                f.mkdirs();
+                f.createNewFile();
+            } else {
+                boolean isDelete = f.delete();
+                Log.i("Delete", "Delete" + isDelete);
 
-	                // Note that showing a toast is done here for debugging. Your application should
-	                // resolve the error appropriately to your app.
-	                if (status == GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND) {
-	                    Log.i(TAG, "Error: Snapshot not found");
-	                    Toast.makeText(getBaseContext(), "Error: Snapshot not found",
-	                            Toast.LENGTH_SHORT).show();
-	                } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
-	                    Log.i(TAG, "Error: Snapshot contents unavailable");
-	                    Toast.makeText(getBaseContext(), "Error: Snapshot contents unavailable",
-	                            Toast.LENGTH_SHORT).show();
-	                } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE) {
-	                    Log.i(TAG, "Error: Snapshot folder unavailable");
-	                    Toast.makeText(getBaseContext(), "Error: Snapshot folder unavailable.",
-	                            Toast.LENGTH_SHORT).show();
-	                }
+            }
+            // check database file exists or not, if not copy database from
+            // assets
+            if (!obj.exists()) {
+                this.CopyDB(fullPath);
+            } else {
+                this.CopyDB(fullPath);
+            }
 
-	              
-	            }
-	        };
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-	        task.execute();
-	    }
+    }
 
-	    private void readSavedGame(com.google.android.gms.games.snapshot.Snapshot snapshot) {
-	    	GameData temp = gameData.clone();
-	    	//gameData = new GameData(snapshot.readFully());
-	    	try {
-				gameData = new GameData(snapshot.getSnapshotContents().readFully());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    	System.out.println(temp);
-	    	System.out.println(gameData);
-	    	
-	    	gameData = gameData.unionWith(temp);
-	    	//snapshot.writeBytes(gameData.toBytes());
-	    	snapshot.getSnapshotContents().writeBytes(gameData.toBytes());
-	    	writeSnapshot(snapshot);
-	    	
-	        mAlreadyLoadedState = true;
-	    }
-	    /**
-	     * Conflict resolution for when Snapshots are opened.
-	     * @param result The open snapshot result to resolve on open.
-	     * @return The opened Snapshot on success; otherwise, returns null.
-	     */
-	    Snapshot processSnapshotOpenResult(Snapshots.OpenSnapshotResult result, int retryCount){
-	        Snapshot mResolvedSnapshot = null;
-	        retryCount++;
-	        int status = result.getStatus().getStatusCode();
+    public void CopyDB(String path) throws IOException {
 
-	        Log.i(TAG, "Save Result status: " + status);
+        InputStream databaseInput = null;
+        String outFileName = path;
+        OutputStream databaseOutput = new FileOutputStream(outFileName);
 
-	        if (status == GamesStatusCodes.STATUS_OK) {
-	            return result.getSnapshot();
-	        } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE) {
-	            return result.getSnapshot();
-	        } else if (status == GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT){
-	            Snapshot snapshot = result.getSnapshot();
-	            Snapshot conflictSnapshot = result.getConflictingSnapshot();
+        byte[] buffer = new byte[1024];
+        int length;
 
-	            // Resolve between conflicts by selecting the newest of the conflicting snapshots.
-	            mResolvedSnapshot = snapshot;
+        // open database file from asset folder
+        databaseInput = this.getAssets().open(DATABASE_NAME);
+        while ((length = databaseInput.read(buffer)) > 0) {
+            databaseOutput.write(buffer, 0, length);
+            databaseOutput.flush();
+        }
+        databaseInput.close();
 
-	            if (snapshot.getMetadata().getLastModifiedTimestamp() <
-	                    conflictSnapshot.getMetadata().getLastModifiedTimestamp()){
-	                mResolvedSnapshot = conflictSnapshot;
-	            }
+        databaseOutput.flush();
+        databaseOutput.close();
+    }
 
-	            Snapshots.OpenSnapshotResult resolveResult = Games.Snapshots.resolveConflict(
-	            		mGoogleApiClient, result.getConflictId(), mResolvedSnapshot)
-	                    .await();
-	            
 
-	            if (retryCount < MAX_SNAPSHOT_RESOLVE_RETRIES){
-	                return processSnapshotOpenResult(resolveResult, retryCount);
-	            }else{
-	                String message = "Could not resolve snapshot conflicts";
-	                Log.e(TAG, message);
-	                Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG);
-	            }
+    boolean addList = false;
 
-	        }
-	        // Fail, return null.
-	        return null;
-	    }
+    @Override
+    public void onBackPressed() {
 
-	    /**
-	     * Prepares saving Snapshot to the user's synchronized storage, conditionally resolves errors,
-	     * and stores the Snapshot.
-	     */
-	    void saveSnapshot(final SnapshotMetadata snapshotMetadata) {
-	    	
-	    	
-	        AsyncTask<Void, Void, Snapshots.OpenSnapshotResult> task =
-	                new AsyncTask<Void, Void, Snapshots.OpenSnapshotResult>() {
-	                    @Override
-	                    protected Snapshots.OpenSnapshotResult doInBackground(Void... params) {
-	                        if (snapshotMetadata == null) {
-	                        	try{
-	                            return Games.Snapshots.open(mGoogleApiClient, currentSaveName, true)
-	                                    .await();
-	                        	}catch(Exception e){
-	                        		return null;
-	                        	}
-	                        }
-	                        else {
-	                            return Games.Snapshots.open(mGoogleApiClient, snapshotMetadata)
-	                                    .await();
-	                        }
-	                    }
 
-	                    @Override
-	                    protected void onPostExecute(Snapshots.OpenSnapshotResult result) {
-	                    	if(result!=null){
-		                        Snapshot toWrite = processSnapshotOpenResult( result, 0);
-		                       // writeSnapshot(toWrite);
-		                        writeSnapshot(toWrite);
-	                        }
-	                    }
-	                };
+    }
 
-	             
-	        	task.execute();
-	        
-	    }
 
-	    /**
-	     * Generates metadata, takes a screenshot, and performs the write operation for saving a
-	     * snapshot.
-	     */
-	    private String writeSnapshot(Snapshot snapshot){
-	        // Set the data payload for the snapshot.
-	        gameData.save(settings, myshareprefkey);
-	        // Save the snapshot.
-	        SnapshotMetadataChange metadataChange = new SnapshotMetadataChange.Builder()
-	                .setCoverImage(getScreenShot())
-	                .setDescription("Modified data at: " + Calendar.getInstance().getTime())
-	                .build();
-	        Games.Snapshots.commitAndClose(mGoogleApiClient, snapshot, metadataChange);
-	        return snapshot.toString();
-	    }
-	    
-	    /**
-	     * Gets a screenshot to use with snapshots. Note that in practice you probably do not want to
-	     * use this approach because tablet screen sizes can become pretty large and because the image
-	     * will contain any UI and layout surrounding the area of interest.
-	     */
-	    Bitmap getScreenShot() {
-	        View root = findViewById(R.id.main_home_layout);
-	        Bitmap coverImage;
-	        try {
-	            root.setDrawingCacheEnabled(true);
-	            Bitmap base = root.getDrawingCache();
-	            coverImage = base.copy(base.getConfig(), false /* isMutable */);
-	        } catch (Exception ex) {
-	            Log.i(TAG, "Failed to create screenshot", ex);
-	            coverImage = null;
-	        } finally {
-	            root.setDrawingCacheEnabled(false);
-	        }
-	        return coverImage;
-	    }
-	    
-	
-		 /** Shows the "sign in" bar (explanation and button). */
-	    private void showSignInBar() {
-	        findViewById(R.id.sign_in_bar).setVisibility(View.VISIBLE);
-	        findViewById(R.id.sign_out_bar).setVisibility(View.GONE);
-	    }
 
-	    /** Shows the "sign out" bar (explanation and button). */
-	    private void showSignOutBar() {
-	        findViewById(R.id.sign_in_bar).setVisibility(View.GONE);
-	        findViewById(R.id.sign_out_bar).setVisibility(View.VISIBLE);
-	    }
-	    
-		@Override
-		public void onConnectionSuspended(int i) {
-			Log.d(TAG, "onConnectionSuspended() called. Trying to reconnect.");
-			mGoogleApiClient.connect();
-		}
-		  @Override
-		    public void onConnectionFailed(ConnectionResult connectionResult) {
-		        Log.d(TAG, "onConnectionFailed() called, result: " + connectionResult);
 
-		        if (mResolvingConnectionFailure) {
-		            Log.d(TAG, "onConnectionFailed() ignoring connection failure; already resolving.");
-		            return;
-		        }
 
-		        if (mSignInClicked || mAutoStartSignInFlow) {
-		            mAutoStartSignInFlow = false;
-		            mSignInClicked = false;
-		        }
-		        showSignInBar();
-		    }
-	
-		/** Prints a log message (convenience method). */
-		void log(String message) {
-			Log.d(TAG, message);
-		}
+    public static byte[] intToByteArray(int a) {
+        return BigInteger.valueOf(a).toByteArray();
+    }
 
-			
-			synchronized  Tracker getTracker(TrackerName trackerId) {
-			    if (!mTrackers.containsKey(trackerId)) {
-			      GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-			      Tracker t =      analytics.newTracker(R.xml.global_tracker);
-			      mTrackers.put(trackerId, t);
-			    }
-			    return mTrackers.get(trackerId);
-			  }
+    public static int byteArrayToInt(byte[] b) {
+        return new BigInteger(b).intValue();
+    }
+
+
+
+    public boolean isConnectingToInternet() {
+        ConnectivityManager connectivity = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+
+        }
+        return false;
+    }
+
+
+    private void getExamList() {
+
+        final List<TrialExam> examList = new ArrayList<>();
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage(getResources().getString(R.string.trialLoading));
+        pd.setCancelable(false);
+        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        pd.show();
+
+
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.post("getExams", null, new HttpCallback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Log.d(TAG, String.valueOf(e));
+
+                        if (pd != null && pd.isShowing())
+                            pd.dismiss();
+
+                    }
+                });
+            }
+
+            @Override
+            public void onSuccess(Call call, final Response response) throws IOException {
+
+                final String result = response.body().string();
+                Log.d(TAG, result);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        if (pd != null && pd.isShowing())
+                            pd.dismiss();
+
+
+                        try {
+
+                            JSONObject examObj = new JSONObject(result);
+
+                            if (examObj.getBoolean("Result")) {
+                                JSONArray examArray = examObj.getJSONArray("ExamList");
+
+                                for (int i = 0; i < examArray.length(); i++) {
+
+                                    TrialExam trialExam = new TrialExam();
+                                    trialExam.setExamName(examArray.getJSONObject(i).getString("exam_name"));
+                                    trialExam.setExamPurchaseID(examArray.getJSONObject(i).getString("exam_product_id"));
+                                    trialExam.setExamID(examArray.getJSONObject(i).getString("exam_id"));
+                                    trialExam.setExamCost(Float.parseFloat(examArray.getJSONObject(i).getString("exam_cost")));
+                                    examList.add(trialExam);
+
+                                }
+
+
+                                showExamPopup(examList);
+
+                            } else
+                                Toast.makeText(MenuHomeScreenActivity.this, examObj.getString("Message"), Toast.LENGTH_LONG).show();
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
+
+            }
+        });
+
+
+    }
+
+
+    private void getQuestions(String examID) {
+
+        final List<TrialQuestions> questionList = new ArrayList<>();
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage(getResources().getString(R.string.examLoading));
+        pd.setCancelable(false);
+        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        pd.show();
+
+
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.post("getQuestionsByExam", new String[]{examID}, new HttpCallback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Log.d(TAG, String.valueOf(e));
+
+                        if (pd != null && pd.isShowing())
+                            pd.dismiss();
+
+                    }
+                });
+            }
+
+            @Override
+            public void onSuccess(Call call, final Response response) throws IOException {
+
+                final String result = response.body().string();
+                Log.d(TAG, result);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        if (pd != null && pd.isShowing())
+                            pd.dismiss();
+
+
+                        try {
+
+                            JSONObject questionObject = new JSONObject(result);
+
+                            if (questionObject.getBoolean("Result")) {
+
+                                JSONArray questionArray = questionObject.getJSONArray("Questions");
+
+                                for (int i = 0; i < questionArray.length(); i++) {
+
+                                    JSONObject questionResult = questionArray.getJSONObject(i);
+                                    String[] optionList = questionResult.getString("obj_description").split(Pattern.quote("#$#"));
+
+                                    TrialQuestions trialQuestions = new TrialQuestions();
+
+                                    trialQuestions.setQuestionID(questionResult.getString("question_id"));
+                                    trialQuestions.setQuestion(questionResult.getString("question_name"));
+                                    trialQuestions.setCorrectAnswer(Integer.parseInt(questionResult.getString("correct_answer")));
+
+                                    trialQuestions.setAttemptedQuestionID(null);
+                                    trialQuestions.setAttemptedAnswer(-1);
+
+                                    trialQuestions.setOptionA(optionList[0]);
+                                    trialQuestions.setOptionB(optionList[1]);
+                                    trialQuestions.setOptionC(optionList[2]);
+                                    trialQuestions.setOptionD(optionList[3]);
+                                    trialQuestions.setOptionE(optionList[4]);
+
+                                    questionList.add(trialQuestions);
+
+                                }
+
+
+                            } else
+                                Toast.makeText(MenuHomeScreenActivity.this, questionObject.getString("Message"), Toast.LENGTH_LONG).show();
+
+
+                            if (questionList.size() > 0) {
+
+                                if (dialog != null && dialog.isShowing())
+                                    dialog.dismiss();
+
+                                Intent intent = new Intent(MenuHomeScreenActivity.this, TrialExamActivity.class);
+                                intent.putExtra("question_list", (Serializable) questionList);
+                                intent.putExtra("exam_name", selectedExamName);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+            }
+        });
+    }
+
+
+    /********* Trial Exam Popup *********/
+
+    private void showExamPopup(List<TrialExam> trialExamList) {
+
+
+        View v = getLayoutInflater().inflate(R.layout.trial_exam_popup, null);
+
+        dialog = new Dialog(this);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
+        dialog.setTitle(null);
+
+        GridView gVTrialExams = (GridView) v.findViewById(R.id.gvTrialExamList);
+        TrialExamAdapter mAdapter = new TrialExamAdapter(trialExamList);
+        gVTrialExams.setAdapter(mAdapter);
+
+        dialog.setContentView(v);
+        dialog.show();
+
+        Button btnCancel = (Button) v.findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+            }
+        });
+
+    }
+
+    private class TrialExamAdapter extends BaseAdapter {
+
+        private List<TrialExam> trialExams;
+
+        TrialExamAdapter(List<TrialExam> examList) {
+            trialExams = examList;
+        }
+
+
+        @Override
+        public int getCount() {
+            return trialExams.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return trialExams.get(position).getExamID();
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            final TrialExam trialExam = trialExams.get(position);
+
+            if (convertView == null)
+                convertView = getLayoutInflater().inflate(R.layout.custom_trial_exam_row_popup, parent, false);
+
+            TextView tvExam = (TextView) convertView.findViewById(R.id.tvTrialExamName);
+            tvExam.setText(trialExam.getExamName());
+
+            Button btnBuy = (Button) convertView.findViewById(R.id.btnBuyExam);
+
+
+            if (trialExam.getExamCost() == 0) {
+
+                btnBuy.setBackgroundResource(R.drawable.button_green);
+                btnBuy.setText(getResources().getString(R.string.free));
+
+            } else if (trialExam.getExamCost() > 0) {
+
+                Set<String> examSet = settings.getStringSet("exam_list", null);
+
+                if (examSet != null) {
+
+                    if (examSet.contains(trialExam.getExamPurchaseID())) {
+
+                        btnBuy.setBackgroundResource(R.drawable.button_green);
+                        btnBuy.setText(getResources().getString(R.string.bought));
+
+                    } else {
+
+                        btnBuy.setBackgroundResource(R.drawable.button_red);
+                        btnBuy.setText(getResources().getString(R.string.buy) /*+ trialExam.getExamCost()*/);
+
+                    }
+
+                } else {
+
+                    btnBuy.setBackgroundResource(R.drawable.button_red);
+                    btnBuy.setText(getResources().getString(R.string.buy) /*+ trialExam.getExamCost()*/);
+
+                }
+
+            }
+
+            btnBuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    selectedExamName = trialExam.getExamName();
+                    selectedExamID = trialExam.getExamID();
+
+                    Set<String> purchaseExamList = settings.getStringSet("exam_list", null);
+
+                    if (trialExam.getExamCost() == 0)
+                        getQuestions(trialExam.getExamID());
+                    else {
+
+                        if (purchaseExamList != null && purchaseExamList.contains(trialExam.getExamPurchaseID()))
+                            getQuestions(trialExam.getExamID());
+                        else
+                            purchaseExam(trialExam.getExamPurchaseID());
+
+                    }
+
+                }
+            });
+
+
+            return convertView;
+        }
+    }
+
 }
-		
-		
+
+

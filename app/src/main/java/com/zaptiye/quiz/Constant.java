@@ -5,4 +5,8 @@ package com.zaptiye.quiz;
  */
 
 public class Constant {
+
+    public static final String webserviceURL=" http://zaptiyepro.com/appws/";
+    public static final String questionBankURL="http://udemy.blog/zaptiyepromobil/getquestionwithoptionbylevelid.php";
+
 }

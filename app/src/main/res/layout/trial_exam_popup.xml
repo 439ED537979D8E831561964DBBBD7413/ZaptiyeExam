@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/White">
 
-</LinearLayout>
+
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@android:drawable/ic_delete"
+        android:id="@+id/btnCancel"
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+    <ImageView
+        android:id="@+id/ivExam"
+        android:layout_width="match_parent"
+        android:src="@drawable/exam_02"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/btnCancel"
+        android:layout_height="145dp" />
+
+    <!--<Button-->
+        <!--android:id="@+id/btnCancel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@color/app_theme_red"-->
+        <!--android:text="Cancel"-->
+        <!--android:textColor="@color/White" />-->
+
+    <GridView
+        android:id="@+id/gvTrialExamList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ivExam"
+        android:columnWidth="120dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:padding="15dp"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:stretchMode="spacingWidthUniform"
+        android:verticalSpacing="10dp" />
+
+</RelativeLayout>

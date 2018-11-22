@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    maven {
+        url "https://s3.amazonaws.com/repo.commonsware.com"
+    }
+    jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
 android {
 
     useLibrary 'org.apache.http.legacy'
@@ -9,9 +18,8 @@ android {
         }
     }
 
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
-
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
 
 
     compileOptions{
@@ -20,9 +28,9 @@ android {
     defaultConfig {
         applicationId "com.zaptiye.quiz"
         minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 28
-        versionName "3.7"
+        targetSdkVersion 28
+        versionCode 40
+        versionName "3.4.0"
         multiDexEnabled true
     }
     buildTypes {
@@ -30,27 +38,50 @@ android {
             signingConfig signingConfigs.config
         }
 
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug{
+
+        }
+
+
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
 
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
 
-    
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.google.android.gms:play-services:7.5.0'
 
-    compile 'com.android.support:multidex:1.0.1'
-    compile project(':BaseGameUtil')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'io.doorbell:android-sdk:0.2.6@aar'
+    implementation("com.android.support:appcompat-v7:25.2.0")
 
-    compile 'io.doorbell:android-sdk:0.2.6@aar'
+   // implementation project(':BaseGameUtils')
+    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.google.android.gms:play-services-analytics:10.2.0'
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    //implementation 'com.google.firebase:firebase-core:16.0.4'
 
 }
 
 
-
+//apply plugin: 'com.google.gms.google-services'
 
 
 

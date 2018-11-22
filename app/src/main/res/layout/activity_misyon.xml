@@ -1,13 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_misyon"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.zaptiye.quiz.Misyon">
+    android:id="@+id/main_home_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_theme_color"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="@dimen/menu_button_layout_width"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+
+
+
+
+        <Button
+            android:id="@+id/btnSilah"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/menu_button_top_margin"
+            android:background="@drawable/button_blue"
+            android:text="Silah Bilgisi ve Atış" />
+
+
+        <Button
+            android:id="@+id/btnProtokol"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue"
+            android:text="Protokol Bilgisi " />
+
+
+
+        <Button
+            android:id="@+id/btnEnglish"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/menu_button_top_margin"
+            android:background="@drawable/button_blue"
+            android:text="İngilizce" />
+
+        <Button
+            android:id="@+id/btnMisyon2015"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue"
+            android:text="2015 Çıkmış Sorular" />
+
+        <Button
+            android:id="@+id/protokolsoru"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_blue"
+            android:text="Silah Çözümlü Sorular" />
+
+        <!--
+                <Button
+                    android:id="@+id/ibTrialExams"
+                    style="@style/style_btn_menu_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_blue"
+                    android:text="Deneme Sınavları" />
+         -->
+        <!--
+        <Button
+            android:id="@+id/btnAchievement"
+            style="@style/style_btn_menu_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/menu_button_top_margin"
+            android:background="@drawable/button_blue"
+            android:text="Madalyalar" />
+
+            -->
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ads_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"></LinearLayout>
+
+
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
+
 
 </RelativeLayout>

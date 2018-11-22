@@ -113,4 +113,47 @@
     <string name="title_activity_aile">Ailenin Korunması ve Kadına Karşı...</string>
     <string name="title_activity_eodt">Emniyet Örgütü Disiplin Tüzüğü</string>
 
+    <string name="pleasewait">Lütfen Bekleyiniz!!!</string>
+    <string name="dataloading">Anasayfa yükleniyor!!!</string>
+
+    <string name="label_question_no">Soru %d</string>
+
+    <string name="exam_quiz_continue_txt">Deneme Sınavını durdurdunuz...Devam etmek için Devam Et butonuna basınız</string>
+    <string name="continue_txt">Devam Et</string>
+
+    <string name="main_menu_txt">Anasayfa</string>
+    <string name="result_label">Sonuç</string>
+
+    <string name="correct_answer_txt">Cevabınız Doğru.</string>
+    <string name="wrong_answer_txt">Cevabınız yanlış. Doğru cevap : %s</string>
+    <string name="exam_statistics">Grafik</string>
+
+    <string name="unattempted_txt">Cevaplanmayan soru</string>
+    <string name="attempted_txt">Cevaplanan toplam soru</string>
+
+    <string name="wrong_txt">Yanlış Sayısı</string>
+    <string name="correct_txt">Doğru Sayısı</string>
+
+    <string name="solve_more">Sınavı bitirmek için en az 1 soruya cevap vermek zorundasınız</string>
+    <string name="swipe_right">Soruları görmek için ekranı sağa-sola kaydırın</string>
+    <string name="mail_gonder">Gönder</string>
+    <string name="valid_mail">Geçerli bir email adresi giriniz!</string>
+    <string name="write_mail">email adresinizi yazınız!</string>
+    <string name="write_message">Mesajınızı yazınız!</string>
+    <string name="report_message">Soru admine bildiriliyor, Lütfen bekleyiniz!</string>
+    <string name="buy">Hemen Al</string>
+    <string name="free">Ücretsiz</string>
+    <string name="bought">Satın Alındı</string>
+    <string name="trialLoading">Deneme sınavları yükleniyor, Lütfen bekleyiniz</string>
+    <string name="examLoading">Sorular yükleniyor, Lütfen bekleyin!!!</string>
+
+
+    <string name="hint_user_message">Bu soruda yanlışlık var. Çünkü : </string>
+    <string name="hint_user_email">email adresinizi yazınız</string>
+
+
+    <string name="timer_value" formatted="false">%02d:%02d:%02d</string>
+    <string name="default_timer_value">00:00:00</string>
+
+
 </resources>

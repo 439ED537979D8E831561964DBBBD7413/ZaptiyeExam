@@ -1,0 +1,144 @@
+{
+  "project_info": {
+    "project_number": "998315519809",
+    "firebase_url": "https://zaptiyenotif.firebaseio.com",
+    "project_id": "zaptiyenotif",
+    "storage_bucket": "zaptiyenotif.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998315519809:android:7fd6c0444030d5c4",
+        "android_client_info": {
+          "package_name": "com.ionicframework.gysdenemeler863600"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998315519809-dat657ofhbv3mkrm1p9pta8r433kq2lt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ionicframework.gysdenemeler863600",
+            "certificate_hash": "458bebb8a6505cb2ee8f767cefe160acda9c50f5"
+          }
+        },
+        {
+          "client_id": "998315519809-droe4ofvke46dsifdd2cobik3vu9719v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd9p5BBLUm3HTeZ2KnXiUxQmdFGKgtxd0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998315519809-droe4ofvke46dsifdd2cobik3vu9719v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "998315519809-3csfns1rrqdm59fbrouf98kuud6hn4nh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.zaptiye.quiz"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998315519809:android:7830f5e974a0151b",
+        "android_client_info": {
+          "package_name": "com.zaptiye.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998315519809-82lfihg2nu8386l2fnfdv1vnp0knob9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zaptiye.quiz",
+            "certificate_hash": "98fe3d8e6563ab06406d92c8b750a22b8e71c5ff"
+          }
+        },
+        {
+          "client_id": "998315519809-droe4ofvke46dsifdd2cobik3vu9719v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd9p5BBLUm3HTeZ2KnXiUxQmdFGKgtxd0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998315519809-droe4ofvke46dsifdd2cobik3vu9719v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "998315519809-3csfns1rrqdm59fbrouf98kuud6hn4nh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.zaptiye.quiz"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998315519809:android:21fff5f5b7054d5d",
+        "android_client_info": {
+          "package_name": "terfi.quiz.challenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998315519809-droe4ofvke46dsifdd2cobik3vu9719v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd9p5BBLUm3HTeZ2KnXiUxQmdFGKgtxd0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

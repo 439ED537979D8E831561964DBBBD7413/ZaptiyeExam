@@ -1,4 +1,4 @@
-package com.praxistechinc.pts.http;
+package com.zaptiye.quiz.http;
 
 /**
  * Created by Mitesh on 03/11/16.

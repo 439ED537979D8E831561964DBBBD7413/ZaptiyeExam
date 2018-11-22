@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -14,6 +13,9 @@
       IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
       to match your app's package name + ".permission.C2D_MESSAGE".
     -->
+
+    <uses-permission android:name="com.android.vending.BILLING" />
+
     <permission
         android:name="com.zaptiye.quiz.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -39,25 +41,16 @@
         <activity
             android:name=".MenuHomeScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" />
-        <activity
-            android:name=".SingleAnsQuizActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" />
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".LevelActivity"
-            android:label="@string/title_activity_quiz_play"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" />
-        <activity
             android:name=".SettingActivity"
             android:label="@string/title_activity_quiz_play"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" />
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".AboutUsActivity"
             android:label="@string/title_activity_quiz_play"
@@ -154,8 +147,22 @@
             android:name=".Kanunlar.Eodt"
             android:label="@string/title_activity_eodt" />
         <activity
-            android:name=".LevelBitti"
-            android:label="@string/title_activity_level_bitti" />
+            android:name=".trialexams.TrialExamActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".trialexams.ExamResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".trialexams.ResumeExamActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".trialexams.ScoreCardActivity"
+            android:label="@string/result_label"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
 
         <!-- Google Play Service -->
         <meta-data
@@ -169,7 +176,12 @@
             android:value="@string/app_id" />
         <!-- End Google Play -->
 
-        <activity android:name=".Denemeler"></activity>
+        <activity android:name=".Misyon" />
+        <activity android:name=".Protokol" />
+        <activity android:name=".Silah" />
+        <activity android:name=".Misyon2015" />
+        <activity android:name=".English" />
+        <activity android:name=".ProtokolSoru"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D3D3D3"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvQuestionNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:visibility="gone"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:text="Soru 1"
+                android:textColor="@color/Black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tvQuestionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/background_question"
+            android:textColor="@color/Black"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginStart="15dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnOptionA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/option_button_color_1"
+                android:gravity="left|start"
+                android:paddingLeft="15dp"
+                android:text="Option A"
+                android:textAllCaps="false"
+                android:textColor="@color/Black"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnOptionB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:background="@drawable/option_button_color_1"
+                android:gravity="left|start"
+                android:paddingLeft="15dp"
+                android:text="Option B"
+                android:textAllCaps="false"
+                android:textColor="@color/Black"
+                android:textSize="16sp" />
+
+
+            <Button
+                android:id="@+id/btnOptionC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/option_button_color_1"
+                android:gravity="left|start"
+                android:paddingLeft="15dp"
+                android:text="Option C"
+                android:textAllCaps="false"
+                android:textColor="@color/Black"
+                android:textSize="16sp" />
+
+
+            <Button
+                android:id="@+id/btnOptionD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/option_button_color_1"
+                android:gravity="left|start"
+                android:paddingLeft="15dp"
+                android:text="Option D"
+                android:textAllCaps="false"
+                android:textColor="@color/Black"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnOptionE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/option_button_color_1"
+                android:gravity="left|start"
+                android:paddingLeft="15dp"
+                android:text="Option E"
+                android:layout_marginBottom="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/Black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

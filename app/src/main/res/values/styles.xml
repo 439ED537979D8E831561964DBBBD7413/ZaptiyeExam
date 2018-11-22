@@ -1,4 +1,11 @@
 <resources>
+
+
+    <style name="MyDialogTheme" parent="AlertDialog.AppCompat">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@null</item>
+        </style>
+
     <style name="AppTheme" parent="android:Theme.Light" />
     <!-- new -->
     <style name="style_txt_title">

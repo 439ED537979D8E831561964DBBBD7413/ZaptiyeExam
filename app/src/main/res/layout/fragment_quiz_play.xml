@@ -27,18 +27,7 @@
             android:layout_marginBottom="@dimen/top_panel_margin"
             android:text="1/20" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/style_question_index"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="140dp"
-            android:id="@+id/bildir"
-            android:background="@drawable/background_score"
-            android:layout_marginTop="@dimen/top_panel_margin"
-            android:layout_marginBottom="@dimen/top_panel_margin"
-            android:text="Bildir"/>
+
 
 
         <ImageView

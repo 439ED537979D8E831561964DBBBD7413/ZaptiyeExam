@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlTrialExam"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_theme_color"
+    android:orientation="vertical">
 
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:id="@+id/resultBottomLayout"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2">
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:text="@string/exam_statistics"
+        android:layout_margin="5dp"
+        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:background="@drawable/button_blue"
+        android:id="@+id/btnStatistics"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="@string/main_menu_txt"
+            android:layout_margin="5dp"
+            android:textColor="@color/Black"
+            android:textSize="16sp"
+            android:background="@drawable/button_blue"
+            android:id="@+id/btnMenu"/>
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/lvExamResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_above="@+id/resultBottomLayout"
+        android:divider="@null"
+        android:dividerHeight="10dp"
+        android:scrollbars="none" />
+
+
+</RelativeLayout>

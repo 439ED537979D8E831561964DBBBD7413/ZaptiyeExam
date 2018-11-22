@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Attempted Questions"
+                android:text="@string/attempted_txt"
                 android:gravity="center_horizontal"
                 android:textColor="@color/White" />
 
@@ -39,13 +39,12 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 custom:donut_finished_color="@color/Black"
-                custom:donut_finished_stroke_width="5dp"
-                custom:donut_progress="80"
+                custom:donut_finished_stroke_width="10dp"
                 custom:donut_show_text="true"
                 custom:donut_suffix_text=""
                 custom:donut_text_color="@color/White"
                 custom:donut_unfinished_color="@color/White"
-                custom:donut_unfinished_stroke_width="3dp" />
+                custom:donut_unfinished_stroke_width="10dp" />
 
         </LinearLayout>
 
@@ -60,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Un-Attempted Questions"
+                android:text="@string/unattempted_txt"
                 android:gravity="center_horizontal"
                 android:textColor="@color/White" />
 
@@ -70,14 +69,14 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 custom:donut_finished_color="@color/Black"
-                custom:donut_finished_stroke_width="5dp"
+                custom:donut_finished_stroke_width="10dp"
                 custom:donut_progress="20"
                 android:layout_marginTop="10dp"
                 custom:donut_show_text="true"
                 custom:donut_suffix_text=""
                 custom:donut_text_color="@color/White"
                 custom:donut_unfinished_color="@color/White"
-                custom:donut_unfinished_stroke_width="3dp" />
+                custom:donut_unfinished_stroke_width="10dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -103,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:text="Correct Questions"
+                android:text="@string/correct_txt"
                 android:textColor="@color/White" />
 
             <com.github.lzyzsd.circleprogress.DonutProgress
@@ -112,14 +111,14 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 custom:donut_finished_color="@color/Black"
-                custom:donut_finished_stroke_width="5dp"
+                custom:donut_finished_stroke_width="10dp"
                 custom:donut_progress="30"
                 custom:donut_show_text="true"
                 android:layout_marginTop="10dp"
                 custom:donut_suffix_text=""
                 custom:donut_text_color="@color/White"
                 custom:donut_unfinished_color="@color/White"
-                custom:donut_unfinished_stroke_width="3dp" />
+                custom:donut_unfinished_stroke_width="10dp" />
 
         </LinearLayout>
 
@@ -135,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:text="Wrong Questions"
+                android:text="@string/wrong_txt"
                 android:textColor="@color/White" />
 
             <com.github.lzyzsd.circleprogress.DonutProgress
@@ -144,14 +143,14 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 custom:donut_finished_color="@color/Black"
-                custom:donut_finished_stroke_width="5dp"
+                custom:donut_finished_stroke_width="10dp"
                 android:layout_marginTop="10dp"
                 custom:donut_progress="50"
                 custom:donut_show_text="true"
                 custom:donut_suffix_text=""
                 custom:donut_text_color="@color/White"
                 custom:donut_unfinished_color="@color/White"
-                custom:donut_unfinished_stroke_width="3dp" />
+                custom:donut_unfinished_stroke_width="10dp" />
 
         </LinearLayout>
     </LinearLayout>

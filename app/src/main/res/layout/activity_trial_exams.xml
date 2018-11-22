@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlTrialExam"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_theme_color"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
 
-</LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPager"
+        android:layout_above="@+id/llQuestionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/llQuestionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/btnEndExam"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/Black"
+            android:textAllCaps="false"
+            android:background="@drawable/button_blue"
+            android:text="Sınavı Bitir" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:id="@+id/ivPause"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:src="@android:drawable/ic_media_pause"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/default_timer_value"
+            android:textSize="24sp"
+            android:textColor="@color/White"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="1.4"
+            android:padding="10dp"/>
+
+
+        <Button
+            android:id="@+id/btnReport"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:textAllCaps="false"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/button_blue"
+            android:layout_weight="1"
+            android:textColor="@color/Black"
+            android:text="Raporla" />
+
+    </LinearLayout>
+
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/ibPrevious"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="@drawable/ic_left_arrow"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/ibNext"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_margin="3dp"-->
+        <!--android:background="@drawable/ic_right_arrow"-->
+        <!--android:layout_height="wrap_content" />-->
+
+
+</RelativeLayout>
